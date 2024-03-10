@@ -19,3 +19,37 @@
 
 # Go workspace file
 go.work
+
+
+.env
+
+# Plaid API credentials
+/plaid_credentials.json
+
+# Xcode
+.DS_Store
+build/
+DerivedData/
+xcuserdata/
+
+# Swift Package Manager
+.build/
+
+# CocoaPods
+Pods/
+*.xcworkspace
+
+# Carthage
+Carthage/Build/
+
+# SPM dependencies
+Packages/
+
+# Generated files
+*.xcodeproj/
+*.playground/
+*.playgroundbook/
+*.xcworkspace/
+
+# Swift Package Manager
+.build/
