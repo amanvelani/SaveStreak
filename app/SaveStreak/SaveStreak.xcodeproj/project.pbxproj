@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A87810822B9F5C0B00A45B0B /* UserLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87810812B9F5C0B00A45B0B /* UserLoginModel.swift */; };
+		A87810892B9F5C7C00A45B0B /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87810882B9F5C7C00A45B0B /* DashboardViewModel.swift */; };
 		A8DC9C7D2B969DBD0019986B /* SaveStreakApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DC9C7C2B969DBD0019986B /* SaveStreakApp.swift */; };
-		A8DC9C7F2B969DBD0019986B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DC9C7E2B969DBD0019986B /* ContentView.swift */; };
 		A8DC9C812B969DC10019986B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9C802B969DC10019986B /* Assets.xcassets */; };
 		A8DC9C842B969DC10019986B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8DC9C832B969DC10019986B /* Preview Assets.xcassets */; };
 		A8DC9C8E2B969DC20019986B /* SaveStreakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DC9C8D2B969DC20019986B /* SaveStreakTests.swift */; };
 		A8DC9C982B969DC20019986B /* SaveStreakUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DC9C972B969DC20019986B /* SaveStreakUITests.swift */; };
 		A8DC9C9A2B969DC20019986B /* SaveStreakUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DC9C992B969DC20019986B /* SaveStreakUITestsLaunchTests.swift */; };
+		A8F24E862B9F693C004C41F9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F24E852B9F693C004C41F9 /* HomeView.swift */; };
+		A8F24E892B9F6965004C41F9 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F24E882B9F6965004C41F9 /* InsightsView.swift */; };
+		A8F24E8C2B9F6975004C41F9 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F24E8B2B9F6975004C41F9 /* UserView.swift */; };
+		A8F24E8E2B9F6E20004C41F9 /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F24E8D2B9F6E20004C41F9 /* UserStateViewModel.swift */; };
+		A8F24E902B9F79D6004C41F9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F24E8F2B9F79D6004C41F9 /* LoginView.swift */; };
+		A8F24E922B9F7A1F004C41F9 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F24E912B9F7A1F004C41F9 /* DashboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A87810812B9F5C0B00A45B0B /* UserLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginModel.swift; sourceTree = "<group>"; };
+		A87810882B9F5C7C00A45B0B /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		A8DC9C792B969DBD0019986B /* SaveStreak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveStreak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DC9C7C2B969DBD0019986B /* SaveStreakApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStreakApp.swift; sourceTree = "<group>"; };
-		A8DC9C7E2B969DBD0019986B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A8DC9C802B969DC10019986B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8DC9C832B969DC10019986B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A8DC9C892B969DC20019986B /* SaveStreakTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaveStreakTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +52,12 @@
 		A8DC9C932B969DC20019986B /* SaveStreakUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaveStreakUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DC9C972B969DC20019986B /* SaveStreakUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStreakUITests.swift; sourceTree = "<group>"; };
 		A8DC9C992B969DC20019986B /* SaveStreakUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStreakUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A8F24E852B9F693C004C41F9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A8F24E882B9F6965004C41F9 /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
+		A8F24E8B2B9F6975004C41F9 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		A8F24E8D2B9F6E20004C41F9 /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
+		A8F24E8F2B9F79D6004C41F9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A8F24E912B9F7A1F004C41F9 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +85,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A878107F2B9F5BEA00A45B0B /* UserLogin */ = {
+			isa = PBXGroup;
+			children = (
+				A8F24E8D2B9F6E20004C41F9 /* UserStateViewModel.swift */,
+				A8F24E8F2B9F79D6004C41F9 /* LoginView.swift */,
+			);
+			path = UserLogin;
+			sourceTree = "<group>";
+		};
+		A87810802B9F5BFE00A45B0B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A87810812B9F5C0B00A45B0B /* UserLoginModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A87810872B9F5C7100A45B0B /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				A87810882B9F5C7C00A45B0B /* DashboardViewModel.swift */,
+				A8F24E912B9F7A1F004C41F9 /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
 		A8DC9C702B969DBD0019986B = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +134,13 @@
 		A8DC9C7B2B969DBD0019986B /* SaveStreak */ = {
 			isa = PBXGroup;
 			children = (
+				A8F24E8A2B9F696F004C41F9 /* UserViewTab */,
+				A8F24E872B9F6952004C41F9 /* InsightsViewTab */,
+				A8F24E842B9F6925004C41F9 /* HomeViewTab */,
+				A87810872B9F5C7100A45B0B /* Dashboard */,
+				A87810802B9F5BFE00A45B0B /* Models */,
+				A878107F2B9F5BEA00A45B0B /* UserLogin */,
 				A8DC9C7C2B969DBD0019986B /* SaveStreakApp.swift */,
-				A8DC9C7E2B969DBD0019986B /* ContentView.swift */,
 				A8DC9C802B969DC10019986B /* Assets.xcassets */,
 				A8DC9C822B969DC10019986B /* Preview Content */,
 			);
@@ -125,6 +170,30 @@
 				A8DC9C992B969DC20019986B /* SaveStreakUITestsLaunchTests.swift */,
 			);
 			path = SaveStreakUITests;
+			sourceTree = "<group>";
+		};
+		A8F24E842B9F6925004C41F9 /* HomeViewTab */ = {
+			isa = PBXGroup;
+			children = (
+				A8F24E852B9F693C004C41F9 /* HomeView.swift */,
+			);
+			path = HomeViewTab;
+			sourceTree = "<group>";
+		};
+		A8F24E872B9F6952004C41F9 /* InsightsViewTab */ = {
+			isa = PBXGroup;
+			children = (
+				A8F24E882B9F6965004C41F9 /* InsightsView.swift */,
+			);
+			path = InsightsViewTab;
+			sourceTree = "<group>";
+		};
+		A8F24E8A2B9F696F004C41F9 /* UserViewTab */ = {
+			isa = PBXGroup;
+			children = (
+				A8F24E8B2B9F6975004C41F9 /* UserView.swift */,
+			);
+			path = UserViewTab;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +326,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8DC9C7F2B969DBD0019986B /* ContentView.swift in Sources */,
+				A87810822B9F5C0B00A45B0B /* UserLoginModel.swift in Sources */,
+				A87810892B9F5C7C00A45B0B /* DashboardViewModel.swift in Sources */,
+				A8F24E902B9F79D6004C41F9 /* LoginView.swift in Sources */,
+				A8F24E922B9F7A1F004C41F9 /* DashboardView.swift in Sources */,
+				A8F24E862B9F693C004C41F9 /* HomeView.swift in Sources */,
+				A8F24E892B9F6965004C41F9 /* InsightsView.swift in Sources */,
+				A8F24E8C2B9F6975004C41F9 /* UserView.swift in Sources */,
 				A8DC9C7D2B969DBD0019986B /* SaveStreakApp.swift in Sources */,
+				A8F24E8E2B9F6E20004C41F9 /* UserStateViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,9 +9,30 @@ import SwiftUI
 
 @main
 struct SaveStreakApp: App {
+    @StateObject var userStateViewModel = UserStateViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView{
+                            ApplicationSwitcher()
+            }
+            .navigationViewStyle(.stack)
+            .environmentObject(userStateViewModel)
         }
     }
 }
+
+struct ApplicationSwitcher: View {
+
+    @EnvironmentObject var vm: UserStateViewModel
+
+    var body: some View {
+        if (vm.isLoggedIn || UserDefaults.standard.bool(forKey: "isLoggedIn")) {
+            HomeScreen()
+        } else {
+            LoginView()
+        }
+
+    }
+}
+
