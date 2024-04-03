@@ -22,17 +22,22 @@ struct HomeScreen: View {
                                 Image(systemName: "house")
                                 Text("Home")
                             }
+                MapView()
+                    .tabItem {
+                        Image(systemName: "storefront.circle")
+                        Text("Store")
+                    }
 
                         InsightsView()
                             .tabItem {
-                                Image(systemName: "chart.bar")
+                                Image(systemName: "chart.xyaxis.line")
                                 Text("Insights")
                             }
 
                         UserView(loginViewModel: vm)
                             .tabItem {
-                                Image(systemName: "person")
-                                Text("User")
+                                Image(systemName: "gear")
+                                Text("Settings")
                             }
                     }
         }

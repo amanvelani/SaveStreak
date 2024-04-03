@@ -4,14 +4,14 @@ import (
 	"context"
 	"log"
 	"net/http"
-
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const uri = "mongodb://_______:27017/save_streak_db"
+const uri = "mongodb://localhost:27017/save_streak_db"
 
 // A global variable that will hold a reference to the MongoDB client
 var mongoClient *mongo.Client
@@ -50,7 +50,6 @@ func main() {
 }
 
 type User struct {
-	ID       string `bson:"_id,omitempty"`
 	Email    string `bson:"email"`
 	Password string `bson:"password"`
 	Category string `bson:"category"` // Student/Working Professional/Retired etc. TODO: Create this as Enum
@@ -75,6 +74,7 @@ func loginHandler(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal server error"})
 		return
 	}
+	fmt.Println(user_data)
 
 	c.JSON(http.StatusOK, user_data)
 }

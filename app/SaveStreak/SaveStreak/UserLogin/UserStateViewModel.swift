@@ -11,7 +11,7 @@ enum UserStateError: Error{
     case signInError, signOutError
 }
 
-struct UserLoginResponse: Codable {
+struct UserLoginResponse:  Identifiable, Decodable{
     let id: String
     let category: String
     let email: String
@@ -21,33 +21,28 @@ struct UserLoginResponse: Codable {
 
 @MainActor
 class UserStateViewModel: ObservableObject {
-
+    
     @Published var isLoggedIn = false
     @Published var isBusy = false
-
+    
     func signIn(email: String, password: String) async -> Result<Bool, UserStateError>  {
         isBusy = true
         do{
-            let loginUrl = URL(string: "http://________8080/login")!
-                var request = URLRequest(url: loginUrl)
-                request.httpMethod = "POST"
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            let loginUrl = URL(string: "http://192.168.1.199:8080/login")!
+            var request = URLRequest(url: loginUrl)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             let requestBody: [String: Any] = [
-                 "email": email,
-                 "password": password
-             ]
+                "email": email,
+                "password": password
+            ]
             
-            request.httpBody = try? JSONSerialization.data(withJSONObject: requestBody)
-            let (data, _) = try await URLSession.shared.data(for: request)
-            if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                       let error = jsonObject["error"] as? String {
-                        return .failure(.signInError)
-                    }
-
-            let response = try JSONDecoder().decode(UserLoginResponse.self, from: data)
-            
-
-//            try await Task.sleep(nanoseconds:  1_000_000_000)
+//            request.httpBody = try? JSONSerialization.data(withJSONObject: requestBody)
+//            let (data, response) = try await URLSession.shared.data(for: request)
+//            debugPrint((response as? HTTPURLResponse)?.statusCode)
+//            guard (response as? HTTPURLResponse)?.statusCode == 200 else { return .failure(.signInError)}
+//            let decodedResponse = try JSONDecoder().decode(UserLoginResponse.self, from: data)
+//            debugPrint("Async decodedResponse", decodedResponse)
             isLoggedIn = true
             UserDefaults.standard.set(true, forKey: "isLoggedIn")
             isBusy = false
@@ -57,7 +52,7 @@ class UserStateViewModel: ObservableObject {
             return .failure(.signInError)
         }
     }
-
+    
     func signOut() async -> Result<Bool, UserStateError>  {
         isBusy = true
         do{
