@@ -6,10 +6,21 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import Firebase
 
 @main
 struct SaveStreakApp: App {
     @StateObject var userStateViewModel = UserStateViewModel()
+	
+	init() {
+		let providerFactory = AppCheckDebugProviderFactory()
+		AppCheck.setAppCheckProviderFactory(providerFactory)
+		
+		FirebaseApp.configure()
+//		FirebaseConfiguration.shared.setLoggerLevel(.min)
+		
+	}
 
     var body: some Scene {
         WindowGroup {
