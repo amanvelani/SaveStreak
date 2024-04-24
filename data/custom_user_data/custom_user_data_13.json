@@ -1,0 +1,841 @@
+{
+    "override_accounts": [
+        {
+            "type": "depository",
+            "subtype": "checking",
+            "starting_balance": 78107.93,
+            "meta": {
+                "name": "Chandler Ltd Bank",
+                "official_name": "Chandler Ltd Bank Checking"
+            },
+            "numbers": {
+                "account": "5219257703371227",
+                "ach_routing": "209897018"
+            },
+            "transactions": [
+                {
+                    "date_transacted": "2023-12-31",
+                    "date_posted": "2024-01-01",
+                    "amount": -6704.1,
+                    "description": "Price, Jones and Schroeder 77190189. Merchant name: Price, Jones and Schroeder 77190189",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-29",
+                    "date_posted": "2023-10-30",
+                    "amount": -4555.07,
+                    "description": "Dyer LLC 65356231. Merchant name: Dyer LLC 65356231",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-11-26",
+                    "date_posted": "2023-11-27",
+                    "amount": 3052.08,
+                    "description": "Villarreal PLC 09358209. Merchant name: Villarreal PLC 09358209",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-01-23",
+                    "date_posted": "2024-01-24",
+                    "amount": -7504.6,
+                    "description": "Simpson, Bradford and Taylor 93504722. Merchant name: Simpson, Bradford and Taylor 93504722",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-03-23",
+                    "date_posted": "2024-03-24",
+                    "amount": 2184.47,
+                    "description": "Cole Ltd 41439556. Merchant name: Cole Ltd 41439556",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-12-15",
+                    "date_posted": "2023-12-16",
+                    "amount": -2369.85,
+                    "description": "Brown Inc 76862910. Merchant name: Brown Inc 76862910",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-11-14",
+                    "date_posted": "2023-11-15",
+                    "amount": 7847.69,
+                    "description": "Jones, Foster and Myers 43011045. Merchant name: Jones, Foster and Myers 43011045",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-11-01",
+                    "date_posted": "2023-11-02",
+                    "amount": 5007.4,
+                    "description": "Weaver Group 78377194. Merchant name: Weaver Group 78377194",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-12-22",
+                    "date_posted": "2023-12-23",
+                    "amount": -4419.11,
+                    "description": "Smith Inc 50406987. Merchant name: Smith Inc 50406987",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-04-12",
+                    "date_posted": "2024-04-13",
+                    "amount": -6356.88,
+                    "description": "Taylor-Garcia 98340010. Merchant name: Taylor-Garcia 98340010",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-04-25",
+                    "date_posted": "2024-04-26",
+                    "amount": 3762.26,
+                    "description": "Flores, Bray and Hunt 76753759. Merchant name: Flores, Bray and Hunt 76753759",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-15",
+                    "date_posted": "2023-09-16",
+                    "amount": -8070.16,
+                    "description": "Gaines, Pearson and Dixon 93976137. Merchant name: Gaines, Pearson and Dixon 93976137",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-11-23",
+                    "date_posted": "2023-11-24",
+                    "amount": -8873.98,
+                    "description": "Henson PLC 75702038. Merchant name: Henson PLC 75702038",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-12",
+                    "date_posted": "2023-09-13",
+                    "amount": 2946.77,
+                    "description": "Williams, Clements and Lynch 50681483. Merchant name: Williams, Clements and Lynch 50681483",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-03-11",
+                    "date_posted": "2024-03-12",
+                    "amount": 4184.63,
+                    "description": "Watson Inc 44695149. Merchant name: Watson Inc 44695149",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-12-17",
+                    "date_posted": "2023-12-18",
+                    "amount": 4130.76,
+                    "description": "Ford LLC 12095448. Merchant name: Ford LLC 12095448",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-30",
+                    "date_posted": "2023-10-01",
+                    "amount": 1979.02,
+                    "description": "Leon Ltd 24076405. Merchant name: Leon Ltd 24076405",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-16",
+                    "date_posted": "2023-08-17",
+                    "amount": 2813.29,
+                    "description": "Williams PLC 96284315. Merchant name: Williams PLC 96284315",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-12-13",
+                    "date_posted": "2023-12-14",
+                    "amount": 29.67,
+                    "description": "Munoz Group 59228495. Merchant name: Munoz Group 59228495",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-04-12",
+                    "date_posted": "2024-04-13",
+                    "amount": 7391.71,
+                    "description": "Thomas LLC 50527938. Merchant name: Thomas LLC 50527938",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-03-20",
+                    "date_posted": "2024-03-21",
+                    "amount": 2191.27,
+                    "description": "Hall, Cooper and Davis 89929242. Merchant name: Hall, Cooper and Davis 89929242",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-09",
+                    "date_posted": "2023-10-10",
+                    "amount": -5664.51,
+                    "description": "Williams LLC 78920949. Merchant name: Williams LLC 78920949",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-13",
+                    "date_posted": "2023-08-14",
+                    "amount": -9260.5,
+                    "description": "Johnson-Johnson 30114922. Merchant name: Johnson-Johnson 30114922",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-02-18",
+                    "date_posted": "2024-02-19",
+                    "amount": 6673.08,
+                    "description": "Green-Gomez 20692170. Merchant name: Green-Gomez 20692170",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-17",
+                    "date_posted": "2023-10-18",
+                    "amount": -8135.88,
+                    "description": "Clark, Drake and Weaver 19480008. Merchant name: Clark, Drake and Weaver 19480008",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-04-13",
+                    "date_posted": "2024-04-14",
+                    "amount": -5154.46,
+                    "description": "Wright, Lewis and Gates 28213519. Merchant name: Wright, Lewis and Gates 28213519",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-24",
+                    "date_posted": "2023-10-25",
+                    "amount": 5635.03,
+                    "description": "Mendoza-Rice 67975629. Merchant name: Mendoza-Rice 67975629",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-28",
+                    "date_posted": "2023-08-29",
+                    "amount": 3809.18,
+                    "description": "Gilbert, Morris and Harris 61289634. Merchant name: Gilbert, Morris and Harris 61289634",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-11-16",
+                    "date_posted": "2023-11-17",
+                    "amount": -6474.53,
+                    "description": "Parsons-Bullock 28859925. Merchant name: Parsons-Bullock 28859925",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-04-09",
+                    "date_posted": "2024-04-10",
+                    "amount": -7979.97,
+                    "description": "Johnson-Johnson 13613834. Merchant name: Johnson-Johnson 13613834",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-12-05",
+                    "date_posted": "2023-12-06",
+                    "amount": -6946.26,
+                    "description": "Winters LLC 05247264. Merchant name: Winters LLC 05247264",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-03-25",
+                    "date_posted": "2024-03-26",
+                    "amount": 3919.17,
+                    "description": "West-Davis 14486731. Merchant name: West-Davis 14486731",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-04-04",
+                    "date_posted": "2024-04-05",
+                    "amount": -4255.42,
+                    "description": "Morales, Berry and Elliott 32361600. Merchant name: Morales, Berry and Elliott 32361600",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-12",
+                    "date_posted": "2023-09-13",
+                    "amount": 7990.88,
+                    "description": "Bartlett, Nelson and Bradford 22119461. Merchant name: Bartlett, Nelson and Bradford 22119461",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-01-22",
+                    "date_posted": "2024-01-23",
+                    "amount": -8118.94,
+                    "description": "Smith Inc 80084435. Merchant name: Smith Inc 80084435",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-11-20",
+                    "date_posted": "2023-11-21",
+                    "amount": 8157.13,
+                    "description": "Bradley PLC 43995664. Merchant name: Bradley PLC 43995664",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-11-16",
+                    "date_posted": "2023-11-17",
+                    "amount": -9935.58,
+                    "description": "Roberts, Williams and Contreras 63009942. Merchant name: Roberts, Williams and Contreras 63009942",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-04-13",
+                    "date_posted": "2024-04-14",
+                    "amount": -5533.68,
+                    "description": "Anderson-Green 85189642. Merchant name: Anderson-Green 85189642",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-12-27",
+                    "date_posted": "2023-12-28",
+                    "amount": -8823.56,
+                    "description": "Gallagher, Williams and Johnson 25656913. Merchant name: Gallagher, Williams and Johnson 25656913",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-04-24",
+                    "date_posted": "2024-04-25",
+                    "amount": -6972.28,
+                    "description": "Arnold, Hayes and Bridges 87605471. Merchant name: Arnold, Hayes and Bridges 87605471",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-12-30",
+                    "date_posted": "2023-12-31",
+                    "amount": -2094.23,
+                    "description": "Coleman-Miller 74552187. Merchant name: Coleman-Miller 74552187",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-05",
+                    "date_posted": "2023-10-06",
+                    "amount": -7336.66,
+                    "description": "Chapman, Fox and Peters 75098815. Merchant name: Chapman, Fox and Peters 75098815",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-31",
+                    "date_posted": "2023-09-01",
+                    "amount": -8025.41,
+                    "description": "Obrien, Mcguire and Benjamin 14792036. Merchant name: Obrien, Mcguire and Benjamin 14792036",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-06",
+                    "date_posted": "2023-10-07",
+                    "amount": 7575.08,
+                    "description": "Knapp, Beck and Mccann 38894151. Merchant name: Knapp, Beck and Mccann 38894151",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-12-21",
+                    "date_posted": "2023-12-22",
+                    "amount": -3882.96,
+                    "description": "Hill, Williams and Shah 87841774. Merchant name: Hill, Williams and Shah 87841774",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-09",
+                    "date_posted": "2023-08-10",
+                    "amount": 7538.71,
+                    "description": "Meyer, Chambers and Williams 77774427. Merchant name: Meyer, Chambers and Williams 77774427",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-01-05",
+                    "date_posted": "2024-01-06",
+                    "amount": 9356.64,
+                    "description": "Hays Inc 53727376. Merchant name: Hays Inc 53727376",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-03",
+                    "date_posted": "2023-10-04",
+                    "amount": -421.66,
+                    "description": "Gaines, Gonzalez and Wells 90655502. Merchant name: Gaines, Gonzalez and Wells 90655502",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-01-21",
+                    "date_posted": "2024-01-22",
+                    "amount": 281.73,
+                    "description": "Thomas-Heath 20459113. Merchant name: Thomas-Heath 20459113",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-24",
+                    "date_posted": "2023-08-25",
+                    "amount": -914.45,
+                    "description": "Shaw-Vasquez 33692250. Merchant name: Shaw-Vasquez 33692250",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-02-04",
+                    "date_posted": "2024-02-05",
+                    "amount": -5180.87,
+                    "description": "Snyder Inc 18209783. Merchant name: Snyder Inc 18209783",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-03-11",
+                    "date_posted": "2024-03-12",
+                    "amount": 7451.15,
+                    "description": "Ramos, Lyons and Shaffer 63055235. Merchant name: Ramos, Lyons and Shaffer 63055235",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-03",
+                    "date_posted": "2023-09-04",
+                    "amount": 6206.83,
+                    "description": "Lawson, Dawson and Hill 66984649. Merchant name: Lawson, Dawson and Hill 66984649",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-03-24",
+                    "date_posted": "2024-03-25",
+                    "amount": 9300.83,
+                    "description": "Beard-Bowers 35047618. Merchant name: Beard-Bowers 35047618",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-04-26",
+                    "date_posted": "2024-04-27",
+                    "amount": 4331.22,
+                    "description": "Thompson, Smith and House 34640032. Merchant name: Thompson, Smith and House 34640032",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-01-01",
+                    "date_posted": "2024-01-02",
+                    "amount": 894.42,
+                    "description": "Lewis, Bates and Cantu 13971119. Merchant name: Lewis, Bates and Cantu 13971119",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-12-21",
+                    "date_posted": "2023-12-22",
+                    "amount": -2849.26,
+                    "description": "Lopez, Fuentes and Tanner 50684733. Merchant name: Lopez, Fuentes and Tanner 50684733",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-02-10",
+                    "date_posted": "2024-02-11",
+                    "amount": -3424.76,
+                    "description": "Jackson, Davis and Weber 11892188. Merchant name: Jackson, Davis and Weber 11892188",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-03-09",
+                    "date_posted": "2024-03-10",
+                    "amount": -2185.9,
+                    "description": "Velez, Evans and Moore 83209421. Merchant name: Velez, Evans and Moore 83209421",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-04-11",
+                    "date_posted": "2024-04-12",
+                    "amount": -188.97,
+                    "description": "Noble, Yang and Whitehead 07953580. Merchant name: Noble, Yang and Whitehead 07953580",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-01-17",
+                    "date_posted": "2024-01-18",
+                    "amount": 6693.7,
+                    "description": "Murray-Newton 73693856. Merchant name: Murray-Newton 73693856",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-19",
+                    "date_posted": "2023-09-20",
+                    "amount": -1844.88,
+                    "description": "Williams, Wolf and Booker 53696450. Merchant name: Williams, Wolf and Booker 53696450",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-03-29",
+                    "date_posted": "2024-03-30",
+                    "amount": 9992.52,
+                    "description": "Ross, Williams and Navarro 77494652. Merchant name: Ross, Williams and Navarro 77494652",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-30",
+                    "date_posted": "2023-08-31",
+                    "amount": -7515.01,
+                    "description": "Knox, Eaton and Fry 17553317. Merchant name: Knox, Eaton and Fry 17553317",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-03-25",
+                    "date_posted": "2024-03-26",
+                    "amount": -7359.73,
+                    "description": "Roy LLC 99446528. Merchant name: Roy LLC 99446528",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-12-10",
+                    "date_posted": "2023-12-11",
+                    "amount": -5186.96,
+                    "description": "Baker Ltd 35974105. Merchant name: Baker Ltd 35974105",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-29",
+                    "date_posted": "2023-10-30",
+                    "amount": 8831.4,
+                    "description": "Ramirez Group 09891924. Merchant name: Ramirez Group 09891924",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-07",
+                    "date_posted": "2023-09-08",
+                    "amount": 2254.72,
+                    "description": "Harris-Hammond 12849578. Merchant name: Harris-Hammond 12849578",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-01-25",
+                    "date_posted": "2024-01-26",
+                    "amount": 9852.0,
+                    "description": "Smith, Gentry and Leonard 79566090. Merchant name: Smith, Gentry and Leonard 79566090",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-03-06",
+                    "date_posted": "2024-03-07",
+                    "amount": -1641.2,
+                    "description": "Owens-Malone 17977532. Merchant name: Owens-Malone 17977532",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-12",
+                    "date_posted": "2023-09-13",
+                    "amount": 5146.87,
+                    "description": "Contreras-Randolph 49846536. Merchant name: Contreras-Randolph 49846536",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-04-29",
+                    "date_posted": "2024-04-30",
+                    "amount": 4653.55,
+                    "description": "Carter Ltd 70400324. Merchant name: Carter Ltd 70400324",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-03",
+                    "date_posted": "2023-08-04",
+                    "amount": -8074.23,
+                    "description": "Lewis-Livingston 15699487. Merchant name: Lewis-Livingston 15699487",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-02-16",
+                    "date_posted": "2024-02-17",
+                    "amount": 249.57,
+                    "description": "Smith, Watts and Ellis 16201214. Merchant name: Smith, Watts and Ellis 16201214",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-25",
+                    "date_posted": "2023-09-26",
+                    "amount": -9906.56,
+                    "description": "Cunningham LLC 31733969. Merchant name: Cunningham LLC 31733969",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-26",
+                    "date_posted": "2023-10-27",
+                    "amount": -3765.86,
+                    "description": "Brown PLC 03393893. Merchant name: Brown PLC 03393893",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-02",
+                    "date_posted": "2023-08-03",
+                    "amount": 7594.67,
+                    "description": "Bush-Jimenez 73421106. Merchant name: Bush-Jimenez 73421106",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-03",
+                    "date_posted": "2023-09-04",
+                    "amount": -8652.44,
+                    "description": "Ellis and Sons 70884091. Merchant name: Ellis and Sons 70884091",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-02-04",
+                    "date_posted": "2024-02-05",
+                    "amount": -2592.63,
+                    "description": "Rogers-Dunn 66514790. Merchant name: Rogers-Dunn 66514790",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-05",
+                    "date_posted": "2023-10-06",
+                    "amount": -2324.6,
+                    "description": "Stewart, Olson and Williams 61407491. Merchant name: Stewart, Olson and Williams 61407491",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-09",
+                    "date_posted": "2023-09-10",
+                    "amount": -7023.85,
+                    "description": "Young-Barajas 35275415. Merchant name: Young-Barajas 35275415",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-03-02",
+                    "date_posted": "2024-03-03",
+                    "amount": -6042.63,
+                    "description": "Hudson-Arnold 32968843. Merchant name: Hudson-Arnold 32968843",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-04-06",
+                    "date_posted": "2024-04-07",
+                    "amount": -4931.48,
+                    "description": "Jackson-Rodriguez 53288937. Merchant name: Jackson-Rodriguez 53288937",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-15",
+                    "date_posted": "2023-08-16",
+                    "amount": -1693.33,
+                    "description": "Mathews Ltd 97810010. Merchant name: Mathews Ltd 97810010",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-02-13",
+                    "date_posted": "2024-02-14",
+                    "amount": 5221.55,
+                    "description": "Deleon-Chapman 96678849. Merchant name: Deleon-Chapman 96678849",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-12-27",
+                    "date_posted": "2023-12-28",
+                    "amount": 7399.09,
+                    "description": "Johnson-Miller 72164623. Merchant name: Johnson-Miller 72164623",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-11-13",
+                    "date_posted": "2023-11-14",
+                    "amount": -6373.11,
+                    "description": "Hughes, Miller and Williamson 27207815. Merchant name: Hughes, Miller and Williamson 27207815",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-17",
+                    "date_posted": "2023-09-18",
+                    "amount": -7287.14,
+                    "description": "Smith-Lee 09563383. Merchant name: Smith-Lee 09563383",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-24",
+                    "date_posted": "2023-09-25",
+                    "amount": 7691.16,
+                    "description": "Moon LLC 06723619. Merchant name: Moon LLC 06723619",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-04",
+                    "date_posted": "2023-10-05",
+                    "amount": 9812.83,
+                    "description": "Stewart and Sons 70150553. Merchant name: Stewart and Sons 70150553",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-31",
+                    "date_posted": "2023-11-01",
+                    "amount": -7048.87,
+                    "description": "Clark, Watkins and Rivera 53935142. Merchant name: Clark, Watkins and Rivera 53935142",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-11",
+                    "date_posted": "2023-09-12",
+                    "amount": 1488.54,
+                    "description": "Navarro and Sons 63971188. Merchant name: Navarro and Sons 63971188",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-01-13",
+                    "date_posted": "2024-01-14",
+                    "amount": -8076.44,
+                    "description": "Hayes, Johns and Long 19767899. Merchant name: Hayes, Johns and Long 19767899",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-04",
+                    "date_posted": "2023-09-05",
+                    "amount": 4006.35,
+                    "description": "Lawrence and Sons 22058717. Merchant name: Lawrence and Sons 22058717",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-02-08",
+                    "date_posted": "2024-02-09",
+                    "amount": -3541.71,
+                    "description": "Vazquez Inc 32225512. Merchant name: Vazquez Inc 32225512",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-11-16",
+                    "date_posted": "2023-11-17",
+                    "amount": -5849.76,
+                    "description": "Thomas, Wong and Smith 72758464. Merchant name: Thomas, Wong and Smith 72758464",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-18",
+                    "date_posted": "2023-09-19",
+                    "amount": -5851.48,
+                    "description": "Newman, Smith and Holder 68865615. Merchant name: Newman, Smith and Holder 68865615",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-04-01",
+                    "date_posted": "2024-04-02",
+                    "amount": 5145.19,
+                    "description": "Hall, Cook and Russell 57066048. Merchant name: Hall, Cook and Russell 57066048",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-24",
+                    "date_posted": "2023-09-25",
+                    "amount": 5500.65,
+                    "description": "Miller, Thomas and Caldwell 78427869. Merchant name: Miller, Thomas and Caldwell 78427869",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-12",
+                    "date_posted": "2023-10-13",
+                    "amount": 3366.03,
+                    "description": "Villanueva, Lewis and Cox 89799740. Merchant name: Villanueva, Lewis and Cox 89799740",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-11-01",
+                    "date_posted": "2023-11-02",
+                    "amount": 5253.05,
+                    "description": "Morales Inc 82740909. Merchant name: Morales Inc 82740909",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-01-09",
+                    "date_posted": "2024-01-10",
+                    "amount": -3076.15,
+                    "description": "Hobbs LLC 54382333. Merchant name: Hobbs LLC 54382333",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-21",
+                    "date_posted": "2023-08-22",
+                    "amount": 8154.2,
+                    "description": "Gonzalez-Smith 01209272. Merchant name: Gonzalez-Smith 01209272",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-26",
+                    "date_posted": "2023-10-27",
+                    "amount": -4901.31,
+                    "description": "Lozano, Martinez and Soto 88587466. Merchant name: Lozano, Martinez and Soto 88587466",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-14",
+                    "date_posted": "2023-08-15",
+                    "amount": 6211.07,
+                    "description": "Jenkins, Li and Shaffer 92116621. Merchant name: Jenkins, Li and Shaffer 92116621",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-10-03",
+                    "date_posted": "2023-10-04",
+                    "amount": -7214.58,
+                    "description": "Pham, Hunt and Salazar 32362090. Merchant name: Pham, Hunt and Salazar 32362090",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-11-16",
+                    "date_posted": "2023-11-17",
+                    "amount": -1.83,
+                    "description": "Brown-Brown 09096374. Merchant name: Brown-Brown 09096374",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-29",
+                    "date_posted": "2023-09-30",
+                    "amount": -3744.74,
+                    "description": "Collins, Smith and Duran 39011133. Merchant name: Collins, Smith and Duran 39011133",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-01-07",
+                    "date_posted": "2024-01-08",
+                    "amount": -5523.89,
+                    "description": "Bartlett-Cox 71311063. Merchant name: Bartlett-Cox 71311063",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-21",
+                    "date_posted": "2023-09-22",
+                    "amount": -8528.49,
+                    "description": "Lloyd-Lewis 41653677. Merchant name: Lloyd-Lewis 41653677",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-11-21",
+                    "date_posted": "2023-11-22",
+                    "amount": -1660.78,
+                    "description": "James-Turner 03835937. Merchant name: James-Turner 03835937",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-13",
+                    "date_posted": "2023-08-14",
+                    "amount": -5602.76,
+                    "description": "Montgomery, Hall and Luna 02406199. Merchant name: Montgomery, Hall and Luna 02406199",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-08-12",
+                    "date_posted": "2023-08-13",
+                    "amount": -7261.92,
+                    "description": "Richardson, Barron and Carr 56570903. Merchant name: Richardson, Barron and Carr 56570903",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2024-01-27",
+                    "date_posted": "2024-01-28",
+                    "amount": -8078.14,
+                    "description": "Schmidt, Davis and Harper 94680093. Merchant name: Schmidt, Davis and Harper 94680093",
+                    "currency": "USD"
+                },
+                {
+                    "date_transacted": "2023-09-02",
+                    "date_posted": "2023-09-03",
+                    "amount": -1570.66,
+                    "description": "Roberts and Sons 03188958. Merchant name: Roberts and Sons 03188958",
+                    "currency": "USD"
+                }
+            ],
+            "identity": {
+                "names": [
+                    "Brown and Sons"
+                ],
+                "addresses": [
+                    {
+                        "primary": true,
+                        "data": {
+                            "country": "US",
+                            "city": "Odomfort",
+                            "street": "0751 Kelly Pines Suite 140",
+                            "postal_code": "98619",
+                            "region": "PW"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
