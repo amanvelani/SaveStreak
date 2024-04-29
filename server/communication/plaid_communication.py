@@ -2,7 +2,7 @@ import os
 import json
 import time
 from datetime import date, timedelta
-from . import db_communication as db
+import communication.db_communication as db
 from dotenv import load_dotenv
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify
@@ -104,10 +104,6 @@ client = plaid_api.PlaidApi(api_client)
 products = []
 for product in PLAID_PRODUCTS:
     products.append(Products(product))
-
-@bp.route('/health', methods=['GET'])
-def health():
-    return jsonify({'status': 'healthy'})
 
 @bp.route('/create-link-token', methods=['GET'])
 def create_link_token():
