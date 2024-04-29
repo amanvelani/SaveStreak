@@ -18,7 +18,7 @@ struct SaveStreakApp: App {
 		AppCheck.setAppCheckProviderFactory(providerFactory)
 		
 		FirebaseApp.configure()
-//		FirebaseConfiguration.shared.setLoggerLevel(.min)
+		FirebaseConfiguration.shared.setLoggerLevel(.min)
 		
 	}
 

@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A84FEA942BD9C5C500F71834 /* LinkKit in Frameworks */ = {isa = PBXBuildFile; productRef = A84FEA932BD9C5C500F71834 /* LinkKit */; };
+		A84FEA962BD9C92D00F71834 /* LinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FEA952BD9C92D00F71834 /* LinkController.swift */; };
 		A87810822B9F5C0B00A45B0B /* UserLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87810812B9F5C0B00A45B0B /* UserLoginModel.swift */; };
 		A87810892B9F5C7C00A45B0B /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87810882B9F5C7C00A45B0B /* DashboardViewModel.swift */; };
+		A8C0C8FA2BDF0E9B00899CD9 /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0C8F92BDF0E9B00899CD9 /* AccountsView.swift */; };
 		A8D29B902BD998300078101F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8D29B8F2BD998300078101F /* GoogleService-Info.plist */; };
 		A8D29B912BD998300078101F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8D29B8F2BD998300078101F /* GoogleService-Info.plist */; };
 		A8D29B922BD998300078101F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8D29B8F2BD998300078101F /* GoogleService-Info.plist */; };
@@ -72,8 +75,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A84FEA952BD9C92D00F71834 /* LinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkController.swift; sourceTree = "<group>"; };
 		A87810812B9F5C0B00A45B0B /* UserLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginModel.swift; sourceTree = "<group>"; };
 		A87810882B9F5C7C00A45B0B /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		A8C0C8F92BDF0E9B00899CD9 /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
 		A8D29B8F2BD998300078101F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8DC9C792B969DBD0019986B /* SaveStreak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveStreak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DC9C7C2B969DBD0019986B /* SaveStreakApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStreakApp.swift; sourceTree = "<group>"; };
@@ -107,6 +112,7 @@
 				A8D29BBD2BD9988F0078101F /* FirebaseMLModelDownloader in Frameworks */,
 				A8D29BB12BD9988F0078101F /* FirebaseFirestoreSwift in Frameworks */,
 				A8D29B9D2BD9988F0078101F /* FirebaseAppCheck in Frameworks */,
+				A84FEA942BD9C5C500F71834 /* LinkKit in Frameworks */,
 				A8D29B9B2BD9988F0078101F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				A8D29BA12BD9988F0078101F /* FirebaseAuth in Frameworks */,
 				A8D29BA52BD9988F0078101F /* FirebaseCrashlytics in Frameworks */,
@@ -246,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				A8F24E852B9F693C004C41F9 /* HomeView.swift */,
+				A84FEA952BD9C92D00F71834 /* LinkController.swift */,
 			);
 			path = HomeViewTab;
 			sourceTree = "<group>";
@@ -262,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				A8F24E8B2B9F6975004C41F9 /* UserView.swift */,
+				A8C0C8F92BDF0E9B00899CD9 /* AccountsView.swift */,
 			);
 			path = UserViewTab;
 			sourceTree = "<group>";
@@ -310,6 +318,7 @@
 				A8D29BC42BD9988F0078101F /* FirebaseRemoteConfigSwift */,
 				A8D29BC62BD9988F0078101F /* FirebaseStorage */,
 				A8D29BC82BD9988F0078101F /* FirebaseStorageCombine-Community */,
+				A84FEA932BD9C5C500F71834 /* LinkKit */,
 			);
 			productName = SaveStreak;
 			productReference = A8DC9C792B969DBD0019986B /* SaveStreak.app */;
@@ -385,6 +394,7 @@
 			mainGroup = A8DC9C702B969DBD0019986B;
 			packageReferences = (
 				A8D29B932BD9988F0078101F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A84FEA922BD9C5C500F71834 /* XCRemoteSwiftPackageReference "plaid-link-ios" */,
 			);
 			productRefGroup = A8DC9C7A2B969DBD0019986B /* Products */;
 			projectDirPath = "";
@@ -434,10 +444,12 @@
 				A87810822B9F5C0B00A45B0B /* UserLoginModel.swift in Sources */,
 				A87810892B9F5C7C00A45B0B /* DashboardViewModel.swift in Sources */,
 				A8F24E902B9F79D6004C41F9 /* LoginView.swift in Sources */,
+				A84FEA962BD9C92D00F71834 /* LinkController.swift in Sources */,
 				A8F24E922B9F7A1F004C41F9 /* DashboardView.swift in Sources */,
 				A8F24E862B9F693C004C41F9 /* HomeView.swift in Sources */,
 				A8F24E892B9F6965004C41F9 /* InsightsView.swift in Sources */,
 				A8F24E8C2B9F6975004C41F9 /* UserView.swift in Sources */,
+				A8C0C8FA2BDF0E9B00899CD9 /* AccountsView.swift in Sources */,
 				A8F19DE52BBDB10800164C84 /* MapView.swift in Sources */,
 				A8DC9C7D2B969DBD0019986B /* SaveStreakApp.swift in Sources */,
 				A8F24E8E2B9F6E20004C41F9 /* UserStateViewModel.swift in Sources */,
@@ -772,6 +784,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A84FEA922BD9C5C500F71834 /* XCRemoteSwiftPackageReference "plaid-link-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/plaid/plaid-link-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.2;
+			};
+		};
 		A8D29B932BD9988F0078101F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -783,6 +803,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A84FEA932BD9C5C500F71834 /* LinkKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A84FEA922BD9C5C500F71834 /* XCRemoteSwiftPackageReference "plaid-link-ios" */;
+			productName = LinkKit;
+		};
 		A8D29B942BD9988F0078101F /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A8D29B932BD9988F0078101F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

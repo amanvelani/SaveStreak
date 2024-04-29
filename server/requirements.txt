@@ -3,3 +3,5 @@ flask_cors
 flask_pymongo
 flask_ipban
 python-dotenv
+plaid_python==14.0.0
+itsdangerous==2.1.2

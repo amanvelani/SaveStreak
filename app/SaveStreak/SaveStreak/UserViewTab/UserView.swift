@@ -1,92 +1,161 @@
-//
-//  UserView.swift
-//  SaveStreak
-//
-//  Created by Chinmay Yadav on 3/11/24.
-//
+	//
+	//  UserView.swift
+	//  SaveStreak
+	//
+	//  Created by Chinmay Yadav on 3/11/24.
+	//
 
 import SwiftUI
+import LinkKit
+
 
 struct UserView: View {
-    @ObservedObject var loginViewModel: UserStateViewModel
-    @State private var isLoggedOut = false
-    
-    
-    var body: some View {
-//        VStack {
-//            Text("User")
-//            Button {
-//                Task{
-//                    await loginViewModel.signOut()
-//                }
-//            } label: {
-//                Text("Logout")
-//            }
-//            .foregroundColor(.white)
-//            .font(.headline)
-//            .padding()
-//            .frame(maxWidth: .infinity)
-//            .background(Color.red)
-//            .cornerRadius(8)
-//            .padding(.horizontal)
-//            
-//        }
-//    }
-//}
-        NavigationView {
-                    List {
-                        Section {
-                            NavigationLink(destination: Text("General Settings")) {
-                                HStack {
-                                    Image(systemName: "gear")
-                                        .foregroundColor(.gray)
-                                    Text("General")
-                                }
-                            }
-                            NavigationLink(destination: Text("Account Settings")) {
-                                HStack {
-                                    Image(systemName: "person.crop.circle")
-                                        .foregroundColor(.gray)
-                                    Text("Accounts")
-                                }
-                            }
-                        }
-
-                        Section {
-                            NavigationLink(destination: Text("Notifications Settings")) {
-                                HStack {
-                                    Image(systemName: "bell")
-                                        .foregroundColor(.gray)
-                                    Text("Notifications")
-                                }
-                            }
-                            NavigationLink(destination: Text("Help Information")) {
-                                HStack {
-                                    Image(systemName: "questionmark.circle")
-                                        .foregroundColor(.gray)
-                                    Text("Help")
-                                }
-                            }
-                        }
-
-                        // Log Out Button Section
-                        Section {
-                            Button {
-                                            Task{
-                                                await loginViewModel.signOut()
-                                            }
-                                        } label: {
-                                            Text("Logout")
-                                        }
-                            
-                        }
-                    }
-                    .navigationTitle("Settings")
-                }
-            }
-        }
-
-
-//#Preview {
-//    UserView()
-//}
+	@ObservedObject var loginViewModel: UserStateViewModel
+	@State private var isLoggedOut = false
+	@State private var isPresentingLink = false
+	@State var linkToken: String? = nil
+	
+	var body: some View {
+		NavigationView {
+			List {
+				Section {
+					NavigationLink(destination: Text("General Settings")) {
+						HStack {
+							Image(systemName: "gear")
+								.foregroundColor(.gray)
+							Text("General")
+						}
+					}
+					NavigationLink(destination: AccountsView()) {
+						HStack {
+							Image(systemName: "person.crop.circle")
+								.foregroundColor(.gray)
+							Text("Accounts")
+						}
+					}
+				}
+				
+				Section {
+					NavigationLink(destination: Text("Notifications Settings")) {
+						HStack {
+							Image(systemName: "bell")
+								.foregroundColor(.gray)
+							Text("Notifications")
+						}
+					}
+					NavigationLink(destination: Text("Help Information")) {
+						HStack {
+							Image(systemName: "questionmark.circle")
+								.foregroundColor(.gray)
+							Text("Help")
+						}
+					}
+				}
+				
+					// Log Out Button Section
+				Section {
+					Button {
+						Task{
+							await loginViewModel.signOut()
+						}
+					} label: {
+						Text("Logout")
+					}
+					Button(action: {
+						if let _ = linkToken {
+							isPresentingLink = true
+						} else {
+							print("Link token is not yet available.")
+						}					}, label:  {
+							Text("Open Plaid Link")
+						})
+					.disabled(linkToken == nil)
+				}
+			}
+			.navigationTitle("Settings")
+			.sheet(
+				isPresented: $isPresentingLink,
+				onDismiss: {
+					isPresentingLink = false
+				},
+				content: {
+					if let handler = createHandler() {
+						LinkController(handler: handler)
+					} else {
+						Text("Unable to create Plaid Link handler.")
+					}
+				}
+			)
+		}
+		.onAppear() {
+			Task {
+				await fetchLinkToken()
+			}		}
+		
+	}
+	
+	func fetchLinkToken() async  {
+		do {
+			let url = URL(string: "https://4098-128-230-193-37.ngrok-free.app/plaid/create-link-token")!
+			let (data, _) = try await URLSession.shared.data(from: url)
+			let tokenResponse = try JSONDecoder().decode(TokenResponse.self, from: data)
+			linkToken = tokenResponse.link_token
+			print("linkToken: \(linkToken ?? "nil")")
+		} catch {
+			print("An error occurred: \(error)")
+			linkToken = nil
+		}
+	}
+	func saveUserPublicToken() async  {
+		do {
+			let url = URL(string: "https://4098-128-230-193-37.ngrok-free.app/plaid/create-link-token")!
+			let (data, _) = try await URLSession.shared.data(from: url)
+			let tokenResponse = try JSONDecoder().decode(TokenResponse.self, from: data)
+			linkToken = tokenResponse.link_token
+			print("linkToken: \(linkToken ?? "nil")")
+		} catch {
+			print("An error occurred: \(error)")
+			linkToken = nil
+		}
+	}
+	
+	struct TokenResponse: Decodable {
+		var link_token: String
+		var expiration: String
+		var request_id: String
+	}
+	
+	func createHandler() -> Handler? {
+		guard let token = linkToken else {
+			print("No link token available.")
+			return nil
+		}
+		var configuration = LinkTokenConfiguration(token: token) { success in
+			print("public-token: \(success.publicToken) metadata: \(success.metadata)")
+			Task {
+				await saveUserPublicToken()
+			}
+			
+			isPresentingLink = false
+		}
+		configuration.onExit = { exit in
+			
+			if let error = exit.error {
+				print("exit with \(error)\n\(exit.metadata)")
+			} else {
+				print("exit without error \(exit.metadata)")
+			}
+			isPresentingLink = false
+		}
+		configuration.onEvent = { event in
+			print("Link Event: \(event)")
+		}
+		switch Plaid.create(configuration) {
+		case .success(let handler):
+			return handler
+		case .failure(let error):
+			print("Failed to create Plaid handler: \(error.localizedDescription)")
+			return nil
+		}
+	}
+}
