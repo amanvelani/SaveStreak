@@ -182,7 +182,10 @@ def get_transactions():
             
             for transaction in response['added']:
                 custom_location_data = db.get_custom_location_data()
+                category, category_id = db.get_custom_category_data()
                 transaction['location'] = custom_location_data
+                transaction['category'] = category
+                transaction['category_id'] = category_id
                     
             response = convert_dates_to_string(response)
             added.extend(response['added'])

@@ -10,6 +10,16 @@ def get_custom_location_data():
         print(e)
         return []
     
+def get_custom_category_data():
+    try:
+        result = app.db.categories.find({}, {"_id": 0})
+        result = list(result)
+        data = random.choice(result)
+        return data['hierarchy'], data['category_id']
+    except Exception as e:
+        print(e)
+        return []
+    
 def save_user_info(user_id, access_token, item_id):
     try:
         app.db.user_info.update_one( {"user_id": user_id} , {

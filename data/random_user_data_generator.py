@@ -55,8 +55,8 @@ def load_template_data(file_path):
 template_data = load_template_data("./template_data.json")
 
 # Define the date range for transactions
-start_date = datetime.strptime('2023-08-01', '%Y-%m-%d')
-end_date = datetime.strptime('2024-04-30', '%Y-%m-%d')
+start_date = datetime.strptime('2024-02-15', '%Y-%m-%d')
+end_date = datetime.strptime('2024-05-04', '%Y-%m-%d')
 
 # Generate fake data for 10 users
 num_users = 50
@@ -65,7 +65,7 @@ for i in range(num_users):
     account = user_data['override_accounts'][0]
 
     # Randomize account details
-    account['starting_balance'] = round(random.uniform(10000, 150000), 2)
+    account['starting_balance'] = round(random.uniform(10000, 30000), 2)
     account['numbers']['account'] = random_account_number()
     account['numbers']['ach_routing'] = random_routing_number()
     account['meta']['name'] = generate_bank_name()
@@ -73,14 +73,14 @@ for i in range(num_users):
     account['identity'] = generate_identity()
 
     # Update transactions with random and realistic data
-    num_transactions = random.randint(100, 150)
+    num_transactions = random.randint(100, 200)
     account['transactions'] = []
     for _ in range(num_transactions):
         trans_date = random_date_between(start_date, end_date)
         transaction = {
             'date_transacted': trans_date.strftime('%Y-%m-%d'),
             'date_posted': (trans_date + timedelta(days=1)).strftime('%Y-%m-%d'),
-            'amount': round(random.uniform(-10000, 10000), 2),
+            'amount': round(random.uniform(-1000, 1000), 2),
             'description': generate_transaction_description(),
             'currency': 'USD'
         }
