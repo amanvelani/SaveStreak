@@ -3,6 +3,7 @@ import random
 from datetime import datetime, timedelta
 from copy import deepcopy
 from faker import Faker
+import os
 
 fake = Faker()
 
@@ -58,6 +59,10 @@ template_data = load_template_data("./template_data.json")
 start_date = datetime.strptime('2024-02-15', '%Y-%m-%d')
 end_date = datetime.strptime('2024-05-04', '%Y-%m-%d')
 
+dir = f"./custom_user_data"
+if not os.path.exists(dir):
+    os.makedirs(dir)
+
 # Generate fake data for 10 users
 num_users = 50
 for i in range(num_users):
@@ -88,6 +93,7 @@ for i in range(num_users):
 
     # Save the user data in the custom_user_data folder with format custom_user_data_{user_id}.json
     user_id = fake.uuid4()
+    
     file_path = f"./custom_user_data/custom_user_data_{i}.json"
     with open(file_path, "w") as file:
         json.dump(user_data, file, indent=4)
