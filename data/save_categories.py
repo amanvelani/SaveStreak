@@ -6,10 +6,11 @@ import os
 # Load environment variables
 dotenv.load_dotenv()
 mongo_client_url = os.getenv("MONGO_CLIENT_URL")
+client = os.getenv("DB_CLIENT")
 
 # Connection to MongoDB
 client = MongoClient(mongo_client_url)
-db = client['save_streak']
+db = client[client]
 collection = db['categories']
 
 # Read categories from the JSON file
