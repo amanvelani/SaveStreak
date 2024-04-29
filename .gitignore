@@ -24,6 +24,34 @@ __pycache__
 .env
 venv/
 
+## SwiftUI changes
+
+*.swp
+*~.nib
+DerivedData/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+xcuserdata
+!xcshareddata
+!xcschemes
+*.moved-aside
+/Pods
+/Carthage
+.build/
+.swiftpm
+
+## User settings
+xcuserdata/
+
+
+
 .env
 
 # Plaid API credentials
