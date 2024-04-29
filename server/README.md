@@ -1,14 +1,32 @@
-RUN USING:
-
-```
-python3 -m flask --app api run --debug
-```
 # SaveStreak Server
 
-## Description
 
-The SaveStreak server is responsible for handling all incoming requests from the SaveStreak frontend and interacting with the Plaid API to retrieve financial data. It securely stores this data in a database for further processing and analysis.
+## Table of Contents
+- [Installation](#installation)
+- [Description of API's](#description-of-apis)
 
-The server will be  built using the Go programming language, which provides a robust and efficient framework for developing high-performance servers. It leverages the Plaid API to establish secure connections with financial institutions and retrieve account balances, transaction history, and other relevant financial data.
+## Installation
+To run the server follow the steps below:
+1. Make an .env file in the api directory. An example of the .env file is provided in the [.env.example](./api/.env.example) file. Use the following command to create a .env file:
+```bash
+cd api
+cp .env.example .env
+```
+2. Install the dependencies by running the following command:
+```bash
+pip3 install -r requirements.txt
+```
+3. Run the server by running the following command:
+```bash
+python3 -m flask --app api run --debug
+```
 
-By using the SaveStreak server, users can securely link their bank accounts, view their financial information, and track their savings progress over time. The server ensures the privacy and security of user data by implementing industry-standard encryption and authentication mechanisms.
+## Description of API's
+The server provides the following API's:
+1. `/plaid/health` - This API is used to check the health of the server.
+2. `/plaid//create-link-token` - This API is used to create a link token for the plaid link.
+3. `/plaid/set-access-token` - This API gets the following information from the client and then saves the access token in the database:
+    - public_token
+    - user_id
+4. `/plaid/get-transactions` - This API is used to get the transactions for the user. The API gets the following information from the client:
+    - user_id
