@@ -143,9 +143,10 @@ def get_access_token():
         access_token = exchange_response['access_token']
         item_id = exchange_response['item_id']
         db.save_user_info(user_id, access_token, item_id)
-        return jsonify(exchange_response.to_dict())
+        get_transactions()
+        return jsonify({'Status': 'Success'})
     except plaid.ApiException as e:
-        return json.loads(e.body)
+        return jsonify({'Status': 'Error', 'Error': e.body})
 
 @bp.route('/transactions', methods=['POST'])
 def get_transactions():
