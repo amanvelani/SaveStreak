@@ -48,7 +48,7 @@ xcuserdata
 .swiftpm
 
 ## User settings
-xcuserdata/
+.xcuserdata/
 
 
 
@@ -84,3 +84,5 @@ Packages/
 
 # Swift Package Manager
 .build/
+
+xcuserdata/
