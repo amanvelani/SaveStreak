@@ -30,4 +30,12 @@ def transactions_by_location():
     }
     return jsonify(response)
 
+
+@user_bp.route('/get-user-accounts', methods=['POST'])
+def get_user_linked_accounts():
+    user_id = request.json.get('user_id', None)
+    response = {
+        "accounts": db.get_user_linked_accounts(user_id)
+    }
+    return jsonify(response)
     

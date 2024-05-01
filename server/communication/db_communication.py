@@ -182,3 +182,15 @@ def get_user_transactions_by_location(user_id):
 
     result = list(app.db.transaction_data.aggregate(pipeline))
     return result
+
+
+def get_user_linked_accounts(user_id):
+    try:
+        result = app.db.user_info.find_one({"user_id": user_id}, {"_id": 0, "accounts": 1})
+        accounts = result.get('accounts', [])
+        for each in accounts:
+            each['name'] = each.get('name', "Test")
+        return accounts
+    except Exception as e:
+        app.logger.debug(traceback.format_exc())
+        return []
