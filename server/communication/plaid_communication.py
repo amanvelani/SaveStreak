@@ -142,64 +142,93 @@ def get_access_token():
         exchange_response = client.item_public_token_exchange(exchange_request)
         access_token = exchange_response['access_token']
         item_id = exchange_response['item_id']
-        db.save_user_info(user_id, access_token, item_id)
-        get_transactions()
+        bank_info = get_accounts(access_token)
+        db.save_user_info(user_id, access_token, item_id, bank_info)
+        get_transactions(user_id)
         return jsonify({'Status': 'Success'})
     except plaid.ApiException as e:
        return jsonify({'Status': 'Error', 'Error': e.body})
 
+def get_accounts(access_token):
+    try:
+        request = AccountsGetRequest(access_token)
+        print(request)
+        response = client.accounts_get(request)
+        bank_info = []
+        for response in response['accounts']:
+            bank_info.append({
+                'account_id': response['account_id'],
+                'account_name': response['name'],
+                'account_type': str(response['subtype']),
+                'account_balance': response['balances']['current']
+            })
+            # print(response)
+        print(bank_info)
+        return bank_info
+    except Exception as E:
+        import traceback;
+        print(traceback.format_exc())
+    
+
 @bp.route('/transactions', methods=['POST'])
-def get_transactions():
+def get_transactions(user_id = None):
     try:
         user_id = request.json['user_id']
-        access_token = (str) (db.get_user_access_token(user_id))
-        cursor = db.is_user_transaction_data_available(user_id)
-        added = []
-        modified = []
-        removed = []
-        has_more = True
-        # Iterate through each page of new transaction updates for item
-        while has_more:
-            request_transaction = TransactionsSyncRequest(
-                access_token=access_token,
-                cursor=cursor,
-                count=500
-            )
-            response = client.transactions_sync(request_transaction).to_dict() 
+        user_token_data = db.get_user_access_token(user_id)
+        for each in user_token_data:
+            access_token = (str) (each['access_token'])
+            item_id = each['item_id']
+            cursor = db.is_user_transaction_data_available(user_id, item_id)
+            print(cursor)
+            added = []
+            modified = []
+            removed = []
+            has_more = True
+            # Iterate through each page of new transaction updates for item
+            while has_more:
+                request_transaction = TransactionsSyncRequest(
+                    access_token=access_token,
+                    cursor=cursor,
+                    count=500
+                )
+                response = client.transactions_sync(request_transaction).to_dict() 
+                
+                def convert_dates_to_string(data):
+                    if isinstance(data, dict):
+                        for key, value in data.items():
+                            data[key] = convert_dates_to_string(value)
+                    elif isinstance(data, list):
+                        data = [convert_dates_to_string(item) for item in data]
+                    elif isinstance(data, date):
+                        return data.isoformat()
+                    return data
+                
+                for transaction in response['added']:
+                    custom_location_data, merchant_name = db.get_custom_location_data()
+                    category, category_id = db.get_custom_category_data()
+                    transaction['location'] = custom_location_data
+                    transaction['category'] = category
+                    transaction['category_id'] = category_id
+                    transaction['merchant_name'] = merchant_name
+                        
+                response = convert_dates_to_string(response)
+                added.extend(response['added'])
+                modified.extend(response['modified'])
+                removed.extend(response['removed'])
+                has_more = response['has_more']
+                cursor = response['next_cursor']
+            print("item_id", item_id)
+            print("cursor", cursor) 
+            print("added", len(added))
+            latest_transactions = sorted(added, key=lambda t: t['date'])
+            db.save_user_transaction_data(user_id, latest_transactions, cursor, item_id)
             
-            def convert_dates_to_string(data):
-                if isinstance(data, dict):
-                    for key, value in data.items():
-                        data[key] = convert_dates_to_string(value)
-                elif isinstance(data, list):
-                    data = [convert_dates_to_string(item) for item in data]
-                elif isinstance(data, date):
-                    return data.isoformat()
-                return data
-            
-            for transaction in response['added']:
-                custom_location_data = db.get_custom_location_data()
-                category, category_id = db.get_custom_category_data()
-                transaction['location'] = custom_location_data
-                transaction['category'] = category
-                transaction['category_id'] = category_id
-                    
-            response = convert_dates_to_string(response)
-            added.extend(response['added'])
-            modified.extend(response['modified'])
-            removed.extend(response['removed'])
-            has_more = response['has_more']
-            cursor = response['next_cursor']
-
-        latest_transactions = sorted(added, key=lambda t: t['date'])
-        db.save_user_transaction_data(user_id, latest_transactions, cursor)
-        
         return jsonify({
-            'latest_transactions': latest_transactions})
-
+            'Status': "Success",})
     except plaid.ApiException as e:
         error_response = print(e)
         return jsonify(error_response)
     except Exception as e:
-        print(e)
+        import traceback
+        print(traceback.format_exc())
         return jsonify({'error': str(e)})
