@@ -5,6 +5,7 @@ from flask.json import jsonify
 from flask_pymongo import PyMongo
 from flask_cors import CORS
 import communication.plaid_communication as plaid_communication
+import communication.user_communication as user_communication
     
 def create_app(test_config=None):
     load_dotenv()
@@ -13,6 +14,7 @@ def create_app(test_config=None):
     CORS(app)
     app.url_map.strict_slashes = False
     app.register_blueprint(plaid_communication.bp)
+    app.register_blueprint(user_communication.user_bp)
 
     # Setup MongoDB connection
     db_conn_string = f"mongodb+srv://{os.environ['DB_USERNAME']}:{os.environ['DB_PASSWORD']}@{os.environ['DB_HOSTNAME']}/{os.environ['DB_NAME']}?authSource=admin"

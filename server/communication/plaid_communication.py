@@ -146,7 +146,7 @@ def get_access_token():
         get_transactions()
         return jsonify({'Status': 'Success'})
     except plaid.ApiException as e:
-        return jsonify({'Status': 'Error', 'Error': e.body})
+       return jsonify({'Status': 'Error', 'Error': e.body})
 
 @bp.route('/transactions', methods=['POST'])
 def get_transactions():

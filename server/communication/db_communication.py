@@ -1,3 +1,5 @@
+from datetime import datetime
+import traceback
 from flask import current_app as app
 import random
 
@@ -76,3 +78,107 @@ def save_user_transaction_data(user_id, transactions, cursor):
     except Exception as e:
         print(e)
         return []
+    
+
+def get_recent_transactions(user_id):
+    try:
+        latest_transactions = list(app.db.transaction_data.find(
+            {"user_id": user_id},
+            {"_id": 0, "transactions": 1}
+        ).sort("transactions.date", -1))
+        
+        return latest_transactions[0].get('transactions')
+    except Exception as e:
+        print(app.logger.error(traceback.format_exc()))
+        return []
+    
+def get_category_wise_spend(user_id):
+    try:
+
+        pipeline = [
+            {"$match": {"user_id": user_id}},  
+            {"$unwind": "$transactions"},     
+            {"$project": {"_id": 0, "transactions": 1}}, 
+            {"$unwind": "$transactions.category"}, 
+            {"$group": {
+                "_id": "$transactions.category",  
+                "total_expense": {"$sum": "$transactions.amount"}  
+            }},
+            {"$sort": {"total_expense": -1}},     
+            # {"$limit": 5}                        
+        ]
+
+        result = list(app.db.transaction_data.aggregate(pipeline))
+
+        return result
+
+    except Exception as e:
+        print(app.logger.error(traceback.format_exc()))
+        return []
+    
+
+def get_current_month_spend(user_id):
+    try:
+        start_of_month = datetime(datetime.today().year, datetime.today().month, 1)
+        total_spend = app.db.transaction_data.aggregate([
+            {"$match": {
+                "user_id": user_id,
+                "transactions.date": {"$gte": start_of_month.strftime('%Y-%m-%d')}
+            }},
+            {"$unwind": "$transactions"},
+            {"$group": {
+                "_id": None,
+                "totalSpend": {"$sum": "$transactions.amount"}
+            }}
+        ])
+
+        total_spend_amount = list(total_spend)
+        if total_spend_amount:
+            total_spend_amount = total_spend_amount[0]["totalSpend"]
+        else:
+            total_spend_amount = 0
+        return total_spend_amount
+    except Exception as e:
+        print(app.logger.error(traceback.format_exc()))
+        return 0
+    
+
+def get_user_transactions_by_location(user_id):
+    pipeline = [
+        {"$match": {"user_id": user_id}},
+        {"$unwind": "$transactions"},
+        {"$group": {
+            "_id": "$transactions.location",
+            "transactions": {
+                "$push": {
+                    "name": "$transactions.name",
+                    "amount": "$transactions.amount"
+                }
+            }
+        }},
+        {"$project": {
+            "location": "$_id",
+            "transactions": {
+                "$map": {
+                    "input": {
+                        "$slice": [
+                            {"$sortArray": {
+                                "input": "$transactions",
+                                "sortBy": {"amount": -1}
+                            }},
+                            5 
+                        ]
+                    },
+                    "as": "transaction",
+                    "in": {
+                        "name": "$$transaction.name",
+                        "amount": "$$transaction.amount"
+                    }
+                }
+            }
+        }},
+        {"$sort": {"transactions.amount": -1}}  
+    ]
+
+    result = list(app.db.transaction_data.aggregate(pipeline))
+    return result
