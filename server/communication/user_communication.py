@@ -18,7 +18,6 @@ def get_transaction():
         "top_categories": db.get_category_wise_spend(user_id),
         "total_spend_this_month": db.get_current_month_spend(user_id)
     }
-    # app.logger.debug(response)
 
     return jsonify(response)
 

@@ -7,7 +7,10 @@ def get_custom_location_data():
     try:
        result = app.db.custom_location_data.find({}, {"_id": 0})
        result = list(result)
-       return random.choice(result)
+       selected_location = random.choice(result)
+       merchant = selected_location['merchant']
+       selected_location.pop('merchant')
+       return selected_location, merchant
     except Exception as e:
         print(e)
         return []
@@ -22,13 +25,14 @@ def get_custom_category_data():
         print(e)
         return []
     
-def save_user_info(user_id, access_token, item_id):
+def save_user_info(user_id, access_token, item_id, bank_information):
     try:
         app.db.user_info.update_one( {"user_id": user_id} , {
             "$push": {
                 "accounts": {
                     "access_token": access_token,
-                    "item_id": item_id
+                    "item_id": item_id,
+                    "bank_information": bank_information
                 }
             }
         }, upsert=True)
@@ -39,44 +43,69 @@ def save_user_info(user_id, access_token, item_id):
 def get_user_access_token(user_id):
     try:
         result = app.db.user_info.find_one({"user_id": user_id})
-        access_token = result['accounts'][0]['access_token']
-        return access_token
+        accounts = result['accounts']
+        result = []
+        for account in accounts:
+            result.append({"access_token": account['access_token'], "item_id": account['item_id']})
+
+        return result
     except Exception as e:
         print(e)
         return []
+    
+    
+# [
+#     user_id,
+#     transactions:
+#         item_id:
+#             all_transactions
+#             cursor
+    
+# ]
             
-def is_user_transaction_data_available(user_id):
+def is_user_transaction_data_available(user_id, item_id):
     try:
         result = app.db.transaction_data.find_one({"user_id": user_id})
-        if result is None:
-            return ''
+        transactions = result['all_transactions']
+        if item_id in transactions:
+            return transactions[item_id]['cursor']
         else:
-            return result['cursor']
+            return ''
     except Exception as e:
         print(e)
-        return False
+        return ''
     
-def save_user_transaction_data(user_id, transactions, cursor):
+def save_user_transaction_data(user_id, transactions, cursor, item_id):
     try:
         if transactions == []:
             app.db.transaction_data.update_one({"user_id": user_id}, {
                 "$set": {
-                    "cursor": cursor
+                    "all_transactions." + item_id + ".cursor": cursor,
                 }
             }, upsert=True)
         elif app.db.transaction_data.find_one({"user_id": user_id}) is not None:
             app.db.transaction_data.update_one({"user_id": user_id}, {
                 "$push": {
-                    "transactions": transactions
+                    "all_transactions." + item_id + ".transactions": {
+                        "$each": transactions
+                    }
                 },
                 "$set": {
-                    "cursor": cursor
+                    "all_transactions." + item_id + ".cursor": cursor
                 }
             }, upsert=True)
         else:
-            app.db.transaction_data.insert_one({"user_id": user_id, "transactions": transactions, "cursor": cursor})
+            app.db.transaction_data.insert_one({
+                "user_id": user_id, 
+                 "all_transactions" : {
+                     item_id : {
+                         "transactions": transactions,
+                         "cursor": cursor
+                     }
+                }})
     except Exception as e:
-        print(e)
+        import traceback
+        print(traceback.format_exc())
         return []
     
 
