@@ -142,11 +142,29 @@ def get_access_token():
         exchange_response = client.item_public_token_exchange(exchange_request)
         access_token = exchange_response['access_token']
         item_id = exchange_response['item_id']
-        db.save_user_info(user_id, access_token, item_id)
+        bank_info = get_accounts(access_token)
+        db.save_user_info(user_id, access_token, item_id, bank_info)
         get_transactions()
         return jsonify({'Status': 'Success'})
     except plaid.ApiException as e:
        return jsonify({'Status': 'Error', 'Error': e.body})
+
+def get_accounts(access_token):
+    try:
+        request = AccountsGetRequest(access_token)
+        response = client.accounts_get(request)
+        bank_info = []
+        for response in response['accounts']:
+            bank_info.append({
+                'account_id': response['account_id'],
+                'account_name': response['name'],
+                'account_type': response['type'],
+                'account_balance': response['balances']['current']
+            })
+            
+        return bank_info
+    except plaid.ApiException as e:
+        return json.loads(e.body)
 
 @bp.route('/transactions', methods=['POST'])
 def get_transactions():
@@ -178,11 +196,12 @@ def get_transactions():
                 return data
             
             for transaction in response['added']:
-                custom_location_data = db.get_custom_location_data()
+                custom_location_data, merchant_name = db.get_custom_location_data()
                 category, category_id = db.get_custom_category_data()
                 transaction['location'] = custom_location_data
                 transaction['category'] = category
                 transaction['category_id'] = category_id
+                transaction['merchant_name'] = merchant_name
                     
             response = convert_dates_to_string(response)
             added.extend(response['added'])

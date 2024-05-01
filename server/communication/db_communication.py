@@ -7,7 +7,10 @@ def get_custom_location_data():
     try:
        result = app.db.custom_location_data.find({}, {"_id": 0})
        result = list(result)
-       return random.choice(result)
+       selected_location = random.choice(result)
+       merchant = selected_location['merchant']
+       selected_location.pop('merchant')
+       return selected_location, merchant
     except Exception as e:
         print(e)
         return []
@@ -22,13 +25,14 @@ def get_custom_category_data():
         print(e)
         return []
     
-def save_user_info(user_id, access_token, item_id):
+def save_user_info(user_id, access_token, item_id, bank_information):
     try:
         app.db.user_info.update_one( {"user_id": user_id} , {
             "$push": {
                 "accounts": {
                     "access_token": access_token,
-                    "item_id": item_id
+                    "item_id": item_id,
+                    "bank_information": bank_information
                 }
             }
         }, upsert=True)

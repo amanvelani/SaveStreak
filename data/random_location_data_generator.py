@@ -9,11 +9,11 @@ fake = Faker()
 
 dotenv.load_dotenv()
 mongo_client_url = os.getenv("MONGO_CLIENT_URL")
-client = os.getenv("DB_CLIENT")
+db_client = os.getenv("DB_CLIENT")
 
 # Connection to MongoDB
 client = MongoClient(mongo_client_url)
-db = client[client]
+db = client[db_client]
 collection = db['custom_location_data']
 
 
@@ -24,6 +24,7 @@ def generate_random_location_data():
     lon_variation = random.uniform(-0.05, 0.05)
 
     location_data = {
+        "merchant": fake.company(),
         "address": fake.street_address(),
         "city": "Syracuse",
         "country": "United States",
@@ -40,7 +41,7 @@ def save_location_data():
     for _ in range(0, 50):
         location_data = generate_random_location_data()
         location_entries.append(location_data)
-        
+    print(location_entries)
     collection.insert_many(location_entries)
     
 save_location_data()
