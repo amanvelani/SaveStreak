@@ -37,7 +37,10 @@ def get_transaction():
 @user_bp.route("/get-transaction-by-location", methods=["POST"])
 def transactions_by_location():
     user_id = request.json["user_id"]
-    response = {"transactions": db.get_user_transactions_by_location(user_id)}
+    category = request.json.get("category") or None
+    start_date = request.json.get("start_date") or None
+    end_date = request.json.get("end_date") or None
+    response = {"transactions": db.get_user_transactions_by_location(user_id, category=category, start_date=start_date, end_date=end_date)}
     return jsonify(response)
 
 
