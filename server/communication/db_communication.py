@@ -358,3 +358,102 @@ def get_user_transactions_by_location(user_id):
 
     result = list(app.db.transaction_data.aggregate(pipeline))
     return result
+
+
+def set_user_streak_category(user_id, category, target):
+    try:
+        app.db.user_info.update_one(
+            {"user_id": user_id},
+            {"$set": {"streak_category": category, "streak_target": target}},
+            upsert=True,
+        )
+    except Exception as e:
+        print(app.logger.error(traceback.format_exc()))
+        return []
+
+
+def get_user_streak_category(user_id):
+    try:
+        result = app.db.user_info.find_one({"user_id": user_id})
+        return result["streak_category"], result["streak_target"]
+    except Exception as e:
+        print(app.logger.error(traceback.format_exc()))
+        return []
+
+
+def calculate_streak(user_id, category, streak_target):
+    today = datetime.today().date()
+    today_str = today.strftime("%Y-%m-%d")
+    start_date = today - timedelta(days=180)
+
+    streak_target = int(streak_target)
+    try:
+        pipeline = [
+            {"$match": {"user_id": user_id}},
+            {
+                "$addFields": {
+                    "all_transactions_array": {"$objectToArray": "$all_transactions"}
+                }
+            },
+            {"$unwind": "$all_transactions_array"},
+            {"$unwind": "$all_transactions_array.v.transactions"},
+            {
+                "$addFields": {
+                    "transaction_date": {
+                        "$dateFromString": {
+                            "dateString": "$all_transactions_array.v.transactions.date",
+                            "format": "%Y-%m-%d",
+                        }
+                    }
+                }
+            },
+            {
+                "$match": {
+                    "all_transactions_array.v.transactions.category": category,
+                    "all_transactions_array.v.transactions.date": {"$lte": today_str},
+                }
+            },
+            {
+                "$group": {
+                    "_id": {
+                        "year": {"$year": "$transaction_date"},
+                        "month": {"$month": "$transaction_date"},
+                        "day": {"$dayOfMonth": "$transaction_date"},
+                    },
+                    "daily_total": {
+                        "$sum": "$all_transactions_array.v.transactions.amount"
+                    },
+                }
+            },
+            {"$sort": {"_id": -1}},
+        ]
+        results = list(app.db.transaction_data.aggregate(pipeline))
+        # print("Pipeline:", pipeline)
+        date_to_total = {
+            datetime(
+                result["_id"]["year"], result["_id"]["month"], result["_id"]["day"]
+            ).date(): result["daily_total"]
+            for result in results
+        }
+        streak_count = 0
+        check_date = today
+
+        while check_date >= start_date:
+            if check_date not in date_to_total:
+                # No transactions mean spending is effectively zero, which is less than the target
+                streak_count += 1
+                check_date -= timedelta(days=1)
+            elif date_to_total[check_date] < streak_target:
+                # print("Date:", check_date, "Total:", date_to_total[check_date])
+                # Day with transactions below the target contributes to the streak
+                streak_count += 1
+                check_date -= timedelta(days=1)
+            else:
+                # print("Date:", check_date, "Total:", date_to_total[check_date])
+                # Day with transactions exceeding the target breaks the streak
+                break
+
+        return streak_count
+    except Exception as e:
+        print(app.logger.error(traceback.format_exc()))
+        return 0

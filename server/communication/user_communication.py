@@ -78,3 +78,20 @@ def get_custom_spending_trend():
         )
     }
     return jsonify(response)
+
+
+@user_bp.route("/set-streak-category", methods=["POST"])
+def set_streak_category():
+    user_id = request.json["user_id"]
+    category = request.json["category"]
+    target = request.json["target"]
+    db.set_user_streak_category(user_id, category, target)
+    return jsonify({"status": "success"})
+
+
+@user_bp.route("/get-streak-data", methods=["POST"])
+def get_streak_data():
+    user_id = request.json["user_id"]
+    category, target = db.get_user_streak_category(user_id)
+    response = {"streak_data": db.calculate_streak(user_id, category, target)}
+    return jsonify(response)
