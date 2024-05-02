@@ -13,10 +13,12 @@ user_bp = Blueprint('user', __name__, url_prefix='/user')
 @user_bp.route('/get-transaction', methods=['POST'])
 def get_transaction():
     user_id = request.json['user_id']
+    transactions, total_expenses = db.get_recent_transactions(user_id)
+    app.logger.debug(transactions[0])
     response = {
-        "latest_transactions": db.get_recent_transactions(user_id),
-        "top_categories": db.get_category_wise_spend(user_id),
-        "total_spend_this_month": db.get_current_month_spend(user_id)
+        "latest_transactions": transactions,
+        # "top_categories": db.get_category_wise_spend(user_id),
+        "total_spend_this_month": total_expenses
     }
 
     return jsonify(response)
