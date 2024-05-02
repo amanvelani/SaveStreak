@@ -1,3 +1,4 @@
+from collections import defaultdict
 from datetime import date, datetime, timedelta
 import traceback
 from flask import current_app as app
@@ -132,11 +133,21 @@ def get_recent_transactions(user_id):
     try:
         latest_transactions = list(
             app.db.transaction_data.find(
-                {"user_id": user_id}, {"_id": 0, "transactions": 1}
-            ).sort("transactions.date", -1)
+                {"user_id": user_id}, {"_id": 0, "all_transactions": 1}
+            )
         )
+        accounts = latest_transactions[0].get("all_transactions")
+        all_transactions = []
+        total_expenses = 0
+        for each_account in accounts.values():
+            for each_transaction in each_account.get("transactions", []):
+                all_transactions.append(each_transaction)
+                total_expenses += each_transaction.get("amount", 0)
+        sorted_transactions = sorted(all_transactions, key=lambda d: d["date"])
 
-        return latest_transactions[0].get("transactions")
+        return sorted_transactions, total_expenses
+
+        # return latest_transactions[0].get('transactions')
     except Exception as e:
         print(app.logger.error(traceback.format_exc()))
         return []
@@ -313,51 +324,101 @@ def get_current_month_spend(user_id):
         return 0
 
 
-def get_user_transactions_by_location(user_id):
-    pipeline = [
-        {"$match": {"user_id": user_id}},
-        {"$unwind": "$transactions"},
-        {
-            "$group": {
-                "_id": "$transactions.location",
-                "transactions": {
-                    "$push": {
-                        "name": "$transactions.name",
-                        "amount": "$transactions.amount",
+def get_user_transactions_by_location(user_id, category, start_date, end_date):
+    if category is None:
+        category = "All"
+        
+    if type(start_date) != str:
+        start_date = start_date.strftime("%Y-%m-%d")
+    
+    if type(end_date) != str:
+        end_date = end_date.strftime("%Y-%m-%d")
+        
+    try:
+        base_match = {
+            "user_id": user_id,
+        }
+        
+        pipeline = [
+            {"$match": base_match},
+            {
+                "$addFields": {
+                    "all_transactions_array": {"$objectToArray": "$all_transactions"}
+                }
+            },
+            {"$unwind": "$all_transactions_array"},
+            {"$unwind": "$all_transactions_array.v.transactions"},
+            {
+                "$match": { "all_transactions_array.v.transactions.date": {"$gte": start_date, "$lte": end_date}}
+            },
+            {
+                "$addFields": {
+                    "category": {
+                        "$arrayElemAt": ["$all_transactions_array.v.transactions.category", 0]
                     }
-                },
-            }
-        },
-        {
-            "$project": {
-                "location": "$_id",
-                "transactions": {
-                    "$map": {
-                        "input": {
-                            "$slice": [
-                                {
-                                    "$sortArray": {
-                                        "input": "$transactions",
-                                        "sortBy": {"amount": -1},
-                                    }
-                                },
-                                5,
-                            ]
-                        },
-                        "as": "transaction",
-                        "in": {
-                            "name": "$$transaction.name",
-                            "amount": "$$transaction.amount",
-                        },
-                    }
-                },
-            }
-        },
-        {"$sort": {"transactions.amount": -1}},
-    ]
+                }
+            },
+            {"$match": {
+                "category": {"$eq": category} if category != "All" else {"$exists": True}
+            }},
+            {
+                "$group": {
+                    "_id": {
+                        "lat": "$all_transactions_array.v.transactions.location.lat",
+                        "lon": "$all_transactions_array.v.transactions.location.lon",
+                        "address": "$all_transactions_array.v.transactions.location.address",
+                        "store_number": "$all_transactions_array.v.transactions.location.store_number",
+                    },
+                    "total_amount": {
+                        "$sum": "$all_transactions_array.v.transactions.amount"
+                    },
+                    "merchant_name": {
+                        "$first": "$all_transactions_array.v.transactions.merchant_name"
+                    },
+                }
+            },
+            {
+                "$project": {
+                    "_id": 0,
+                    "lat": "$_id.lat",
+                    "lon": "$_id.lon",
+                    "amount": "$total_amount",
+                    "name": "$merchant_name",
+                }
+            },
+            {"$sort": {"amount": -1}},
+            {"$limit": 10}
+        ]
+        
+        print("Pipeline:", pipeline)
+        result = list(app.db.transaction_data.aggregate(pipeline))
+        return result
+    except Exception as e:
+        print(app.logger.error(traceback.format_exc()))
+        return []
 
-    result = list(app.db.transaction_data.aggregate(pipeline))
-    return result
+
+def get_user_linked_accounts(user_id):
+    try:
+        result = app.db.user_info.find_one(
+            {"user_id": user_id}, {"_id": 0, "accounts": 1}
+        )
+        accounts = result.get("accounts", [])
+        for each in accounts:
+            each["name"] = each.get("name", "Test")
+        return accounts
+    except Exception as e:
+        app.logger.debug(traceback.format_exc())
+        return []
+
+
+def flatten_transactions(user_transactions):
+    all_transactions = []
+    for transaction_entry in user_transactions.values():
+        if "transactions" in transaction_entry:
+            for transaction in transaction_entry["transactions"]:
+                all_transactions.append(transaction)
+    return all_transactions
 
 
 def set_user_streak_category(user_id, category, target):
