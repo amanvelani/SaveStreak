@@ -11,11 +11,12 @@ import LinkKit
 import FirebaseAuth
 
 struct AccountsView: View {
+    @EnvironmentObject var vm: UserStateViewModel
 	@State private var accounts: [Account] = []
 	@State private var isPresentingLink = false
 	@State private var linkToken: String?
 	@EnvironmentObject var apiConfig: ApiConfig
-    @State private var isLoading = false  // State to track loading status
+    @State private var isLoading = false
 
 
 	
@@ -23,14 +24,7 @@ struct AccountsView: View {
             NavigationView {
                 List {
                     if isLoading {
-                        // Display a loading indicator or message
-                        VStack {
-                            Spacer()
-                            ProgressView("Refreshing...")
-                                .progressViewStyle(CircularProgressViewStyle())
-                                .foregroundColor(.blue)
-                            Spacer()
-                        }
+                        ProgressView()
                     }
                     else if accounts.isEmpty {
                         VStack {
@@ -96,10 +90,10 @@ struct AccountsView: View {
     }
     private func refreshAccounts() {
         Task {
-            isLoading = true  // Start loading
+            isLoading = true
+            defer { isLoading = false }
             await fetchLinkToken()
             await fetchAccounts()
-            isLoading = false // End loading
         }
     }
 	
@@ -110,6 +104,7 @@ struct AccountsView: View {
         }
 
         do {
+
             let url = URL(string: "\(apiConfig.baseUrl)/user/get-user-accounts")!
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
@@ -126,11 +121,17 @@ struct AccountsView: View {
             for account in accountResponse.accounts {
                 print("Bank: \(account.bank_name), Type: \(account.account_type), Balance: \(account.account_balance)")
                 self.accounts = accountResponse.accounts
+                
             }
+            isLoading = false
             
+            if !self.accounts.isEmpty{
+                vm.doesNotHaveAccount = false
+            }
         } catch {
             print("An error occurred: \(error)")
         }
+        
     }
     
     struct Account: Codable {
@@ -179,6 +180,11 @@ struct AccountsView: View {
 			let status = tokenResponse.status
 			print("saveUserPublicToken Status: \(status )")
 			print("saveUserPublicToken Error: \(tokenResponse.error ?? "nil")")
+            Task {
+//                isLoading = true
+                await fetchAccounts()
+//                isLoading = false
+            }
 		} catch {
 			print("An error occurred: \(error)")
 		}
@@ -195,7 +201,7 @@ struct AccountsView: View {
 			let publicToken = success.publicToken
 			Task {
 				await saveUserPublicToken(token: publicToken)
-			}
+            }
 			
 			isPresentingLink = false
 		}
@@ -206,10 +212,22 @@ struct AccountsView: View {
 			} else {
 				print("exit without error \(exit.metadata)")
 			}
+            
+           
+
 			isPresentingLink = false
 		}
 		configuration.onEvent = { event in
 			print("Link Event: \(event)")
+            print("\(event.eventName)")
+            let name = event.eventName.description
+            if name == "HANDOFF" {
+//                Task {
+                    isLoading = true
+//                    await fetchAccounts()
+//                    isLoading = false
+//                }
+            }
 		}
 		switch Plaid.create(configuration) {
 		case .success(let handler):
@@ -260,8 +278,8 @@ struct AccountsView: View {
         }
     }
 }
-
-
-#Preview {
-    AccountsView()
-}
+//
+//
+//#Preview {
+//    AccountsView()
+//}

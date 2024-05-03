@@ -40,9 +40,13 @@ struct ApplicationSwitcher: View {
 	@EnvironmentObject var vm: UserStateViewModel
 	
 	var body: some View {
-		if (vm.isLoggedIn || UserDefaults.standard.bool(forKey: "isLoggedIn")) {
+        if(vm.isLoggedIn && vm.doesNotHaveAccount){
+            AccountsView()
+        }
+		else if (vm.isLoggedIn || UserDefaults.standard.bool(forKey: "isLoggedIn")) {
 			HomeScreen()
-        } else if(vm.isFirstTimeUser){
+        }
+        else if(vm.isFirstTimeUser){
             RegisterView()
         }
         else{

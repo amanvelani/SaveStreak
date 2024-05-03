@@ -31,6 +31,7 @@ class UserStateViewModel: ObservableObject {
     @Published var isBusy = false
     @Published var userProfileImage: UIImage? = UIImage(systemName: "person.crop.circle.badge.exclamationmark")
     @Published var isFirstTimeUser = false
+    @Published var doesNotHaveAccount = false
     @Published var isUploadingImage = false
     @Published var userName: String?
     @Published var userEmail: String?

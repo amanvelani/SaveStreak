@@ -23,17 +23,17 @@ struct RegisterView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
-                Text("Register")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 20)
+            VStack(spacing: 10) {
+//                Text("Register")
+//                    .font(.largeTitle)
+//                    .fontWeight(.bold)
+//                    .padding(.bottom, 20)
 
                 profileImageView
                 inputFields
                 sexPicker
                 registerButton
-                signInButton
+                linkToSignIn
             }
             .padding()
             .sheet(isPresented: $isImagePickerPresented) {
@@ -104,31 +104,26 @@ struct RegisterView: View {
         }
         .frame(maxWidth: .infinity)
         .padding()
-        .background(Color.blue)
+        .background(Color.green)
         .cornerRadius(8)
         .padding(.horizontal)
         .disabled(isRegistering || !passwordsMatch)
         .padding(.top, 10)
     }
-    
-    private var signInButton: some View {
-        Button(action: {
-            vm.isFirstTimeUser = false
-        }) {
-            Text("Sign In")
+        private var linkToSignIn: some View {
+            Button(action: signInAction) {
+                Text("Already have an account? Sign In")
+                    .underline()
+                    .font(.body)
+                    .foregroundColor(.blue)
+            }
+            .padding(.top, 20)
         }
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background(Color.blue)
-        .cornerRadius(8)
-        .padding(.horizontal)
-        .disabled(isRegistering || !passwordsMatch)
-        .padding(.top, 10)
-    }
-    
-    
-    
 
+        private func signInAction() {
+            vm.isFirstTimeUser = false
+        }
+    
     private var passwordsMatch: Bool {
         password == confirmPassword && !password.isEmpty
     }
@@ -148,6 +143,7 @@ struct RegisterView: View {
             }
             vm.isLoggedIn = true
             vm.isFirstTimeUser = false
+            vm.doesNotHaveAccount = true
             isRegistering = false
         }
     }
