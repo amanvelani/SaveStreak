@@ -42,7 +42,10 @@ struct ApplicationSwitcher: View {
 	var body: some View {
 		if (vm.isLoggedIn || UserDefaults.standard.bool(forKey: "isLoggedIn")) {
 			HomeScreen()
-		} else {
+        } else if(vm.isFirstTimeUser){
+            RegisterView()
+        }
+        else{
 			LoginView()
 		}
 		

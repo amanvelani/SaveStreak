@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071DACC72BE45A1F00F33C85 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071DACC62BE45A1F00F33C85 /* MapViewModel.swift */; };
+		071DACC92BE45FE700F33C85 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071DACC82BE45FE700F33C85 /* RegisterView.swift */; };
+		071DACCD2BE4688800F33C85 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071DACCC2BE4688800F33C85 /* UserProfileView.swift */; };
+		0763F0F02BE458610005D058 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0763F0EF2BE458610005D058 /* GoogleService-Info.plist */; };
 		A84FEA942BD9C5C500F71834 /* LinkKit in Frameworks */ = {isa = PBXBuildFile; productRef = A84FEA932BD9C5C500F71834 /* LinkKit */; };
 		A84FEA962BD9C92D00F71834 /* LinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FEA952BD9C92D00F71834 /* LinkController.swift */; };
 		A87810822B9F5C0B00A45B0B /* UserLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87810812B9F5C0B00A45B0B /* UserLoginModel.swift */; };
@@ -80,6 +84,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		071DACC62BE45A1F00F33C85 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		071DACC82BE45FE700F33C85 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		071DACCC2BE4688800F33C85 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		0763F0EF2BE458610005D058 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A84FEA952BD9C92D00F71834 /* LinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkController.swift; sourceTree = "<group>"; };
 		A87810812B9F5C0B00A45B0B /* UserLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginModel.swift; sourceTree = "<group>"; };
 		A87810882B9F5C7C00A45B0B /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
@@ -87,8 +95,6 @@
 		A8C0C8FB2BE0476100899CD9 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
 		A8C0C8FD2BE0A15800899CD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A8C0C8FF2BE1805300899CD9 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
-		A8C0C9012BE4344B00899CD9 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
-		A8C0C9062BE434D000899CD9 /* SpendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingViewModel.swift; sourceTree = "<group>"; };
 		A8D29B8F2BD998300078101F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8DC9C792B969DBD0019986B /* SaveStreak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveStreak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DC9C7C2B969DBD0019986B /* SaveStreakApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStreakApp.swift; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 			children = (
 				A8F24E8D2B9F6E20004C41F9 /* UserStateViewModel.swift */,
 				A8F24E8F2B9F79D6004C41F9 /* LoginView.swift */,
+				071DACC82BE45FE700F33C85 /* RegisterView.swift */,
 			);
 			path = UserLogin;
 			sourceTree = "<group>";
@@ -192,6 +199,7 @@
 		A8C0C8FE2BE1803E00899CD9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				071DACC62BE45A1F00F33C85 /* MapViewModel.swift */,
 				A8C0C8FF2BE1805300899CD9 /* TransactionsViewModel.swift */,
 				A8C0C9062BE434D000899CD9 /* SpendingViewModel.swift */,
 			);
@@ -201,7 +209,6 @@
 		A8DC9C702B969DBD0019986B = {
 			isa = PBXGroup;
 			children = (
-				A8D29B8F2BD998300078101F /* GoogleService-Info.plist */,
 				A8DC9C7B2B969DBD0019986B /* SaveStreak */,
 				A8DC9C8C2B969DC20019986B /* SaveStreakTests */,
 				A8DC9C962B969DC20019986B /* SaveStreakUITests */,
@@ -222,6 +229,7 @@
 		A8DC9C7B2B969DBD0019986B /* SaveStreak */ = {
 			isa = PBXGroup;
 			children = (
+				0763F0EF2BE458610005D058 /* GoogleService-Info.plist */,
 				A8C0C8FE2BE1803E00899CD9 /* ViewModels */,
 				A8C0C8FD2BE0A15800899CD9 /* Info.plist */,
 				A8F19DE32BBDB0F000164C84 /* MapViewTab */,
@@ -294,6 +302,7 @@
 			children = (
 				A8F24E8B2B9F6975004C41F9 /* UserView.swift */,
 				A8C0C8F92BDF0E9B00899CD9 /* AccountsView.swift */,
+				071DACCC2BE4688800F33C85 /* UserProfileView.swift */,
 			);
 			path = UserViewTab;
 			sourceTree = "<group>";
@@ -440,7 +449,7 @@
 			files = (
 				A8DC9C842B969DC10019986B /* Preview Assets.xcassets in Resources */,
 				A8DC9C812B969DC10019986B /* Assets.xcassets in Resources */,
-				A8D29B902BD998300078101F /* GoogleService-Info.plist in Resources */,
+				0763F0F02BE458610005D058 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,7 +457,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8D29B912BD998300078101F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,7 +464,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8D29B922BD998300078101F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,8 +486,11 @@
 				A8F24E892B9F6965004C41F9 /* InsightsView.swift in Sources */,
 				A8C0C8FC2BE0476100899CD9 /* APIConfig.swift in Sources */,
 				A8F24E8C2B9F6975004C41F9 /* UserView.swift in Sources */,
+				071DACCD2BE4688800F33C85 /* UserProfileView.swift in Sources */,
 				A8C0C8FA2BDF0E9B00899CD9 /* AccountsView.swift in Sources */,
+				071DACC72BE45A1F00F33C85 /* MapViewModel.swift in Sources */,
 				A8F19DE52BBDB10800164C84 /* MapView.swift in Sources */,
+				071DACC92BE45FE700F33C85 /* RegisterView.swift in Sources */,
 				A8DC9C7D2B969DBD0019986B /* SaveStreakApp.swift in Sources */,
 				A8F24E8E2B9F6E20004C41F9 /* UserStateViewModel.swift in Sources */,
 			);
@@ -650,6 +660,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SaveStreak/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -680,6 +692,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SaveStreak/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

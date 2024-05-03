@@ -19,6 +19,27 @@ from flask import (
 
 user_bp = Blueprint("user", __name__, url_prefix="/user")
 
+@user_bp.route("/register-user", methods=["POST"])
+def register_user():
+    # "userId": userId,
+    #         "email": email,
+    #         "name": name,
+    #         "age": age,
+    #         "sex": sex,
+    #         "profileImageURL":profileImageUrl,
+
+    user_id = request.json["userId"]
+    email = request.json["email"]
+    name = request.json["name"]
+    age = request.json["age"]
+    sex = request.json["sex"]
+    profileImageURL = "https://firebasestorage.googleapis.com:443/v0/b/savestreak-f2265.appspot.com/o/profile_images/" + user_id + ".jpg"
+    
+    db.register_user(user_id, email, name, age, sex, profileImageURL)
+    
+    return {
+        "success": True
+    }
 
 @user_bp.route("/get-transaction", methods=["POST"])
 def get_transaction():
@@ -37,7 +58,13 @@ def get_transaction():
 @user_bp.route("/get-transaction-by-location", methods=["POST"])
 def transactions_by_location():
     user_id = request.json["user_id"]
-    response = {"transactions": db.get_user_transactions_by_location(user_id)}
+    category = request.json.get("category") or None
+    start_date = request.json.get("start_date") or None
+    end_date = request.json.get("end_date") or None
+    print("Category: ", category)
+    print("Start Date: ", start_date)
+    print("End Date: ", end_date)
+    response = {"transactions": db.get_user_transactions_by_location(user_id, category=category, start_date=start_date, end_date=end_date)}
     return jsonify(response)
 
 

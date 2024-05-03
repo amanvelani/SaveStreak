@@ -22,7 +22,7 @@ struct UserView: View {
 		NavigationView {
 			List {
 				Section {
-					NavigationLink(destination: Text("General Settings")) {
+					NavigationLink(destination: UserProfileView() ) {
 						HStack {
 							Image(systemName: "gear")
 								.foregroundColor(.gray)
