@@ -21,6 +21,8 @@
 		A87810892B9F5C7C00A45B0B /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87810882B9F5C7C00A45B0B /* DashboardViewModel.swift */; };
 		A8BFB30C2BE5716B00AC8EE6 /* SpendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFB30B2BE5716B00AC8EE6 /* SpendingViewModel.swift */; };
 		A8BFB30E2BE5730600AC8EE6 /* AllTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFB30D2BE5730600AC8EE6 /* AllTransactionsView.swift */; };
+		A8BFB3102BE5A15E00AC8EE6 /* StreakSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFB30F2BE5A15E00AC8EE6 /* StreakSettingsView.swift */; };
+		A8BFB3122BE5A32400AC8EE6 /* StreakViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFB3112BE5A32400AC8EE6 /* StreakViewModel.swift */; };
 		A8C0C8FA2BDF0E9B00899CD9 /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0C8F92BDF0E9B00899CD9 /* AccountsView.swift */; };
 		A8C0C8FC2BE0476100899CD9 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0C8FB2BE0476100899CD9 /* APIConfig.swift */; };
 		A8C0C9002BE1805300899CD9 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0C8FF2BE1805300899CD9 /* TransactionsViewModel.swift */; };
@@ -96,6 +98,8 @@
 		A87810882B9F5C7C00A45B0B /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		A8BFB30B2BE5716B00AC8EE6 /* SpendingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpendingViewModel.swift; sourceTree = "<group>"; };
 		A8BFB30D2BE5730600AC8EE6 /* AllTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTransactionsView.swift; sourceTree = "<group>"; };
+		A8BFB30F2BE5A15E00AC8EE6 /* StreakSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakSettingsView.swift; sourceTree = "<group>"; };
+		A8BFB3112BE5A32400AC8EE6 /* StreakViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakViewModel.swift; sourceTree = "<group>"; };
 		A8C0C8F92BDF0E9B00899CD9 /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
 		A8C0C8FB2BE0476100899CD9 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
 		A8C0C8FD2BE0A15800899CD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 				071DACC62BE45A1F00F33C85 /* MapViewModel.swift */,
 				A8BFB30B2BE5716B00AC8EE6 /* SpendingViewModel.swift */,
 				A8C0C8FF2BE1805300899CD9 /* TransactionsViewModel.swift */,
+				A8BFB3112BE5A32400AC8EE6 /* StreakViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 				A8F24E8B2B9F6975004C41F9 /* UserView.swift */,
 				A8C0C8F92BDF0E9B00899CD9 /* AccountsView.swift */,
 				071DACCC2BE4688800F33C85 /* UserProfileView.swift */,
+				A8BFB30F2BE5A15E00AC8EE6 /* StreakSettingsView.swift */,
 			);
 			path = UserViewTab;
 			sourceTree = "<group>";
@@ -485,6 +491,7 @@
 				A87810892B9F5C7C00A45B0B /* DashboardViewModel.swift in Sources */,
 				076E0FCB2BE4C905000DDB27 /* (null) in Sources */,
 				A8F24E902B9F79D6004C41F9 /* LoginView.swift in Sources */,
+				A8BFB3122BE5A32400AC8EE6 /* StreakViewModel.swift in Sources */,
 				A84FEA962BD9C92D00F71834 /* LinkController.swift in Sources */,
 				A8F24E922B9F7A1F004C41F9 /* DashboardView.swift in Sources */,
 				A8C0C9002BE1805300899CD9 /* TransactionsViewModel.swift in Sources */,
@@ -502,6 +509,7 @@
 				A8F19DE52BBDB10800164C84 /* MapView.swift in Sources */,
 				A8BFB30C2BE5716B00AC8EE6 /* SpendingViewModel.swift in Sources */,
 				076E0FC92BE4C8EE000DDB27 /* (null) in Sources */,
+				A8BFB3102BE5A15E00AC8EE6 /* StreakSettingsView.swift in Sources */,
 				071DACC92BE45FE700F33C85 /* RegisterView.swift in Sources */,
 				A8DC9C7D2B969DBD0019986B /* SaveStreakApp.swift in Sources */,
 				A8F24E8E2B9F6E20004C41F9 /* UserStateViewModel.swift in Sources */,

@@ -478,14 +478,37 @@ def set_user_streak_category(user_id, category, target):
         print(app.logger.error(traceback.format_exc()))
         return []
 
+# def get_user_streak_category(user_id):
+#     try:
+#         data = app.db.user_info.find_one(
+#             {"user_id": user_id}, {"_id": 0, "streak_category": 1, "streak_target": 1})
+#         if data is None:
+#             return {
+#                 "streak_category": "",
+#                 "streak_target": 0,
+#             }
+#         if data.get('streak_category', None) is not None:
+#             return {
+#                 "streak_category": data.get('streak_category', ""),
+#                 "streak_target": data.get('streak_target', ""),
+#             }
+#         else:
+#             return {
+#                 "streak_category": "",
+#                 "streak_target": 0,
+#             }
+#     except Exception as e:
+#         print(app.logger.error(traceback.format_exc()))
+#         return []
+
 
 def get_user_streak_category(user_id):
     try:
         result = app.db.user_info.find_one({"user_id": user_id})
-        return result["streak_category"], result["streak_target"]
+        return result.get("streak_category", ""), result.get("streak_target", 0)
     except Exception as e:
         print(app.logger.error(traceback.format_exc()))
-        return []
+        return "", 0
 
 
 def calculate_streak(user_id, category, streak_target):
