@@ -15,54 +15,134 @@ struct AccountsView: View {
 	@State private var isPresentingLink = false
 	@State private var linkToken: String?
 	@EnvironmentObject var apiConfig: ApiConfig
+    @State private var isLoading = false  // State to track loading status
+
 
 	
-	var body: some View {
-		NavigationView {
-			List {
-				ForEach(accounts, id: \.id) { account in
-					Text(account.name)
-				}
-				Button(action: {
-					if let _ = linkToken {
-						isPresentingLink = true
-					} else {
-						print("Link token is not yet available.")
-					}					}, label:  {
-						Text("Open Plaid Link")
-					})
-				.disabled(linkToken == nil)
-			}
-			.navigationTitle("Accounts")
-			.sheet(
-				isPresented: $isPresentingLink,
-				onDismiss: {
-					isPresentingLink = false
-				},
-				content: {
-					if let handler = createHandler() {
-						LinkController(handler: handler)
-					} else {
-						Text("Unable to create Plaid Link handler.")
-					}
-				}
-			)
-			.onAppear {
-				Task {
-					await fetchLinkToken()
-					await fetchAccounts()
-				}
-				
-			}
-		}
-	}
+    var body: some View {
+            NavigationView {
+                List {
+                    if isLoading {
+                        // Display a loading indicator or message
+                        VStack {
+                            Spacer()
+                            ProgressView("Refreshing...")
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .foregroundColor(.blue)
+                            Spacer()
+                        }
+                    }
+                    else if accounts.isEmpty {
+                        VStack {
+                            Spacer()
+                            Text("Click on the + button to add an account")
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                            Spacer()
+                        }
+                    }
+                    else{
+                        ForEach(accounts, id: \.bank_name) { account in
+                            AccountRow(account: account)
+                                .listRowBackground(Color.clear)
+                                .listRowInsets(EdgeInsets())
+                        }
+                    }
+                }
+                .listStyle(PlainListStyle())
+                .navigationTitle("Accounts")
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        addButton
+                        refreshButton
+                    }
+                }
+                .sheet(isPresented: $isPresentingLink, onDismiss: {
+                    isPresentingLink = false
+                }) {
+                    if let handler = createHandler() {
+                        LinkController(handler: handler)
+                    } else {
+                        Text("Unable to create Plaid Link handler.")
+                    }
+                }
+                .onAppear {
+                    Task {
+                        refreshAccounts()
+                    }
+                }
+                    
+            }
+        }
+    
+        
+    private var refreshButton: some View {
+        Button(action: {
+            Task {
+                await fetchAccounts()
+            }
+        }) {
+            Image(systemName: "arrow.clockwise")
+        }
+    }
+        
+    private var addButton: some View {
+        Button(action: {
+            isPresentingLink = true
+        }) {
+            Image(systemName: "plus")
+        }
+    }
+    private func refreshAccounts() {
+        Task {
+            isLoading = true  // Start loading
+            await fetchLinkToken()
+            await fetchAccounts()
+            isLoading = false // End loading
+        }
+    }
 	
-	private func fetchAccounts() async{
-		accounts = [
-			Account(id: "1", name: "Checking"),
-			Account(id: "2", name: "Savings")
-		]
-	}
+    private func fetchAccounts() async {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("No user is logged in.")
+            return
+        }
+
+        do {
+            let url = URL(string: "\(apiConfig.baseUrl)/user/get-user-accounts")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let requestBody = ["user_id": userId]
+            request.httpBody = try JSONEncoder().encode(requestBody)
+            
+            // Correctly use URLSession to handle the POST request
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let accountResponse = try JSONDecoder().decode(AccountsResponse.self, from: data)
+            
+            // Process the fetched account data
+            for account in accountResponse.accounts {
+                print("Bank: \(account.bank_name), Type: \(account.account_type), Balance: \(account.account_balance)")
+                self.accounts = accountResponse.accounts
+            }
+            
+        } catch {
+            print("An error occurred: \(error)")
+        }
+    }
+    
+    struct Account: Codable {
+        let account_balance: Double
+        let account_type: String
+        let bank_name: String
+    }
+
+    struct AccountsResponse: Codable {
+        let accounts: [Account]
+    }
+
 	
 	private func fetchLinkToken() async {
 		do {
@@ -140,16 +220,45 @@ struct AccountsView: View {
 		}
 	}
 	
-	struct Account: Identifiable {
-		var id: String
-		var name: String
-	}
-	
 	struct TokenResponse: Decodable {
 		var link_token: String
 		var expiration: String
 		var request_id: String
 	}
+    
+    struct AccountRow: View {
+        var account: Account
+        
+        var body: some View {
+            HStack {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(account.bank_name)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        
+                    Text(account.account_type)
+                        .font(.callout)
+                        .foregroundColor(.secondary)
+                    
+                    Text("Balance: $\(account.account_balance, specifier: "%.2f")")
+                        .font(.subheadline)
+                        .foregroundColor(.green)
+                }
+                Spacer()
+            }
+            .padding()
+            .background(Color(UIColor.systemBackground))  // Adapts to light or dark mode
+            .cornerRadius(10)
+            .shadow(color: Color.gray.opacity(0.4), radius: 5, x: 0, y: 2)
+            .padding([.horizontal, .top])  // Adds spacing between account rows
+        }
+    }
+
+    struct AccountsView_Previews: PreviewProvider {
+        static var previews: some View {
+            AccountsView().environmentObject(ApiConfig())
+        }
+    }
 }
 
 

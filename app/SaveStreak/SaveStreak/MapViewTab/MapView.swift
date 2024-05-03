@@ -16,7 +16,7 @@ struct MapView: View {
                 filterBar
                 mapDisplay
             }
-            .navigationBarTitle("Location Wise Spending", displayMode: .inline)
+            .navigationBarTitle("Money Trails")
             .navigationBarItems(trailing: refreshButton)
             .onAppear {
                 viewModel.fetchTransactions()
@@ -26,15 +26,30 @@ struct MapView: View {
     
 
     private var filterBar: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 4) {
             menuPicker("Category: \(viewModel.selectedCategory)", options: viewModel.categories, selection: $viewModel.selectedCategory)
-            menuPicker("Date Range: \(viewModel.selectedDateRange)", options: viewModel.dateRanges, selection: $viewModel.selectedDateRange)
+            segmentedDateRangePicker
         }
         .padding()
-        .background(Color(UIColor.systemBackground))
-        .cornerRadius(12)
-        .shadow(radius: 4)
+        .background(Color(UIColor.secondarySystemBackground))  // Slight visual contrast
+        .cornerRadius(10)
+        .shadow(radius: 2)
         .padding(.horizontal)
+    }
+
+    private var segmentedDateRangePicker: some View {
+        Picker("Date Range", selection: $viewModel.selectedDateRange) {
+            ForEach(viewModel.dateRanges, id: \.self) { range in
+                Text(range)
+                    .tag(range)
+                    .font(.system(size: 16, weight: .medium)) // Enhanced font size and weight
+            }
+        }
+        .pickerStyle(SegmentedPickerStyle())  // Use segmented control style
+        .padding(.horizontal)
+        .onChange(of: viewModel.selectedDateRange) { newValue in
+            viewModel.fetchTransactions()  // Fetch transactions when the date range changes
+        }
     }
 
     private func menuPicker(_ title: String, options: [String], selection: Binding<String>) -> some View {
@@ -46,25 +61,30 @@ struct MapView: View {
                         viewModel.fetchTransactions()
                     }
                 }
+                .font(.system(size: 16)) // Enhanced font size for options
             }
         } label: {
             HStack {
                 Text(title)
+                    .font(.system(size: 18, weight: .semibold)) // Enhanced font size and weight for the title
                 Spacer()
                 Image(systemName: "chevron.down")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 12, height: 8)
+                    .frame(width: 10, height: 6)
             }
             .padding()
             .foregroundColor(Color.primary)
-            .background(Color(UIColor.systemBackground))
+            .background(Color(UIColor.secondarySystemBackground))
+            .cornerRadius(8)
             .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.primary, lineWidth: 1)
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.gray, lineWidth: 0.5)
             )
         }
     }
+
+
 
 
     private var mapDisplay: some View {
@@ -74,6 +94,7 @@ struct MapView: View {
             }
         }
         .edgesIgnoringSafeArea(.all)
+        .padding(.bottom)
     }
 
     private func annotationView(for transaction: LocationTransaction) -> some View {

@@ -7,7 +7,6 @@ struct UserProfileView: View {
         VStack {
             userProfileImage
             userDetails
-            refreshProfileButton
             Spacer()
         }
         .padding()
@@ -90,6 +89,3 @@ struct UserProfileView: View {
         }
     }
 }
-
-// Ensure your `UserStateViewModel` class is correctly managing the fetching and updating of user details.
-
