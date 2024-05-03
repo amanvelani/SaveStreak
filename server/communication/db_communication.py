@@ -21,6 +21,21 @@ def register_user(user_id, email, name, age, sex, profileImageURL):
         print(e)
         return []
     
+def get_user_data(user_id):
+    try:
+        result = app.db.user_info.find_one({"user_id": user_id}, {"_id": 0})
+        result = {
+            "email": result["email"],
+            "name": result["name"],
+            "age": result["age"],
+            "sex": result["sex"]
+        }
+        print(result)
+        return result
+    except Exception as e:
+        print(e)
+        return []
+    
 def get_custom_location_data():
     try:
         result = app.db.custom_location_data.find({}, {"_id": 0})
@@ -160,6 +175,8 @@ def get_recent_transactions(user_id):
                 all_transactions.append(each_transaction)
                 total_expenses += each_transaction.get("amount", 0)
         sorted_transactions = sorted(all_transactions, key=lambda d: d["date"])
+        # Reverse the list to get the latest transactions first
+        sorted_transactions = sorted_transactions[::-1]
 
         return sorted_transactions, total_expenses
 
@@ -420,9 +437,22 @@ def get_user_linked_accounts(user_id):
             {"user_id": user_id}, {"_id": 0, "accounts": 1}
         )
         accounts = result.get("accounts", [])
-        for each in accounts:
-            each["name"] = each.get("name", "Test")
-        return accounts
+        flattened_accounts = [info for account in accounts for info in account['bank_information']]
+
+        print(accounts)
+        result = {
+            "accounts":
+                [
+                    {
+                        "bank_name": account["account_name"],
+                        "account_type": account["account_type"],
+                        "account_balance": account["account_balance"],
+                    }
+                    for account in flattened_accounts 
+                ]
+        }
+        print(result)
+        return result
     except Exception as e:
         app.logger.debug(traceback.format_exc())
         return []
