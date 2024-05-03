@@ -35,9 +35,22 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager?.distanceFilter = 10 // Changes location only after moving 10 meters
-        locationManager?.requestWhenInUseAuthorization()
-        locationManager?.startUpdatingLocation()
+        locationManager?.distanceFilter = 10
+
+        // Check the authorization status before updating the location
+        let status = CLLocationManager.authorizationStatus()
+        switch status {
+        case .authorizedWhenInUse, .authorizedAlways:
+            DispatchQueue.global(qos: .background).async {
+                self.locationManager?.startUpdatingLocation()
+            }
+        case .notDetermined:
+            locationManager?.requestWhenInUseAuthorization()
+        case .denied, .restricted:
+            print("Location services are denied/restricted. Please enable them in settings.")
+        @unknown default:
+            print("A new case was added that we need to handle")
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

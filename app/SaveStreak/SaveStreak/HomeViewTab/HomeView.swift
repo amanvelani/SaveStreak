@@ -97,6 +97,15 @@ struct HomeView: View {
                     TransactionRow(transaction: transaction)
                 }
             }
+            Spacer()
+            NavigationLink(destination: AllTransactionsView(viewModel: viewModel) ) {
+                HStack {
+                    Spacer()
+                    Image(systemName: "chevron.right.circle")
+                        .foregroundColor(.blue)
+                }
+                
+            }
         }
     }
 
