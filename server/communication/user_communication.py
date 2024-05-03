@@ -41,6 +41,12 @@ def register_user():
         "success": True
     }
 
+@user_bp.route("/get-user-data", methods=["POST"])
+def get_user_data():
+    user_id = request.json["user_id"]
+    user_data = db.get_user_data(user_id)
+    return jsonify(user_data)
+
 @user_bp.route("/get-transaction", methods=["POST"])
 def get_transaction():
     user_id = request.json['user_id']
