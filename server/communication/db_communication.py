@@ -5,6 +5,22 @@ from flask import current_app as app
 import random
 
 
+def register_user(user_id, email, name, age, sex, profileImageURL):
+    try:
+        app.db.user_info.insert_one(
+            {
+                "user_id": user_id,
+                "email": email,
+                "name": name,
+                "age": age,
+                "sex": sex,
+                "profileImageURL": profileImageURL,
+            }
+        )
+    except Exception as e:
+        print(e)
+        return []
+    
 def get_custom_location_data():
     try:
         result = app.db.custom_location_data.find({}, {"_id": 0})

@@ -86,3 +86,4 @@ Packages/
 .build/
 
 xcuserdata/
+GoogleService-Info.plist
