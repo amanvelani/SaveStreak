@@ -11,6 +11,9 @@
 		071DACC92BE45FE700F33C85 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071DACC82BE45FE700F33C85 /* RegisterView.swift */; };
 		071DACCD2BE4688800F33C85 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071DACCC2BE4688800F33C85 /* UserProfileView.swift */; };
 		0763F0F02BE458610005D058 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0763F0EF2BE458610005D058 /* GoogleService-Info.plist */; };
+		076E0FC92BE4C8EE000DDB27 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076E0FC82BE4C8EE000DDB27 /* PieChartView.swift */; };
+		076E0FCB2BE4C905000DDB27 /* SpendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076E0FCA2BE4C905000DDB27 /* SpendingViewModel.swift */; };
+		07CAF48E2BE4C81B005A3306 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 07CAF48D2BE4C81B005A3306 /* CachedAsyncImage */; };
 		A84FEA942BD9C5C500F71834 /* LinkKit in Frameworks */ = {isa = PBXBuildFile; productRef = A84FEA932BD9C5C500F71834 /* LinkKit */; };
 		A84FEA962BD9C92D00F71834 /* LinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FEA952BD9C92D00F71834 /* LinkController.swift */; };
 		A87810822B9F5C0B00A45B0B /* UserLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87810812B9F5C0B00A45B0B /* UserLoginModel.swift */; };
@@ -18,12 +21,9 @@
 		A8C0C8FA2BDF0E9B00899CD9 /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0C8F92BDF0E9B00899CD9 /* AccountsView.swift */; };
 		A8C0C8FC2BE0476100899CD9 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0C8FB2BE0476100899CD9 /* APIConfig.swift */; };
 		A8C0C9002BE1805300899CD9 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0C8FF2BE1805300899CD9 /* TransactionsViewModel.swift */; };
-		A8C0C9022BE4344B00899CD9 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0C9012BE4344B00899CD9 /* PieChartView.swift */; };
+		A8C0C9022BE4344B00899CD9 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A8C0C9052BE4348B00899CD9 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = A8C0C9042BE4348B00899CD9 /* SwiftUICharts */; };
-		A8C0C9072BE434D000899CD9 /* SpendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0C9062BE434D000899CD9 /* SpendingViewModel.swift */; };
-		A8D29B902BD998300078101F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8D29B8F2BD998300078101F /* GoogleService-Info.plist */; };
-		A8D29B912BD998300078101F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8D29B8F2BD998300078101F /* GoogleService-Info.plist */; };
-		A8D29B922BD998300078101F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8D29B8F2BD998300078101F /* GoogleService-Info.plist */; };
+		A8C0C9072BE434D000899CD9 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A8D29B952BD9988F0078101F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A8D29B942BD9988F0078101F /* FirebaseAnalytics */; };
 		A8D29B972BD9988F0078101F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = A8D29B962BD9988F0078101F /* FirebaseAnalyticsOnDeviceConversion */; };
 		A8D29B992BD9988F0078101F /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A8D29B982BD9988F0078101F /* FirebaseAnalyticsSwift */; };
@@ -88,6 +88,8 @@
 		071DACC82BE45FE700F33C85 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		071DACCC2BE4688800F33C85 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		0763F0EF2BE458610005D058 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		076E0FC82BE4C8EE000DDB27 /* PieChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		076E0FCA2BE4C905000DDB27 /* SpendingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpendingViewModel.swift; sourceTree = "<group>"; };
 		A84FEA952BD9C92D00F71834 /* LinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkController.swift; sourceTree = "<group>"; };
 		A87810812B9F5C0B00A45B0B /* UserLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginModel.swift; sourceTree = "<group>"; };
 		A87810882B9F5C7C00A45B0B /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
@@ -95,7 +97,6 @@
 		A8C0C8FB2BE0476100899CD9 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
 		A8C0C8FD2BE0A15800899CD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A8C0C8FF2BE1805300899CD9 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
-		A8D29B8F2BD998300078101F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8DC9C792B969DBD0019986B /* SaveStreak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveStreak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DC9C7C2B969DBD0019986B /* SaveStreakApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStreakApp.swift; sourceTree = "<group>"; };
 		A8DC9C802B969DC10019986B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +141,7 @@
 				A8D29BC92BD9988F0078101F /* FirebaseStorageCombine-Community in Frameworks */,
 				A8D29BC32BD9988F0078101F /* FirebaseRemoteConfig in Frameworks */,
 				A8D29B9F2BD9988F0078101F /* FirebaseAppDistribution-Beta in Frameworks */,
+				07CAF48E2BE4C81B005A3306 /* CachedAsyncImage in Frameworks */,
 				A8D29BA32BD9988F0078101F /* FirebaseAuthCombine-Community in Frameworks */,
 				A8D29BC12BD9988F0078101F /* FirebasePerformance in Frameworks */,
 				A8D29BB92BD9988F0078101F /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
@@ -199,9 +201,9 @@
 		A8C0C8FE2BE1803E00899CD9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				076E0FCA2BE4C905000DDB27 /* SpendingViewModel.swift */,
 				071DACC62BE45A1F00F33C85 /* MapViewModel.swift */,
 				A8C0C8FF2BE1805300899CD9 /* TransactionsViewModel.swift */,
-				A8C0C9062BE434D000899CD9 /* SpendingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -291,8 +293,8 @@
 		A8F24E872B9F6952004C41F9 /* InsightsViewTab */ = {
 			isa = PBXGroup;
 			children = (
+				076E0FC82BE4C8EE000DDB27 /* PieChartView.swift */,
 				A8F24E882B9F6965004C41F9 /* InsightsView.swift */,
-				A8C0C9012BE4344B00899CD9 /* PieChartView.swift */,
 			);
 			path = InsightsViewTab;
 			sourceTree = "<group>";
@@ -353,6 +355,7 @@
 				A8D29BC82BD9988F0078101F /* FirebaseStorageCombine-Community */,
 				A84FEA932BD9C5C500F71834 /* LinkKit */,
 				A8C0C9042BE4348B00899CD9 /* SwiftUICharts */,
+				07CAF48D2BE4C81B005A3306 /* CachedAsyncImage */,
 			);
 			productName = SaveStreak;
 			productReference = A8DC9C792B969DBD0019986B /* SaveStreak.app */;
@@ -430,6 +433,7 @@
 				A8D29B932BD9988F0078101F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				A84FEA922BD9C5C500F71834 /* XCRemoteSwiftPackageReference "plaid-link-ios" */,
 				A8C0C9032BE4348B00899CD9 /* XCRemoteSwiftPackageReference "ChartView" */,
+				07CAF48C2BE4C81B005A3306 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 			);
 			productRefGroup = A8DC9C7A2B969DBD0019986B /* Products */;
 			projectDirPath = "";
@@ -476,12 +480,13 @@
 			files = (
 				A87810822B9F5C0B00A45B0B /* UserLoginModel.swift in Sources */,
 				A87810892B9F5C7C00A45B0B /* DashboardViewModel.swift in Sources */,
+				076E0FCB2BE4C905000DDB27 /* SpendingViewModel.swift in Sources */,
 				A8F24E902B9F79D6004C41F9 /* LoginView.swift in Sources */,
 				A84FEA962BD9C92D00F71834 /* LinkController.swift in Sources */,
 				A8F24E922B9F7A1F004C41F9 /* DashboardView.swift in Sources */,
 				A8C0C9002BE1805300899CD9 /* TransactionsViewModel.swift in Sources */,
-				A8C0C9072BE434D000899CD9 /* SpendingViewModel.swift in Sources */,
-				A8C0C9022BE4344B00899CD9 /* PieChartView.swift in Sources */,
+				A8C0C9072BE434D000899CD9 /* (null) in Sources */,
+				A8C0C9022BE4344B00899CD9 /* (null) in Sources */,
 				A8F24E862B9F693C004C41F9 /* HomeView.swift in Sources */,
 				A8F24E892B9F6965004C41F9 /* InsightsView.swift in Sources */,
 				A8C0C8FC2BE0476100899CD9 /* APIConfig.swift in Sources */,
@@ -490,6 +495,7 @@
 				A8C0C8FA2BDF0E9B00899CD9 /* AccountsView.swift in Sources */,
 				071DACC72BE45A1F00F33C85 /* MapViewModel.swift in Sources */,
 				A8F19DE52BBDB10800164C84 /* MapView.swift in Sources */,
+				076E0FC92BE4C8EE000DDB27 /* PieChartView.swift in Sources */,
 				071DACC92BE45FE700F33C85 /* RegisterView.swift in Sources */,
 				A8DC9C7D2B969DBD0019986B /* SaveStreakApp.swift in Sources */,
 				A8F24E8E2B9F6E20004C41F9 /* UserStateViewModel.swift in Sources */,
@@ -656,7 +662,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SaveStreak/Preview Content\"";
-				DEVELOPMENT_TEAM = 73CYLY8N8M;
+				DEVELOPMENT_TEAM = H8QLG9SHVC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SaveStreak/Info.plist;
@@ -688,7 +694,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SaveStreak/Preview Content\"";
-				DEVELOPMENT_TEAM = 73CYLY8N8M;
+				DEVELOPMENT_TEAM = H8QLG9SHVC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SaveStreak/Info.plist;
@@ -830,6 +836,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		07CAF48C2BE4C81B005A3306 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
 		A84FEA922BD9C5C500F71834 /* XCRemoteSwiftPackageReference "plaid-link-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/plaid/plaid-link-ios";
@@ -857,6 +871,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		07CAF48D2BE4C81B005A3306 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 07CAF48C2BE4C81B005A3306 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
 		A84FEA932BD9C5C500F71834 /* LinkKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A84FEA922BD9C5C500F71834 /* XCRemoteSwiftPackageReference "plaid-link-ios" */;
