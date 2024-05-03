@@ -9,7 +9,8 @@ struct UserProfileView: View {
             userDetails
             Spacer()
         }
-        .padding()
+        .background(BackgroundGradient())  // First, apply the background
+//        .padding()  // Then, apply padding
         .onAppear {
             Task {
                 await viewModel.fetchUserProfile()
@@ -24,8 +25,8 @@ struct UserProfileView: View {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 150, height: 150)
-                    .clipShape(Circle())
+                    .frame(width: 200, height: 200)
+//                    .clipShape(Circle())
                     .shadow(radius: 10)
                     .transition(.scale.combined(with: .opacity))
                     .animation(.spring(), value: viewModel.userProfileImage)
@@ -66,26 +67,7 @@ struct UserProfileView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .padding()
-        .background(Color(UIColor.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .shadow(radius: 5)
-    }
-
-    private var refreshProfileButton: some View {
-        Button(action: {
-            Task {
-                await viewModel.fetchUserProfile()
-            }
-        }) {
-            Label("Refresh Profile", systemImage: "arrow.clockwise")
-                .labelStyle(.titleAndIcon)
-                .foregroundColor(.white)
-                .padding()
-                .background(Color.blue)
-                .cornerRadius(10)
-                .shadow(radius: 5)
-                .animation(.easeInOut, value: viewModel.isBusy)
-        }
     }
 }

@@ -24,21 +24,16 @@ struct RegisterView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-//                Text("Register")
-//                    .font(.largeTitle)
-//                    .fontWeight(.bold)
-//                    .padding(.bottom, 20)
-
                 profileImageView
                 inputFields
                 sexPicker
                 registerButton
                 linkToSignIn
+                errorMessageView
             }
             .padding()
             .sheet(isPresented: $isImagePickerPresented) {
                 ImagePicker(image: $profileImage)
-//                Text("sdfsdf")
             }
         }
     }
@@ -91,6 +86,15 @@ struct RegisterView: View {
         .padding(.horizontal)
     }
 
+    private var errorMessageView: some View {
+        Text(errorMessage)
+            .foregroundColor(.red)
+            .padding(.top, 10)
+    }
+
+    private var passwordsMatch: Bool {
+        password == confirmPassword && !password.isEmpty
+    }
     private var registerButton: some View {
         Button(action: registerUser) {
             if isRegistering {
@@ -104,35 +108,44 @@ struct RegisterView: View {
         }
         .frame(maxWidth: .infinity)
         .padding()
-        .background(Color.green)
+        .background(isRegistering || !passwordsMatch || profileImage == nil ? Color.gray : Color.green)
         .cornerRadius(8)
         .padding(.horizontal)
-        .disabled(isRegistering || !passwordsMatch)
+        .disabled(isRegistering)
         .padding(.top, 10)
     }
-        private var linkToSignIn: some View {
-            Button(action: signInAction) {
-                Text("Already have an account? Sign In")
-                    .underline()
-                    .font(.body)
-                    .foregroundColor(.blue)
-            }
-            .padding(.top, 20)
-        }
 
-        private func signInAction() {
-            vm.isFirstTimeUser = false
+    private var linkToSignIn: some View {
+        Button(action: signInAction) {
+            Text("Already have an account? Sign In")
+                .underline()
+                .font(.body)
+                .foregroundColor(.green)
         }
-    
-    private var passwordsMatch: Bool {
-        password == confirmPassword && !password.isEmpty
+        .padding(.top, 20)
     }
 
-    func registerUser() {
+
+    private func signInAction() {
+        vm.isFirstTimeUser = false
+    }
+
+    private func registerUser() {
         guard !email.isEmpty, !password.isEmpty, !name.isEmpty, let userAge = Int(age), !sex.isEmpty else {
             errorMessage = "Please fill in all fields correctly."
             return
         }
+
+        if !passwordsMatch {
+            errorMessage = "Passwords do not match."
+            return
+        }
+
+        if profileImage == nil {
+            errorMessage = "Please select a profile image."
+            return
+        }
+
         isRegistering = true
         errorMessage = ""
 
@@ -140,10 +153,11 @@ struct RegisterView: View {
             let result = await vm.register(email: email, password: password, name: name, age: userAge, sex: sex, profileImage: profileImage)
             if case .failure(let error) = result {
                 errorMessage = "Registration failed: \(error.localizedDescription)"
+            } else {
+                vm.isLoggedIn = true
+                vm.isFirstTimeUser = false
+                vm.doesNotHaveAccount = false
             }
-            vm.isLoggedIn = true
-            vm.isFirstTimeUser = false
-            vm.doesNotHaveAccount = true
             isRegistering = false
         }
     }
@@ -180,3 +194,5 @@ struct ImagePicker: UIViewControllerRepresentable {
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
 }
+
+    

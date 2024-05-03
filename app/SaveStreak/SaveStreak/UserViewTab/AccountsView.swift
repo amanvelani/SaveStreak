@@ -44,6 +44,7 @@ struct AccountsView: View {
                         }
                     }
                 }
+                .background(BackgroundGradient())
                 .listStyle(PlainListStyle())
                 .navigationTitle("Accounts")
                 .toolbar {

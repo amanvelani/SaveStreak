@@ -11,32 +11,36 @@ struct LoginView: View {
             VStack(spacing: 20) {
                 Spacer()
                 
-                // Logo Placeholder - replace with your logo
+                // Logo Placeholder - ensure this image is visible in both light and dark mode
                 Image("homeScreen")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 160, height: 160) // Smaller size
-                                    .clipShape(Circle())
-
-                
-
-                
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 160, height: 160)
+                    .clipShape(Circle())
+                    .shadow(radius: 10)  // Adding shadow for better contrast
 
                 TextField("Email", text: $email)
-                    .keyboardType(.emailAddress)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(8)
-                    .padding(.horizontal)
+                                    .keyboardType(.emailAddress)
+                                    .disableAutocorrection(true)
+                                    .autocapitalization(.none)
+                                    .padding()
+                                    .background(Color(UIColor.systemGray6)) // Slightly lighter background for contrast
+                                    .cornerRadius(8)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .stroke(Color.secondary, lineWidth: 0.5) // Adding a subtle border
+                                    )
+                                    .padding(.horizontal)
 
-                SecureField("Password", text: $password)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(8)
-                    .padding(.horizontal)
-
+                                SecureField("Password", text: $password)
+                                    .padding()
+                                    .background(Color(UIColor.systemGray6)) // Slightly lighter background for contrast
+                                    .cornerRadius(8)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .stroke(Color.secondary, lineWidth: 0.5) // Adding a subtle border
+                                    )
+                                    .padding(.horizontal)
                 Button(action: {
                     Task {
                         await vm.signIn(email: email, password: password)
@@ -67,19 +71,18 @@ struct LoginView: View {
                     .padding(.vertical, 10)
                 
                 Text("Streak to Peak: Elevate Your Habits, Elevate Your Life!")
-                    .font(.footnote) // Smaller font size
-                    .foregroundColor(.gray)
-                    .lineLimit(1) // Ensures text stays on one line
-                    .truncationMode(.tail) // Truncates with an ellipsis if text is too long
-                    .padding(.horizontal, 10) // Reduced horizontal padding
+                    .font(.footnote)
+                    .foregroundColor(Color.secondary)  // Secondary color for less emphasis
+                    .lineLimit(1)
+                    .truncationMode(.tail)
+                    .padding(.horizontal, 10)
 
-                
                 if vm.isBusy {
                     ProgressView()
                 }
             }
             .padding()
-            .background(Color.white.edgesIgnoringSafeArea(.all))
+            .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
             .navigationTitle("")
             .navigationBarHidden(true)
         }
