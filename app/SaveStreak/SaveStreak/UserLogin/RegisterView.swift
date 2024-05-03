@@ -157,6 +157,7 @@ struct RegisterView: View {
                 vm.isLoggedIn = true
                 vm.isFirstTimeUser = false
                 vm.doesNotHaveAccount = false
+                
             }
             isRegistering = false
         }

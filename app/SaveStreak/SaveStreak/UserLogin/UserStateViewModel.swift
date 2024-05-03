@@ -92,6 +92,7 @@ class UserStateViewModel: ObservableObject {
                 let imageToUpload = profileImage ?? UIImage(named: "defaultImage")!
                 try await uploadProfileImage(image: imageToUpload, userId: userID)
                 let serverResponse = await registerUserInMongoDB(userId: userID, email: email, name: name, age: age, sex: sex)
+                UserDefaults.standard.set(true, forKey: "isLoggedIn")
                 return .success(true)
             } catch UserStateError.imageConversionError, UserStateError.backendError {
                 return .failure(.backendError)
