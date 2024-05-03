@@ -42,17 +42,6 @@ struct InsightsView: View {
 	@State private var selectedValue: Double? = nil
 	@State 	var selectedAngle: Double?
 	@State private var showingFilters = false
-	
-	let currentWeek: [StepCount] = [
-		StepCount(day: "20220717", steps: 4200),
-		StepCount(day: "20220718", steps: 15000),
-		StepCount(day: "20220719", steps: 2800),
-		StepCount(day: "20220720", steps: 10800),
-		StepCount(day: "20220721", steps: 5300),
-		StepCount(day: "20220722", steps: 10400),
-		StepCount(day: "20220723", steps: 4000)
-	]
-	
 	@State var fromDateComponents = DateComponents(year: 2024, month: 02)
 	@State var toDateComponents = DateComponents(year: 2024, month: 5)
 
@@ -71,14 +60,12 @@ struct InsightsView: View {
 	
 	var body: some View {
 		NavigationView {
-			
 			VStack {
 				Picker("Select Graph Type", selection: $showingCategory) {
 					Text("Spend by Category").tag(true)
 					Text("Monthly Spend").tag(false)
 				}
 				.pickerStyle(SegmentedPickerStyle())
-				
 				if(viewModel.isBusy){
 					Spacer()
 					ProgressView()
@@ -113,7 +100,6 @@ struct InsightsView: View {
 							viewModel.filterData(startDate: startDate, endDate: endDate, isCategory: showingCategory == true)
 						}
 					} else if showingFilters && !showingCategory {
-//						DatePicker("From", selection: $startDate, displayedComponents: .date)
 						VStack {
 							HStack {
 								Text("From")
@@ -140,9 +126,16 @@ struct InsightsView: View {
 							viewModel.filterSpendData(startMonth: fromDateComponents, endMonth: toDateComponents)
 						}
 					}
-					
-					
 					if showingCategory {
+						List(viewModel.categoryWiseSpend, id: \.self) { category in
+							HStack {
+								Text("\(category._id) ")
+								Spacer()
+								Text("$\(category.total_expense, specifier: "%.2f") ")
+							}
+							
+						}
+						
 						Chart(viewModel.categoryWiseSpend, id: \._id) { element in
 							SectorMark(
 								angle: .value("Sales", element.total_expense),
@@ -166,19 +159,7 @@ struct InsightsView: View {
 						}
 						.chartAngleSelection(value: $selectedAngle)
 						
-						Spacer()
-						
-						List(viewModel.categoryWiseSpend, id: \.self) { category in
-							HStack {
-								Text("\(category._id) ")
-								Spacer()
-								Text("$\(category.total_expense, specifier: "%.2f") ")
-							}
-							
-						}
-						
 					} else {
-
 							Chart(viewModel.trendSpendData) {
 									BarMark(
 										x: .value("Step Count", $0.total_spending),
@@ -194,18 +175,9 @@ struct InsightsView: View {
 							}
 							
 						}
-							
-//							Spacer()
-						
-//						}
-//						.padding()
-
-							//					BarChartView(data: viewModel.filteredData)
 					}
 				}
 			}.navigationTitle("Spending Overview")
-				//			}
-			
 		}.onAppear() {
 			viewModel.loadCategoryData()
 			viewModel.loadSpendingTrendData()
@@ -226,20 +198,13 @@ struct InsightsView: View {
 }
 
 
-
-	//#Preview {
-	//    InsightsView()
-	//}
-
 extension Date {
-		// Calculate the start of the current month based on 'self'
 	var startOfMonth: Date {
 		let calendar = Calendar.current
 		let components = calendar.dateComponents([.year, .month], from: self)
 		return calendar.date(from: components)!
 	}
 	
-		// Calculate the end of the current month based on 'self'
 	var endOfMonth: Date {
 		let calendar = Calendar.current
 		let startOfNextMonth = calendar.date(byAdding: DateComponents(month: 1), to: self.startOfMonth)!
@@ -254,10 +219,8 @@ struct MonthPicker: View {
 	
 	var body: some View {
 		Picker("", selection: $month) {
-				// generateMonths is redundant. You can get the month names using Calendar.monthSymbols
 			let months = calendar.monthSymbols
 			ForEach(months.indices, id: \.self) { i in
-					// note the values of the tags
 				Text(months[i])
 					.tag(i + 1)
 			}
@@ -289,7 +252,6 @@ struct YearPicker: View {
 					.tag(year)
 			}
 		}
-//		.pickerStyle(.wheel)
 		.labelsHidden()
 		.background(Color.white)
 		.cornerRadius(8)
@@ -299,3 +261,8 @@ struct YearPicker: View {
 		)
 	}
 }
+
+//
+//struct SomeView: View {
+//	
+//}

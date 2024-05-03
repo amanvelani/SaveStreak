@@ -9,21 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
 	@EnvironmentObject var apiConfig: ApiConfig
-	
 	@StateObject var viewModel = TransactionsViewModel()
-		//    let transactions: [Transaction] = [
-		//        Transaction(place: "Coffee Shop", amount: "$5.99"),
-		//        Transaction(place: "Grocery Store", amount: "$32.50"),
-		//        Transaction(place: "Bookstore", amount: "$20.45"),
-		//        Transaction(place: "Restaurant", amount: "$45.90")
-		//    ]
-	
-	let spendByCategory: [SpendCategory] = [
-		SpendCategory(category: "Food & Drinks", amount: "$150.30"),
-		SpendCategory(category: "Groceries", amount: "$200.25"),
-		SpendCategory(category: "Entertainment", amount: "$75.00"),
-		SpendCategory(category: "Transport", amount: "$55.40")
-	]
 	
 	
 	var body: some View {
@@ -65,14 +51,9 @@ struct HomeView: View {
 										
 										ForEach(Array(viewModel.transactions.prefix(5))) { transaction in
 											HStack {
-													//												VStack(alignment: .leading) {
 												Text(transaction.displayName)
 													.font(.headline)
-													.foregroundColor(.primary) // Use dynamic color for light/dark mode support
-													//													Text(transaction.category.joined(separator: ", "))
-													//														.font(.subheadline)
-													//														.foregroundColor(.secondary)
-													//												}
+													.foregroundColor(.primary)
 												Spacer()
 												VStack(alignment: .trailing) {
 													Text("$\(transaction.amount, specifier: "%.2f")")
@@ -91,45 +72,45 @@ struct HomeView: View {
 										
 										
 										Spacer()
-										HStack {
-											Spacer()
-											Image(systemName: "chevron.right.circle")
-												.foregroundColor(.blue)
-												.onTapGesture {
-														// Action to expand into a detailed page
-												}
+										NavigationLink(destination: AllTransactionsView(viewModel: viewModel) ) {
+											HStack {
+												Spacer()
+												Image(systemName: "chevron.right.circle")
+													.foregroundColor(.blue)
+											}
+											
 										}
 									}
 								}
 								
 									// Section 3: Spend by Category
-								CardView {
-									VStack(alignment: .leading) {
-										Text("Spend by Category")
-											.font(.headline)
-										
-										
-										ForEach(Array(viewModel.topCategories.prefix(5))) { category in
-											HStack {
-												VStack(alignment: .leading) {
-													Text(category._id)
-														.font(.headline) // Larger font for category name
-														.foregroundColor(Color.blue) // Distinct color for category
-														//													Text("Top Spending")
-														//														.font(.subheadline)
-														//														.foregroundColor(.gray) // Subdued color for descriptive text
-												}
-												Spacer()
-												VStack(alignment: .trailing) {
-													Text("$\(category.total_expense, specifier: "%.2f")")
-														.font(.title2) // Larger, bold font for the amount
-														.foregroundColor(.primary) // Use primary to adapt to dark/light mode
-												}											}
-										}
-									}
-									
-									
-								}
+//								CardView {
+//									VStack(alignment: .leading) {
+//										Text("Spend by Category")
+//											.font(.headline)
+//										
+//										
+//										ForEach(Array(viewModel.topCategories.prefix(5))) { category in
+//											HStack {
+//												VStack(alignment: .leading) {
+//													Text(category._id)
+//														.font(.headline) // Larger font for category name
+//														.foregroundColor(Color.blue) // Distinct color for category
+//														//													Text("Top Spending")
+//														//														.font(.subheadline)
+//														//														.foregroundColor(.gray) // Subdued color for descriptive text
+//												}
+//												Spacer()
+//												VStack(alignment: .trailing) {
+//													Text("$\(category.total_expense, specifier: "%.2f")")
+//														.font(.title2) // Larger, bold font for the amount
+//														.foregroundColor(.primary) // Use primary to adapt to dark/light mode
+//												}											}
+//										}
+//									}
+//									
+//									
+//								}
 								
 									// Section 4: Spend Comparison by Occupation
 								
