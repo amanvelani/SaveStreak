@@ -34,6 +34,143 @@
             endingLineNumber = "30"
             landmarkName = "UserStateViewModel"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "E80B56A1-C5F0-4E65-A8AA-EFB68D2E2C90 - b1312faef379509d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of SaveStreak.UserStateViewModel.isLoggedIn : Swift.Bool"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/UserLogin/UserStateViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "E80B56A1-C5F0-4E65-A8AA-EFB68D2E2C90 - efcce6a196ad4973"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.UserStateViewModel.isLoggedIn.getter : Swift.Bool"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/UserLogin/UserStateViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "E80B56A1-C5F0-4E65-A8AA-EFB68D2E2C90 - 2313039a9f9e1d61"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.UserStateViewModel.isLoggedIn.setter : Swift.Bool"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/UserLogin/UserStateViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E80B56A1-C5F0-4E65-A8AA-EFB68D2E2C90 - 76eae19694d1f50"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.UserStateViewModel.isLoggedIn.modify : Swift.Bool"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/UserLogin/UserStateViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E80B56A1-C5F0-4E65-A8AA-EFB68D2E2C90 - 2658ef5d31660f3c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.UserStateViewModel.isLoggedIn.modify : Swift.Bool with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "E80B56A1-C5F0-4E65-A8AA-EFB68D2E2C90 - b3f1c1d998c5e276"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.UserStateViewModel.$isLoggedIn.getter : Combine.Published&lt;Swift.Bool&gt;.Publisher"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/UserLogin/UserStateViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E80B56A1-C5F0-4E65-A8AA-EFB68D2E2C90 - 33fc3cb91826c5f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.UserStateViewModel.$isLoggedIn.setter : Combine.Published&lt;Swift.Bool&gt;.Publisher"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "E80B56A1-C5F0-4E65-A8AA-EFB68D2E2C90 - 3470ad070f231d28"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.UserStateViewModel.$isLoggedIn.modify : Combine.Published&lt;Swift.Bool&gt;.Publisher"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "E80B56A1-C5F0-4E65-A8AA-EFB68D2E2C90 - 618e7281c2e5dccf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.UserStateViewModel.$isLoggedIn.modify : Combine.Published&lt;Swift.Bool&gt;.Publisher with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
