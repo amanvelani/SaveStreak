@@ -118,10 +118,7 @@ def get_custom_spending_trend():
 @user_bp.route('/get-user-accounts', methods=['POST'])
 def get_user_linked_accounts():
     user_id = request.json.get('user_id', None)
-    response = {
-        "accounts": db.get_user_linked_accounts(user_id)
-    }
-    return jsonify(response)
+    return jsonify(db.get_user_linked_accounts(user_id))
 
 @user_bp.route("/set-streak-category", methods=["POST"])
 def set_streak_category():
