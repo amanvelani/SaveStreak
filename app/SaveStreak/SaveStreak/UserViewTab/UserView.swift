@@ -39,11 +39,11 @@ struct UserView: View {
 				}
 				
 				Section {
-					NavigationLink(destination: Text("Notifications Settings")) {
+					NavigationLink(destination: StreakSettingsView()) {
 						HStack {
 							Image(systemName: "bell")
 								.foregroundColor(.gray)
-							Text("Notifications")
+							Text("Streak Settings")
 						}
 					}
 					NavigationLink(destination: Text("Help Information")) {
