@@ -78,10 +78,297 @@
             filePath = "SaveStreak/ViewModels/TransactionsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "fetchTransactions()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E9BD8AFC-FA16-45A7-9F42-8AA6411A9663 - 1e30daa0e5bdebb2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaveStreak.TransactionsViewModel.fetchTransactions() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/TransactionsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "E9BD8AFC-FA16-45A7-9F42-8AA6411A9663 - 1e30daa0e5bdeb93"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaveStreak.TransactionsViewModel.fetchTransactions() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/TransactionsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "112">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F5D64946-4CD5-4A30-A765-95278E966985"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SaveStreak/ViewModels/TransactionsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "fetchTransactions()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F5D64946-4CD5-4A30-A765-95278E966985 - 1e30daa0e5bdebb2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaveStreak.TransactionsViewModel.fetchTransactions() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/TransactionsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "F5D64946-4CD5-4A30-A765-95278E966985 - 1e30daa0e5bdebd1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaveStreak.TransactionsViewModel.fetchTransactions() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/TransactionsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2261F845-F405-4042-B5F7-EC67A28D71DA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SaveStreak/ViewModels/TransactionsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "fetchGraphData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2261F845-F405-4042-B5F7-EC67A28D71DA - e671dfc70e910805"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.CategorySpend.id.getter : Swift.String"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/TransactionsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "2261F845-F405-4042-B5F7-EC67A28D71DA - a8da1ebbf81e3b06"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaveStreak.TransactionsViewModel.fetchGraphData() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/TransactionsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C3732C9-7009-4CEB-9398-5536A8B778AF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SaveStreak/ViewModels/SpendingViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "updateMetaData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1C3732C9-7009-4CEB-9398-5536A8B778AF - a7866068c46b778b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.SpendingViewModel.updateMetaData() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/SpendingViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "280">
+               </Location>
+               <Location
+                  uuid = "1C3732C9-7009-4CEB-9398-5536A8B778AF - a7866068c46b778b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.SpendingViewModel.updateMetaData() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/SpendingViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "236">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "78AA719E-75DC-4391-9EA1-8D287D094726"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SaveStreak/ViewModels/SpendingViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "filterSpendData(startMonth:endMonth:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "78AA719E-75DC-4391-9EA1-8D287D094726 - 2eb356dfc40994c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.SpendingViewModel.filterSpendData(startMonth: Foundation.DateComponents, endMonth: Foundation.DateComponents) -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/SpendingViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "520">
+               </Location>
+               <Location
+                  uuid = "78AA719E-75DC-4391-9EA1-8D287D094726 - 2eb356dfc40994c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.SpendingViewModel.filterSpendData(startMonth: Foundation.DateComponents, endMonth: Foundation.DateComponents) -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/SpendingViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "700">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4553006D-722C-4683-8CC9-10E2B0DD204C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SaveStreak/ViewModels/SpendingViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "filterSpendData(startMonth:endMonth:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4553006D-722C-4683-8CC9-10E2B0DD204C - 2eb356dfc409900e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.SpendingViewModel.filterSpendData(startMonth: Foundation.DateComponents, endMonth: Foundation.DateComponents) -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/SpendingViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "226"
+                  endingLineNumber = "226"
+                  offsetFromSymbolStart = "2320">
+               </Location>
+               <Location
+                  uuid = "4553006D-722C-4683-8CC9-10E2B0DD204C - 2eb356dfc409900e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.SpendingViewModel.filterSpendData(startMonth: Foundation.DateComponents, endMonth: Foundation.DateComponents) -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/SpendingViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "226"
+                  endingLineNumber = "226"
+                  offsetFromSymbolStart = "2020">
+               </Location>
+               <Location
+                  uuid = "4553006D-722C-4683-8CC9-10E2B0DD204C - 2eb356dfc409900e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.SpendingViewModel.filterSpendData(startMonth: Foundation.DateComponents, endMonth: Foundation.DateComponents) -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/SpendingViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "226"
+                  endingLineNumber = "226"
+                  offsetFromSymbolStart = "2464">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
