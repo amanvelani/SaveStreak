@@ -16,6 +16,9 @@ struct UserView: View {
 	@State private var isPresentingLink = false
 	@State var linkToken: String? = nil
 	@EnvironmentObject var apiConfig: ApiConfig
+    @State private var showingSafari = false
+    @State private var url: URL?
+
 
 	
 	var body: some View {
@@ -46,7 +49,7 @@ struct UserView: View {
 							Text("Streak Settings")
 						}
 					}
-					NavigationLink(destination: AboutUsView()) {
+					NavigationLink(destination: AboutUsView(showingSafari: $showingSafari, url: $url)) {
 						HStack {
 							Image(systemName: "questionmark.circle")
 								.foregroundColor(.gray)
