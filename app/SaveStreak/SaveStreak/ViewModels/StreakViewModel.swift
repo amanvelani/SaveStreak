@@ -23,8 +23,6 @@ class StreakViewModel: ObservableObject {
 	let apiConfig = ApiConfig()
 	
 	func fetchCategories() {
-			// Mock fetching from backend
-			// Replace this with your actual network request
 		self.categories = ["Bank Fees","Cash Advance","Community","Food and Drink","Healthcare","Interest","Payment","Recreation","Service","Shops"]
 	}
 	
@@ -60,7 +58,7 @@ class StreakViewModel: ObservableObject {
 					let decodedExpense = try decoder.decode(APIResponseStreak.self, from: data)
 					DispatchQueue.main.async {
 						self.selectedCategory = decodedExpense.streak_category
-						self.amount = String(decodedExpense.streak_target)
+						self.amount = decodedExpense.streak_target
 					}
 				} catch {
 					print("Failed to decode expense: \(error)")
@@ -71,7 +69,7 @@ class StreakViewModel: ObservableObject {
 		}
 
 	}
-	func saveExpense() {
+	func saveExpense(completion: @escaping () -> Void) {
 		guard let userID = Auth.auth().currentUser?.uid else {
 			print("No user is logged in.")
 			return
@@ -85,7 +83,6 @@ class StreakViewModel: ObservableObject {
 		request.httpMethod = "POST"
 		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 		
-			// Prepare the JSON data with the userID
 		let payload = ["user_id": userID, "category": selectedCategory, "target": amount]
 		guard let jsonData = try? JSONEncoder().encode(payload) else {
 			print("Error: Unable to encode user_id into JSON")
@@ -101,14 +98,16 @@ class StreakViewModel: ObservableObject {
 			}
 			
 			do {
-				let decodedResponse = try JSONDecoder().decode(APIResponseStreak.self, from: data)
+				_ = try JSONDecoder().decode(ApiResponseStatus.self, from: data)
 				DispatchQueue.main.async {
+					completion() // Call the completion handler
 				}
 			} catch let jsonError {
 				print("Failed to decode JSON: \(jsonError)")
 			}
 		}.resume()
 	}
+
 }
 
 

@@ -77,7 +77,7 @@ struct DeveloperView: View {
                 }
                 .font(.headline)
                 .sheet(isPresented: $showingSafari) {
-                    Text("\(self.url)")
+//                    Text("\(self.url)")
 //                    SafariView(url: url!)
                 }
             }

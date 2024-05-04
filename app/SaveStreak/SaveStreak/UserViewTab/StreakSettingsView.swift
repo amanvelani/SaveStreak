@@ -8,7 +8,8 @@ import SwiftUI
 
 struct StreakSettingsView: View {
 	@StateObject var viewModel = StreakViewModel()
-	
+	@State private var showingConfirmation = false
+
 	var body: some View {
 		NavigationView {
 			Form {
@@ -29,19 +30,25 @@ struct StreakSettingsView: View {
 				}
 				
 				Section {
-					Button(action: {
-						viewModel.saveExpense()
-						feedback()
-					}) {
-						Text("Save")
-							.bold()
-							.frame(maxWidth: .infinity)
+					Button("Save") {
+						viewModel.saveExpense {
+								// This completion handler will be triggered after the network call.
+							self.showingConfirmation = true
+						}
 					}
 					.buttonStyle(GradientButtonStyle())
 					.padding(.top, 20)
 				}
 			}
 			.navigationTitle("Streak Setting")
+			.alert(isPresented: $showingConfirmation) {
+				Alert(
+					title: Text("Confirmation"),
+					message: Text("Streak Setting saved successfully."),
+					dismissButton: .default(Text("OK"))
+				)
+			}
+
 			.onAppear {
 				viewModel.fetchCategories()
 				viewModel.fetchExistingData()
