@@ -19,7 +19,6 @@ struct StreakSettingsView: View {
 							Text($0)
 						}
 					}
-//					.pickerStyle(SegmentedPickerStyle())
 					HStack {
 						Text("Amount")
 						TextField("Amount", text: $viewModel.amount)

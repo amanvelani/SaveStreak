@@ -22,20 +22,31 @@ struct RegisterView: View {
     let sexOptions = ["Male", "Female", "Not Specified"]
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 10) {
-                profileImageView
-                inputFields
-                sexPicker
-                registerButton
-                linkToSignIn
-                errorMessageView
-            }
-            .padding()
-            .sheet(isPresented: $isImagePickerPresented) {
-                ImagePicker(image: $profileImage)
-            }
+        NavigationView {
+			ZStack {
+				Image("moneyPlant") // Replace "your_background_image" with the actual name of your image asset
+					.resizable()
+					.scaledToFill()
+					.edgesIgnoringSafeArea(.all)
+					.overlay(Color.gray.opacity(0.1))
+				
+				
+				VStack(spacing: 10) {
+					profileImageView
+					inputFields
+					sexPicker
+					registerButton
+					linkToSignIn
+					errorMessageView
+				}
+				.padding()
+				.sheet(isPresented: $isImagePickerPresented) {
+					ImagePicker(image: $profileImage)
+				}
+			}
         }
+		.edgesIgnoringSafeArea(.all)
+
     }
 
     private var profileImageView: some View {
@@ -53,7 +64,7 @@ struct RegisterView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100, height: 100)
-                    .foregroundColor(.gray)
+					.foregroundColor(.red)
             }
         }
         .padding()
