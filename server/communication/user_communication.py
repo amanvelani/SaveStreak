@@ -135,3 +135,9 @@ def get_streak_data():
     category, target = db.get_user_streak_category(user_id)
     response = {"streak_data": db.calculate_streak(user_id, category, target)}
     return jsonify(response)
+
+@user_bp.route("/get-comparison-data", methods=["POST"])
+def get_comparision_data():
+    user_id = request.json["user_id"]
+    response = db.get_comparison_data(user_id)
+    return jsonify(response)
