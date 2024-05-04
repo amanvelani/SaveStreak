@@ -16,9 +16,6 @@ struct UserView: View {
 	@State private var isPresentingLink = false
 	@State var linkToken: String? = nil
 	@EnvironmentObject var apiConfig: ApiConfig
-    @State private var showingSafari = false
-    @State private var url: URL?
-
 
 	
 	var body: some View {
@@ -40,23 +37,24 @@ struct UserView: View {
 						}
 					}
 				}
+                
 				
-				Section {
-					NavigationLink(destination: StreakSettingsView()) {
-						HStack {
-							Image(systemName: "bell")
-								.foregroundColor(.gray)
-							Text("Streak Settings")
-						}
-					}
-					NavigationLink(destination: AboutUsView(showingSafari: $showingSafari, url: $url)) {
-						HStack {
-							Image(systemName: "questionmark.circle")
-								.foregroundColor(.gray)
-							Text("About Us")
-						}
-					}
-				}
+                Section {
+                    NavigationLink(destination: StreakSettingsView()) {
+                        HStack {
+                            Image(systemName: "bell")
+                                .foregroundColor(.gray)
+                            Text("Streak Settings")
+                        }
+                    }
+                    NavigationLink(destination: ParentView()) {
+                        HStack {
+                            Image(systemName: "questionmark.circle")
+                                .foregroundColor(.gray)
+                            Text("About Us")
+                        }
+                    }
+                }
 				
 					// Log Out Button Section
 				Section {

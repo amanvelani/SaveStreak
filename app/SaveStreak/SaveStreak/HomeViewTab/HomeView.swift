@@ -61,7 +61,7 @@ struct HomeView: View {
             .frame(width: 50, height: 50) // Smaller size
             .clipShape(Circle())
             Text("SaveStreak")
-                .font(.headline) // Using a bold and heavy system font
+                .font(.title) // Using a bold and heavy system font
                 .foregroundColor(Color.green) // Text color
                 .shadow(color: .gray, radius: 1, x: 0, y: 2) // Subtle shadow for depth
                 .padding(.vertical, 10)
@@ -85,12 +85,26 @@ struct HomeView: View {
             VStack(alignment: .leading) {
                 Text("Total Spends")
                     .font(.headline)
+                    .foregroundColor(.red)  // Make text red
                 Text("$\(viewModel.totalSpendThisMonth, specifier: "%.2f")")
-                    .font(.largeTitle)
+                    .font(.title)  // Change from .largeTitle to .title to make text smaller
                     .fontWeight(.bold)
+                    .foregroundColor(.red)  // Make text red
+                Spacer().frame(height: 20) // Add spacer to increase length
+                Text("Total Balance")
+                    .font(.headline)
+                    .foregroundColor(.green)  // Make text green
+                Text("$\(viewModel.userAccountAggregateBalance, specifier: "%.2f")")
+                    .font(.title)  // Change from .largeTitle to .title to make text smaller
+                    .fontWeight(.bold)
+                    .foregroundColor(.green)  // Make text green
             }
+            .padding(.horizontal, 10)  // Reduce horizontal padding to make it thinner
+            .frame(minWidth: 0, maxWidth: .infinity)  // Ensure it takes full width available
         }
+        .padding(.horizontal, 20)  // Optionally adjust padding around the card to fit your UI design
     }
+
 
     private var transactionList: some View {
         CardView {
@@ -123,10 +137,10 @@ struct HomeView: View {
                     .font(.headline)
 
                 if viewModel.spendComparison > 0 {
-                    Text("You have spent $\(abs(viewModel.spendComparison), specifier: "%.2f") more than other users using this app.")
+                    Text("You have spent $\(abs(viewModel.spendComparison), specifier: "%.2f") less than other users using this app in the last month.")
                         .font(.subheadline)
                 } else if viewModel.spendComparison < 0 {
-                    Text("You have spent $\(abs(viewModel.spendComparison), specifier: "%.2f") less than other users using this app.")
+                    Text("You have spent $\(abs(viewModel.spendComparison), specifier: "%.2f") more than other users using this app in the last month.")
                         .font(.subheadline)
                 } else {
                     Text("Your spending matches the average of other users using this app.")
@@ -184,8 +198,9 @@ struct BackgroundGradient: View {
     var body: some View {
         LinearGradient(
             gradient: Gradient(colors: [
-                Color.green.opacity(0.18),
-                Color.blue.opacity(0.4)
+                Color.green.opacity(0.3), // Soft Green
+                Color(red: 0.980, green: 0.980, blue: 0.824).opacity(0.3), // Pale Cream
+                Color.white.opacity(0.3) // White
             ]),
             startPoint: .top,
             endPoint: .bottom
@@ -193,4 +208,3 @@ struct BackgroundGradient: View {
         .edgesIgnoringSafeArea(.all)
     }
 }
-

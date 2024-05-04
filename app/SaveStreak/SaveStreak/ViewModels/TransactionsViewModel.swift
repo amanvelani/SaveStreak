@@ -13,6 +13,7 @@ class TransactionsViewModel: ObservableObject {
 	@Published var transactions: [Transaction] = []
 	@Published var topCategories: [CategorySpend] = []
 	@Published var totalSpendThisMonth: Double = 0.0
+    @Published var userAccountAggregateBalance: Double = 0.0
 	@Published var graphData: [CategorySpend] = []
     @Published var spendComparison: Double = 0.0
     @Published var streakValue: Int = 0
@@ -57,6 +58,7 @@ class TransactionsViewModel: ObservableObject {
 					self.transactions = decodedResponse.latest_transactions
 //					self.topCategories = decodedResponse.top_categories
 					self.totalSpendThisMonth = decodedResponse.total_spend_this_month
+                    self.userAccountAggregateBalance = decodedResponse.total_balance
 				}
 			} catch let jsonError {
 				self.isBusy = false
@@ -240,6 +242,7 @@ struct APIResponse: Codable {
 	var latest_transactions: [Transaction]
 //	var top_categories: [CategorySpend]
 	var total_spend_this_month: Double
+    var total_balance: Double
 }
 
 
