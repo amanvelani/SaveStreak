@@ -18,7 +18,7 @@ struct ExpenseEntry: Codable {
 
 class StreakViewModel: ObservableObject {
 	@Published var categories: [String] = []
-	@Published var selectedCategory: String = ""
+	@Published var selectedCategory: String = "Bank Fees"
 	@Published var amount: String = ""
 	let apiConfig = ApiConfig()
 	
@@ -82,7 +82,8 @@ class StreakViewModel: ObservableObject {
 		var request = URLRequest(url: url)
 		request.httpMethod = "POST"
 		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-		
+        print("Selected Category")
+        print(self.selectedCategory)
 		let payload = ["user_id": userID, "category": selectedCategory, "target": amount]
 		guard let jsonData = try? JSONEncoder().encode(payload) else {
 			print("Error: Unable to encode user_id into JSON")
