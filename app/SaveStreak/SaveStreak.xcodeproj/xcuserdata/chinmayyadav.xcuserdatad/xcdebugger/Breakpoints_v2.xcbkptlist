@@ -14,8 +14,8 @@
             filePath = "SaveStreak/UserLogin/LoginView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -511,31 +511,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E718D26C-D865-4B33-B048-550E310BC0C7"
+            uuid = "1E44BFD2-5735-42E8-9E85-F043B1F02593"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SaveStreak/ViewModels/StreakViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "saveExpense()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1E44BFD2-5735-42E8-9E85-F043B1F02593"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SaveStreak/ViewModels/StreakViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "fetchExistingData()"
             landmarkType = "7">
             <Locations>
@@ -569,6 +553,51 @@
                   endingLineNumber = "61"
                   offsetFromSymbolStart = "92">
                </Location>
+               <Location
+                  uuid = "1E44BFD2-5735-42E8-9E85-F043B1F02593 - 5b8eb5389ed6f648"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaveStreak.StreakViewModel.fetchExistingData() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/StreakViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "1456">
+               </Location>
+               <Location
+                  uuid = "1E44BFD2-5735-42E8-9E85-F043B1F02593 - 5b8eb5389ed6f648"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaveStreak.StreakViewModel.fetchExistingData() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/StreakViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "1632">
+               </Location>
+               <Location
+                  uuid = "1E44BFD2-5735-42E8-9E85-F043B1F02593 - 25a574bee2b394d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaveStreak.StreakViewModel.fetchExistingData() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/StreakViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "92">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -582,10 +611,42 @@
             filePath = "SaveStreak/ViewModels/StreakViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "fetchExistingData()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C6E37533-E4EB-410D-8F47-CB42F460FAC6 - 5b8eb5389ed6f629"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaveStreak.StreakViewModel.fetchExistingData() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/StreakViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "1488">
+               </Location>
+               <Location
+                  uuid = "C6E37533-E4EB-410D-8F47-CB42F460FAC6 - 25a574bee2b394b8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaveStreak.StreakViewModel.fetchExistingData() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/StreakViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "104">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -598,10 +659,42 @@
             filePath = "SaveStreak/ViewModels/StreakViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "fetchExistingData()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7A6ED50C-AE75-4D08-9C93-685969AC13E7 - 70387b4a3a4f787c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.StreakViewModel.fetchExistingData() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/StreakViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "860">
+               </Location>
+               <Location
+                  uuid = "7A6ED50C-AE75-4D08-9C93-685969AC13E7 - 70387b4a3a4f785b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaveStreak.StreakViewModel.fetchExistingData() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/StreakViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "1484">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -758,6 +851,54 @@
                   startingLineNumber = "101"
                   endingLineNumber = "101"
                   offsetFromSymbolStart = "208">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9B5E2BCE-3292-4DAF-ADB5-8E392EA21FF8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SaveStreak/ViewModels/StreakViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "fetchExistingData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9B5E2BCE-3292-4DAF-ADB5-8E392EA21FF8 - 5b8eb5389ed6f648"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaveStreak.StreakViewModel.fetchExistingData() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/StreakViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "1456">
+               </Location>
+               <Location
+                  uuid = "9B5E2BCE-3292-4DAF-ADB5-8E392EA21FF8 - 5b8eb5389ed6f66b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaveStreak.StreakViewModel.fetchExistingData() -&gt; ()"
+                  moduleName = "SaveStreak"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chinmayyadav/Kavida/SaveStreak/app/SaveStreak/SaveStreak/ViewModels/StreakViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "1488">
                </Location>
             </Locations>
          </BreakpointContent>

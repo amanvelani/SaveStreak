@@ -7,55 +7,59 @@
 import SwiftUI
 
 struct StreakSettingsView: View {
-    @StateObject var viewModel = StreakViewModel()
-    
-    var body: some View {
-        NavigationView {
-            VStack{
-                Form {
-                    Section {
-                        Picker("Category", selection: $viewModel.selectedCategory) {
-                            ForEach(viewModel.categories, id: \.self) {
-                                Text($0).foregroundColor(Color.primary) // Dynamic color for text
-                            }
-                        }
-                        HStack {
-                            Text("Amount").foregroundColor(Color.primary) // Dynamic color for text
-                            TextField("Amount", text: $viewModel.amount)
-                                .keyboardType(.decimalPad)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .padding(.vertical, 10)
-                        }
-                    }
-                    
-                    Section {
-                        Button(action: {
-                            viewModel.saveExpense()
-                            feedback()
-                        }) {
-                            Text("Save")
-                                .bold()
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(GradientButtonStyle())
-                        .padding(.top, 20)
-                    }
-                }
-                .navigationTitle("Streak Setting")
-                .onAppear {
-                    viewModel.fetchCategories()
-                    viewModel.fetchExistingData()
-                }
-            }
-            .background(BackgroundGradient())
-            .edgesIgnoringSafeArea(.all)
-        }.background(BackgroundGradient())
-    }
-    
-    func feedback() {
-        let impactMed = UIImpactFeedbackGenerator(style: .medium)
-        impactMed.impactOccurred()
-    }
+	@StateObject var viewModel = StreakViewModel()
+	@State private var showingConfirmation = false
+
+	var body: some View {
+		NavigationView {
+			Form {
+				Section() {
+					Picker("Category", selection: $viewModel.selectedCategory) {
+						ForEach(viewModel.categories, id: \.self) {
+							Text($0)
+						}
+					}
+//					.pickerStyle(SegmentedPickerStyle())
+					HStack {
+						Text("Amount")
+						TextField("Amount", text: $viewModel.amount)
+							.keyboardType(.decimalPad)
+							.textFieldStyle(RoundedBorderTextFieldStyle())
+							.padding(.vertical, 10)
+					}
+				}
+				
+				Section {
+					Button("Save") {
+						viewModel.saveExpense {
+								// This completion handler will be triggered after the network call.
+							self.showingConfirmation = true
+						}
+					}
+					.buttonStyle(GradientButtonStyle())
+					.padding(.top, 20)
+				}
+			}
+			.navigationTitle("Streak Setting")
+			.alert(isPresented: $showingConfirmation) {
+				Alert(
+					title: Text("Confirmation"),
+					message: Text("Streak Setting saved successfully."),
+					dismissButton: .default(Text("OK"))
+				)
+			}
+
+			.onAppear {
+				viewModel.fetchCategories()
+				viewModel.fetchExistingData()
+			}
+		}
+	}
+	
+	func feedback() {
+		let impactMed = UIImpactFeedbackGenerator(style: .medium)
+		impactMed.impactOccurred()
+	}
 }
 
 struct GradientButtonStyle: ButtonStyle {
