@@ -13,7 +13,8 @@ import Firebase
 struct SaveStreakApp: App {
 	@StateObject var userStateViewModel = UserStateViewModel()
 	let api_config = ApiConfig()
-	
+	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
 	init() {
 		let providerFactory = AppCheckDebugProviderFactory()
 		AppCheck.setAppCheckProviderFactory(providerFactory)
@@ -40,9 +41,13 @@ struct ApplicationSwitcher: View {
 	@EnvironmentObject var vm: UserStateViewModel
 	
 	var body: some View {
-		if (vm.isLoggedIn || UserDefaults.standard.bool(forKey: "isLoggedIn")) {
+        if(vm.isLoggedIn && vm.doesNotHaveAccount){
+            AccountsView()
+        }
+		else if (vm.isLoggedIn || UserDefaults.standard.bool(forKey: "isLoggedIn")) {
 			HomeScreen()
-        } else if(vm.isFirstTimeUser){
+        }
+        else if(vm.isFirstTimeUser){
             RegisterView()
         }
         else{
@@ -52,3 +57,12 @@ struct ApplicationSwitcher: View {
 	}
 }
 
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+	
+	static var orientationLock = UIInterfaceOrientationMask.all //By default you want all your views to rotate freely
+	
+	func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+		return AppDelegate.orientationLock
+	}
+}

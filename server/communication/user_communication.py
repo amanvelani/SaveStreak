@@ -128,6 +128,15 @@ def set_streak_category():
     db.set_user_streak_category(user_id, category, target)
     return jsonify({"status": "success"})
 
+@user_bp.route("/get-streak-category", methods=["POST"])
+def get_streak_category():
+    user_id = request.json["user_id"]
+    category, target = db.get_user_streak_category(user_id)
+    return jsonify({
+        "streak_category": category,
+                "streak_target": target
+                }
+    )
 
 @user_bp.route("/get-streak-data", methods=["POST"])
 def get_streak_data():

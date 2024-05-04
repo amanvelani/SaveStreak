@@ -9,7 +9,7 @@ import Foundation
 
 class ApiConfig: ObservableObject {
 	@Published var baseUrl = "http://save-streak.live/"
-	// @Published var baseUrl = "http://0.0.0.0:5000/"
+//	 @Published var baseUrl = "http://0.0.0.0:5000/"
 }
 
 

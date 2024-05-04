@@ -14,6 +14,7 @@ class TransactionsViewModel: ObservableObject {
 	@Published var topCategories: [CategorySpend] = []
 	@Published var totalSpendThisMonth: Double = 0.0
 	@Published var graphData: [CategorySpend] = []
+    @Published var spendComparison: Double = 0.0
 	let apiConfig = ApiConfig()
 	@Published var isBusy = false
 		// Function to fetch transactions data from the API
@@ -110,10 +111,36 @@ class TransactionsViewModel: ObservableObject {
 		let totalExpense = categories.reduce(0) { $0 + $1.total_expense }
 		return categories.map { $0.total_expense / totalExpense * 360 }
 	}
+    
+    func fetchComparison() async {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("No user is logged in.")
+            return
+        }
+        
+        do {
+            
+            let url = URL(string: "\(apiConfig.baseUrl)/user/get-comparison-data")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let requestBody = ["user_id": userId]
+            request.httpBody = try JSONEncoder().encode(requestBody)
+            
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let response = try JSONDecoder().decode(Comparison.self, from: data)
+            
+            // Process the fetched account data
+            self.spendComparison = response.user_comparison
+        } catch {
+            print("An error occurred: \(error)")
+        }
+    }
 	
 }
 
-struct Transaction: Identifiable, Codable {
+struct Transaction: Identifiable, Codable, Equatable {
 	var id: String {name}
 	let transaction_id: String
 	let name: String
@@ -122,7 +149,7 @@ struct Transaction: Identifiable, Codable {
 	let category: [String]
 	let location: Location
 	
-	struct Location: Codable {
+	struct Location: Codable, Equatable {
 		let address: String
 		let city: String
 		let country: String
@@ -135,15 +162,24 @@ struct Transaction: Identifiable, Codable {
 	var displayName: String {
 		name.components(separatedBy: ". Merchant name:").first ?? name
 	}
-
-	enum CodingKeys: String, CodingKey {
-		case transaction_id
-		case name
-		case amount
-		case date
-		case category
-		case location
-	}
+    // Conforming to Equatable manually if needed
+        static func == (lhs: Transaction, rhs: Transaction) -> Bool {
+            lhs.transaction_id == rhs.transaction_id &&
+            lhs.name == rhs.name &&
+            lhs.amount == rhs.amount &&
+            lhs.date == rhs.date &&
+            lhs.category == rhs.category &&
+            lhs.location == rhs.location
+        }
+        
+        enum CodingKeys: String, CodingKey {
+            case transaction_id
+            case name
+            case amount
+            case date
+            case category
+            case location
+        }
 }
 
 struct CategorySpend: Identifiable, Codable, Equatable, Hashable {
@@ -171,5 +207,9 @@ struct APIResponseCategoryGraph: Codable {
 
 struct APIResponseTrendGraph: Codable {
 	var spending_trend: [SpendTrend]
+}
+
+struct Comparison: Codable {
+    let user_comparison: Double
 }
 

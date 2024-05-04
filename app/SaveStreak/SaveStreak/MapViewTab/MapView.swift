@@ -16,6 +16,7 @@ struct MapView: View {
                 filterBar
                 mapDisplay
             }
+            .background(BackgroundGradient())
             .navigationBarTitle("Money Trails")
             .navigationBarItems(trailing: refreshButton)
             .onAppear {
@@ -147,3 +148,4 @@ struct MapView: View {
         }
     }
 }
+
