@@ -1,4 +1,5 @@
 from collections import defaultdict
+import copy
 from datetime import date, datetime, timedelta
 import traceback
 from flask import current_app as app
@@ -587,3 +588,75 @@ def calculate_streak(user_id, category, streak_target):
     except Exception as e:
         print(app.logger.error(traceback.format_exc()))
         return 0
+
+
+def get_comparison_data(user_id):
+    end_date = date.today()
+    start_date = end_date - timedelta(days=30)
+    print("Start Date:", start_date)
+    print("End Date:", end_date)
+    start_date = start_date.strftime("%Y-%m-%d")
+    end_date = end_date.strftime("%Y-%m-%d")
+    
+    pipeline = [
+            {
+                "$match": {
+                    "user_id": user_id,
+                }
+            },
+            {
+                "$addFields": {
+                    "all_transactions_array": {"$objectToArray": "$all_transactions"}
+                }
+            },
+            {"$unwind": "$all_transactions_array"},
+            {"$unwind": "$all_transactions_array.v.transactions"},
+            {
+                "$match": {
+                    "all_transactions_array.v.transactions.date": {
+                        "$gte": start_date,
+                        "$lte": end_date,
+                    }
+                }
+            },
+            {
+                "$project": {
+                    "yearMonth": {
+                        "$dateToString": {
+                            "format": "%Y-%m",
+                            "date": {
+                                "$dateFromString": {
+                                    "dateString": "$all_transactions_array.v.transactions.date",
+                                    "format": "%Y-%m-%d",
+                                }
+                            },
+                        }
+                    },
+                    "amount": "$all_transactions_array.v.transactions.amount",
+                }
+            },
+            {"$group": {"_id": "$yearMonth", "total_spending": {"$sum": "$amount"}}},
+            {"$sort": {"_id": 1}},
+        ]
+    print(type(pipeline))
+    spending = list(app.db.transaction_data.aggregate(copy.deepcopy(pipeline)))
+    user_spending = 0
+    for spending in spending: 
+        user_spending += spending["total_spending"]
+    print("User Spending:", user_spending)
+    
+    pipeline.pop(0)
+    spending = list(app.db.transaction_data.aggregate(pipeline))
+    total_spending = 0
+    for spending in spending: 
+        total_spending += spending["total_spending"]
+    
+    total_user_count = app.db.transaction_data.count_documents({})
+    average_spending = total_spending / total_user_count
+    
+    
+    result = {
+        "user_comparison": average_spending - user_spending,
+    }
+    
+    return result
