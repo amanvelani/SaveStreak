@@ -27,9 +27,10 @@ struct HomeView: View {
             }
 //            .navigationBarTitle("Save Streak", displayMode: .inline)
             .onAppear {
-                viewModel.fetchTransactions()
-				viewModel.fetchStreakData()
+                
                 Task {
+                    await viewModel.fetchTransactions()
+                    await viewModel.fetchStreakData()
                     await viewModel.fetchComparison()
 					
                 }

@@ -34,6 +34,9 @@ struct AllTransactionsView: View {
 			List(filteredTransactions, id: \.id) { transaction in
 				AllTransactionRow(transaction: transaction)
 					.onLongPressGesture {
+                        let generator = UIImpactFeedbackGenerator(style: .medium)
+                                                                        generator.prepare()
+                                                                        generator.impactOccurred()
 						self.selectedTransaction = transaction
 					}
 			}
