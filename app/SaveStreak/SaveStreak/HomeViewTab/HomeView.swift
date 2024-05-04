@@ -47,6 +47,9 @@ struct HomeView: View {
             }
             .padding([.horizontal, .bottom])
         }
+        .onAppear(){
+            OrientationManager.shared.updateOrientation(.all)
+        }
         .animation(.easeInOut, value: viewModel.transactions)
     }
 

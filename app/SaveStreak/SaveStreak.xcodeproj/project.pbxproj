@@ -13,6 +13,8 @@
 		0763F0F02BE458610005D058 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0763F0EF2BE458610005D058 /* GoogleService-Info.plist */; };
 		076E0FC92BE4C8EE000DDB27 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		076E0FCB2BE4C905000DDB27 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		07B03E7D2BE5C1CD0079E0CA /* LocationProvider in Frameworks */ = {isa = PBXBuildFile; productRef = 07B03E7C2BE5C1CD0079E0CA /* LocationProvider */; };
+		07B03E812BE5DC0E0079E0CA /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B03E802BE5DC0E0079E0CA /* AboutUsView.swift */; };
 		07CAF48E2BE4C81B005A3306 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 07CAF48D2BE4C81B005A3306 /* CachedAsyncImage */; };
 		A808FB1A2BE56EFA00A8D529 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A84FEA942BD9C5C500F71834 /* LinkKit in Frameworks */ = {isa = PBXBuildFile; productRef = A84FEA932BD9C5C500F71834 /* LinkKit */; };
@@ -93,6 +95,7 @@
 		071DACC82BE45FE700F33C85 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		071DACCC2BE4688800F33C85 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		0763F0EF2BE458610005D058 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		07B03E802BE5DC0E0079E0CA /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		A84FEA952BD9C92D00F71834 /* LinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkController.swift; sourceTree = "<group>"; };
 		A87810812B9F5C0B00A45B0B /* UserLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginModel.swift; sourceTree = "<group>"; };
 		A87810882B9F5C7C00A45B0B /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 				A8D29BBD2BD9988F0078101F /* FirebaseMLModelDownloader in Frameworks */,
 				A8D29BB12BD9988F0078101F /* FirebaseFirestoreSwift in Frameworks */,
 				A8D29B9D2BD9988F0078101F /* FirebaseAppCheck in Frameworks */,
+				07B03E7D2BE5C1CD0079E0CA /* LocationProvider in Frameworks */,
 				A84FEA942BD9C5C500F71834 /* LinkKit in Frameworks */,
 				A8D29B9B2BD9988F0078101F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				A8D29BA12BD9988F0078101F /* FirebaseAuth in Frameworks */,
@@ -314,6 +318,7 @@
 				A8C0C8F92BDF0E9B00899CD9 /* AccountsView.swift */,
 				071DACCC2BE4688800F33C85 /* UserProfileView.swift */,
 				A8BFB30F2BE5A15E00AC8EE6 /* StreakSettingsView.swift */,
+				07B03E802BE5DC0E0079E0CA /* AboutUsView.swift */,
 			);
 			path = UserViewTab;
 			sourceTree = "<group>";
@@ -365,6 +370,7 @@
 				A84FEA932BD9C5C500F71834 /* LinkKit */,
 				A8C0C9042BE4348B00899CD9 /* SwiftUICharts */,
 				07CAF48D2BE4C81B005A3306 /* CachedAsyncImage */,
+				07B03E7C2BE5C1CD0079E0CA /* LocationProvider */,
 			);
 			productName = SaveStreak;
 			productReference = A8DC9C792B969DBD0019986B /* SaveStreak.app */;
@@ -443,6 +449,7 @@
 				A84FEA922BD9C5C500F71834 /* XCRemoteSwiftPackageReference "plaid-link-ios" */,
 				A8C0C9032BE4348B00899CD9 /* XCRemoteSwiftPackageReference "ChartView" */,
 				07CAF48C2BE4C81B005A3306 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+				07B03E7B2BE5C1CC0079E0CA /* XCRemoteSwiftPackageReference "LocationProvider" */,
 			);
 			productRefGroup = A8DC9C7A2B969DBD0019986B /* Products */;
 			projectDirPath = "";
@@ -503,6 +510,7 @@
 				A8F24E8C2B9F6975004C41F9 /* UserView.swift in Sources */,
 				071DACCD2BE4688800F33C85 /* UserProfileView.swift in Sources */,
 				A8C0C8FA2BDF0E9B00899CD9 /* AccountsView.swift in Sources */,
+				07B03E812BE5DC0E0079E0CA /* AboutUsView.swift in Sources */,
 				A808FB1A2BE56EFA00A8D529 /* (null) in Sources */,
 				071DACC72BE45A1F00F33C85 /* MapViewModel.swift in Sources */,
 				A8BFB30E2BE5730600AC8EE6 /* AllTransactionsView.swift in Sources */,
@@ -852,6 +860,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		07B03E7B2BE5C1CC0079E0CA /* XCRemoteSwiftPackageReference "LocationProvider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/himbeles/LocationProvider.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		07CAF48C2BE4C81B005A3306 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
@@ -887,6 +903,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		07B03E7C2BE5C1CD0079E0CA /* LocationProvider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 07B03E7B2BE5C1CC0079E0CA /* XCRemoteSwiftPackageReference "LocationProvider" */;
+			productName = LocationProvider;
+		};
 		07CAF48D2BE4C81B005A3306 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 07CAF48C2BE4C81B005A3306 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;

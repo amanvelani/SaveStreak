@@ -6,6 +6,8 @@
 //
 import SwiftUI
 import MapKit
+import LocationProvider
+
 
 struct MapView: View {
     @StateObject var viewModel = MapViewModel()
@@ -21,7 +23,10 @@ struct MapView: View {
             .navigationBarItems(trailing: refreshButton)
             .onAppear {
                 viewModel.fetchTransactions()
+                OrientationManager.shared.updateOrientation(.all)
+                viewModel.startLocationUpdates()
             }
+
         }
     }
     
@@ -89,14 +94,14 @@ struct MapView: View {
 
 
     private var mapDisplay: some View {
-        Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.locationTransactions) { transaction in
-            MapAnnotation(coordinate: transaction.coordinate) {
-                annotationView(for: transaction)
+            Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.locationTransactions) { transaction in
+                MapAnnotation(coordinate: transaction.coordinate) {
+                    annotationView(for: transaction)
+                }
             }
+            .edgesIgnoringSafeArea(.all)
+            .padding(.bottom)
         }
-        .edgesIgnoringSafeArea(.all)
-        .padding(.bottom)
-    }
 
     private func annotationView(for transaction: LocationTransaction) -> some View {
         VStack {

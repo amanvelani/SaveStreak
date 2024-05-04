@@ -10,9 +10,12 @@ import SwiftUI
 import FirebaseAuth
 import CoreLocation
 import MapKit
+import LocationProvider
+import Combine
+import UIKit
 
-class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
-    @Published var region: MKCoordinateRegion
+class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate  {
+//    @Published var region: MKCoordinateRegion
     @Published var locationTransactions: [LocationTransaction] = []
     @Published var isBusy = false
     @Published var selectedCategory = "All"
@@ -20,72 +23,74 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     let categories = ["All", "Bank Fees", "Cash Advance", "Community", "Food and Drink", "Healthcare", "Interest", "Payment", "Recreation", "Service", "Shops"]
     let dateRanges = ["Past Week", "Past Month"]
     let apiConfig = ApiConfig()
-    private var locationManager: CLLocationManager?
+    @Published var region: MKCoordinateRegion
+        private var locationManager = CLLocationManager()
+    private var isInitialRegionSet = false
 
+        
     override init() {
-        self.region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194),
-            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        )
-        super.init()
-        setupLocationManager()
-    }
-
-    private func setupLocationManager() {
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager?.distanceFilter = 10
-
-        // Check the authorization status before updating the location
-        let status = CLLocationManager.authorizationStatus()
-        switch status {
-        case .authorizedWhenInUse, .authorizedAlways:
-            DispatchQueue.global(qos: .background).async {
-                self.locationManager?.startUpdatingLocation()
-            }
-        case .notDetermined:
-            locationManager?.requestWhenInUseAuthorization()
-        case .denied, .restricted:
-            print("Location services are denied/restricted. Please enable them in settings.")
-        @unknown default:
-            print("A new case was added that we need to handle")
+            region = MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: 43.037432, longitude: -76.121801),
+                span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            )
+            super.init()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            setupLocationManager()
         }
-    }
-
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .authorizedWhenInUse, .authorizedAlways:
-            if CLLocationManager.locationServicesEnabled() {
-                locationManager?.startUpdatingLocation()
-            } else {
-                print("Location services are not enabled.")
-            }
-        case .denied, .restricted:
-            print("Location services are denied/restricted. Please enable them in settings.")
-        case .notDetermined:
-            locationManager?.requestWhenInUseAuthorization()
-        @unknown default:
-            print("A new case was added that we need to handle")
+        
+        private func setupLocationManager() {
+            locationManager.requestWhenInUseAuthorization() // or requestAlwaysAuthorization() if necessary
         }
-    }
-
+    
+    func startLocationUpdates() {
+            locationManager.startUpdatingLocation()
+        }
+        
+        func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+            switch status {
+            case .notDetermined:
+                print("In Not determined")
+                manager.requestWhenInUseAuthorization()
+                // Wait for user decision on permission
+                break
+            case .restricted, .denied:
+                // Handle the case where the user has denied/restricted location services
+                print("Location permission not granted")
+            case .authorizedWhenInUse, .authorizedAlways:
+                // Start location updates
+                locationManager.startUpdatingLocation()
+            @unknown default:
+                // Handle future status cases
+                fatalError("Unhandled authorization status: \(status)")
+            }
+        }
+        
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
-        let newRegion = MKCoordinateRegion(
-            center: location.coordinate,
-            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        )
-        DispatchQueue.main.async {
-            self.region = newRegion
+        print("Updated locations: \(locations)")
+        if let newLocation = locations.last {
+            DispatchQueue.main.async { // Ensure UI updates on the main thread
+                if !self.isInitialRegionSet {
+                    self.isInitialRegionSet = true
+                    self.region = MKCoordinateRegion(
+                        center: newLocation.coordinate,
+                        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                    )
+                }
+            }
         }
     }
-
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Failed to find user's location: \(error.localizedDescription)")
+    
+    func faillocationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location error: \(error.localizedDescription)")
     }
 
-
+    func changelocationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print("Authorization status changed: \(status)")
+    }
+//    func requestLocation() {
+//           locationManager.requestLocation()
+//       }
     func fetchTransactions() {
         guard let userID = Auth.auth().currentUser?.uid else {
             print("No user is logged in.")
@@ -137,3 +142,23 @@ struct TransactionsResponse: Codable {
     let transactions: [LocationTransaction]
 }
 
+class LocationProvider: NSObject, CLLocationManagerDelegate, ObservableObject{
+    let locationManager = CLLocationManager()
+    let locationUpdated = PassthroughSubject<CLLocation, Never>()
+
+    func start() throws {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            locationUpdated.send(location)
+        }
+    }
+
+    func requestAuthorization() {
+        locationManager.requestWhenInUseAuthorization()
+    }
+}

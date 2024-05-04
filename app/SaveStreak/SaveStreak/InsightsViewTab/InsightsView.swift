@@ -127,6 +127,28 @@ struct InsightsView: View {
 						}
 					}
 					if showingCategory {
+                        Chart(viewModel.categoryWiseSpend, id: \._id) { element in
+                            SectorMark(
+                                angle: .value("Sales", element.total_expense),
+                                innerRadius: .ratio(0.6),
+                                angularInset: 2
+                            )
+                            .opacity(element._id == selectedItem?._id ? 1 : 0.7)
+                            .cornerRadius(5)
+                            .foregroundStyle(by: .value("Name", element._id))
+                        }
+                        .scaledToFit()
+                        .chartLegend(alignment: .center, spacing: 16)
+                        .chartBackground { chartProxy in
+                            GeometryReader { geometry in
+                                if let anchor = chartProxy.plotFrame {
+                                    let frame = geometry[anchor]
+                                    titleView
+                                        .position(x: frame.midX, y: frame.midY)
+                                }
+                            }
+                        }
+                        .chartAngleSelection(value: $selectedAngle)
 						List(viewModel.categoryWiseSpend, id: \.self) { category in
 							HStack {
 								Text("\(category._id) ")
@@ -135,30 +157,6 @@ struct InsightsView: View {
 							}
 							
 						}
-						
-						Chart(viewModel.categoryWiseSpend, id: \._id) { element in
-							SectorMark(
-								angle: .value("Sales", element.total_expense),
-								innerRadius: .ratio(0.6),
-								angularInset: 2
-							)
-							.opacity(element._id == selectedItem?._id ? 1 : 0.7)
-							.cornerRadius(5)
-							.foregroundStyle(by: .value("Name", element._id))
-						}
-						.scaledToFit()
-						.chartLegend(alignment: .center, spacing: 16)
-						.chartBackground { chartProxy in
-							GeometryReader { geometry in
-								if let anchor = chartProxy.plotFrame {
-									let frame = geometry[anchor]
-									titleView
-										.position(x: frame.midX, y: frame.midY)
-								}
-							}
-						}
-						.chartAngleSelection(value: $selectedAngle)
-						
 					} else {
 							Chart(viewModel.trendSpendData) {
 									BarMark(
@@ -179,16 +177,14 @@ struct InsightsView: View {
 				}
 			}.navigationTitle("Spending Overview")
 		}.onAppear() {
-			viewModel.loadCategoryData()
-			viewModel.loadSpendingTrendData()
-			UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-			AppDelegate.orientationLock = .portrait
+            viewModel.loadCategoryData()
+            viewModel.loadSpendingTrendData()
+            OrientationManager.shared.updateOrientation(.portrait)
+        }
+        .onDisappear {
+            OrientationManager.shared.updateOrientation(.all)
+        }
 
-		}.onDisappear {
-			UIDevice.current.setValue(UIDevice.current.orientation.rawValue, forKey: "orientation")
-
-			AppDelegate.orientationLock = UIInterfaceOrientationMask.all // Unlocking the rotation when leaving the view
-		}
 //		.background(PortraitOnlyViewModifier()) // Apply the orientation lock
 
 	}
