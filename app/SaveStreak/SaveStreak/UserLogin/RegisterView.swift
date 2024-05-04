@@ -155,8 +155,8 @@ struct RegisterView: View {
                 errorMessage = "Registration failed: \(error.localizedDescription)"
             } else {
                 vm.isLoggedIn = true
-                vm.isFirstTimeUser = false
-                vm.doesNotHaveAccount = false
+                vm.isFirstTimeUser = true
+                vm.doesNotHaveAccount = true
                 
             }
             isRegistering = false

@@ -16,14 +16,14 @@ struct AccountsView: View {
 	@State private var isPresentingLink = false
 	@State private var linkToken: String?
 	@EnvironmentObject var apiConfig: ApiConfig
-    @State private var isLoading = false
+//    @State private var isAccountBusy = false
 
 
 	
     var body: some View {
             NavigationView {
                 List {
-                    if isLoading {
+					if vm.isAccountBusy {
                         ProgressView()
                     }
                     else if accounts.isEmpty {
@@ -91,14 +91,14 @@ struct AccountsView: View {
     }
     private func refreshAccounts() {
         Task {
-            isLoading = true
-            defer { isLoading = false }
+            vm.isAccountBusy = true
+//            defer { vm.isAccountBusy = false }
             await fetchLinkToken()
             await fetchAccounts()
         }
     }
 	
-    private func fetchAccounts() async {
+	private func fetchAccounts(isNew: Bool = false) async {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("No user is logged in.")
             return
@@ -124,7 +124,12 @@ struct AccountsView: View {
                 self.accounts = accountResponse.accounts
                 
             }
-            isLoading = false
+            vm.isAccountBusy = false
+			
+			if vm.isFirstTimeUser && isNew {
+				UserDefaults.standard.set(true, forKey: "isLoggedIn")
+				vm.doesNotHaveAccount = false
+			}
             
             if !self.accounts.isEmpty{
                 vm.doesNotHaveAccount = false
@@ -182,9 +187,10 @@ struct AccountsView: View {
 			print("saveUserPublicToken Status: \(status )")
 			print("saveUserPublicToken Error: \(tokenResponse.error ?? "nil")")
             Task {
-//                isLoading = true
-                await fetchAccounts()
-//                isLoading = false
+//                vm.isAccountBusy = true
+				
+				await fetchAccounts(isNew: true)
+//                vm.isAccountBusy = false
             }
 		} catch {
 			print("An error occurred: \(error)")
@@ -224,9 +230,9 @@ struct AccountsView: View {
             let name = event.eventName.description
             if name == "HANDOFF" {
 //                Task {
-                    isLoading = true
+                    vm.isAccountBusy = true
 //                    await fetchAccounts()
-//                    isLoading = false
+//                    vm.isAccountBusy = false
 //                }
             }
 		}

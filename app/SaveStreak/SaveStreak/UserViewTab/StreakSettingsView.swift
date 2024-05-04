@@ -4,7 +4,6 @@
 //
 //  Created by Chinmay Yadav on 5/3/24.
 //
-
 import SwiftUI
 
 struct StreakSettingsView: View {
@@ -13,35 +12,62 @@ struct StreakSettingsView: View {
 	var body: some View {
 		NavigationView {
 			Form {
-				Picker("Category", selection: $viewModel.selectedCategory) {
-					ForEach(viewModel.categories, id: \.self) {
-						Text($0)
+				Section() {
+					Picker("Category", selection: $viewModel.selectedCategory) {
+						ForEach(viewModel.categories, id: \.self) {
+							Text($0)
+						}
+					}
+//					.pickerStyle(SegmentedPickerStyle())
+					HStack {
+						Text("Amount")
+						TextField("Amount", text: $viewModel.amount)
+							.keyboardType(.decimalPad)
+							.textFieldStyle(RoundedBorderTextFieldStyle())
+							.padding(.vertical, 10)
 					}
 				}
-				.onAppear {
-					viewModel.fetchCategories()
-					viewModel.fetchExistingExpense()
-				}
-				TextField("Amount", text: $viewModel.amount)
-					.keyboardType(.decimalPad)
-				Button("Save") {
-					viewModel.saveExpense()
-
+				
+				Section {
+					Button(action: {
+						viewModel.saveExpense()
+						feedback()
+					}) {
+						Text("Save")
+							.bold()
+							.frame(maxWidth: .infinity)
+					}
+					.buttonStyle(GradientButtonStyle())
+					.padding(.top, 20)
 				}
 			}
-			.navigationTitle("Add Expense")
-//			.toolbar {
-//				ToolbarItem(placement: .navigationBarTrailing) {
-//					Button("Save") {
-//						viewModel.saveExpense()
-//					}
-//				}
-//			}
+			.navigationTitle("Streak Setting")
+			.onAppear {
+				viewModel.fetchCategories()
+				viewModel.fetchExistingData()
+			}
 		}
 	}
-
+	
+	func feedback() {
+		let impactMed = UIImpactFeedbackGenerator(style: .medium)
+		impactMed.impactOccurred()
+	}
 }
 
-#Preview {
-    StreakSettingsView()
+struct GradientButtonStyle: ButtonStyle {
+	func makeBody(configuration: Self.Configuration) -> some View {
+		configuration.label
+			.padding()
+			.background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing))
+			.foregroundColor(.white)
+			.clipShape(RoundedRectangle(cornerRadius: 8))
+			.scaleEffect(configuration.isPressed ? 0.95 : 1)
+	}
+}
+
+struct StreakSettingsView_Previews: PreviewProvider {
+	static var previews: some View {
+		StreakSettingsView()
+	}
 }

@@ -11,6 +11,9 @@ struct AllTransactionsView: View {
     @ObservedObject var viewModel: TransactionsViewModel
     @State private var showingFilters = false
     @State private var searchText: String = ""
+	@State private var showingDetail = false
+	@State private var selectedTransaction: Transaction?
+
     
     // Filtered transactions based on search text
     private var filteredTransactions: [Transaction] {
@@ -30,19 +33,38 @@ struct AllTransactionsView: View {
         NavigationView {
             List(filteredTransactions) { transaction in
                 AllTransactionRow(transaction: transaction)
+					.onLongPressGesture {
+						self.selectedTransaction = transaction
+
+//						DispatchQueue.main.async {
+//
+//							self.selectedTransaction = transaction
+//							self.showingDetail = true
+//						}
+					}
             }
+			.onChange(of: selectedTransaction) { _ in
+				if selectedTransaction != nil {
+					showingDetail = true
+				}
+			}
             .listStyle(InsetGroupedListStyle())
             .navigationTitle("Transactions")
-            .toolbar {
-                Button(action: {
-                    showingFilters.toggle()
-                }) {
-                    Image(systemName: "line.horizontal.3.decrease.circle")
-                }
-            }
+//            .toolbar {
+//                Button(action: {
+//                    showingFilters.toggle()
+//                }) {
+//                    Image(systemName: "line.horizontal.3.decrease.circle")
+//                }
+//            }
             .searchable(text: $searchText, prompt: "Search Transactions")
-
             .background(BackgroundGradient())
+			.sheet(isPresented: $showingDetail) {
+				if let transaction = self.selectedTransaction {
+					TransactionDetailView(transaction: transaction)
+				}
+			}
+
         }
     }
 }
@@ -71,3 +93,72 @@ struct AllTransactionRow: View {
         .padding(.vertical, 4)
     }
 }
+
+
+struct TransactionDetailView: View {
+	var transaction: Transaction
+	
+	var body: some View {
+		ScrollView {
+			Spacer()
+			VStack(alignment: .leading) {
+				Text("Transaction Details")
+					.font(.largeTitle)
+					.fontWeight(.heavy)
+					.foregroundColor(Color.blue)
+					.padding(.vertical)
+				
+				Divider()
+				
+				HStack {
+					VStack(alignment: .leading, spacing: 8) {
+						detailLabel(title: "Transaction ID", value: transaction.transaction_id)
+						detailLabel(title: "Name", value: transaction.displayName)
+						detailLabel(title: "Date", value: transaction.date)
+					}
+					
+					Spacer()
+					
+					VStack(alignment: .leading, spacing: 8) {
+						detailLabel(title: "Amount", value: String(format: "$%.2f", transaction.amount))
+						detailLabel(title: "Categories", value: transaction.category.joined(separator: ", "))
+					}
+				}
+				
+				Text("Location")
+					.font(.headline)
+					.padding(.top)
+				
+				Text("\(transaction.location.address), \(transaction.location.city), \(transaction.location.region), \(transaction.location.postal_code), \(transaction.location.country)")
+					.font(.footnote)
+					.foregroundColor(.secondary)
+					.padding(.bottom)
+				
+				Spacer()
+			}
+			.padding()
+			.background(Color(.systemBackground))
+			.cornerRadius(12)
+			.shadow(radius: 5)
+			.padding()
+			Spacer()
+		}
+		.background(BackgroundGradient())
+		.edgesIgnoringSafeArea(.all)
+	}
+	
+	@ViewBuilder
+	private func detailLabel(title: String, value: String) -> some View {
+		VStack(alignment: .leading) {
+			Text(title.uppercased())
+				.font(.caption)
+				.fontWeight(.bold)
+				.foregroundColor(.gray)
+			Text(value)
+				.font(.body)
+				.foregroundColor(.primary)
+		}
+	}
+
+}
+

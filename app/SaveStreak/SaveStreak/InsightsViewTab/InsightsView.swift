@@ -181,11 +181,13 @@ struct InsightsView: View {
 		}.onAppear() {
 			viewModel.loadCategoryData()
 			viewModel.loadSpendingTrendData()
-			UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation") // Forcing the rotation to portrait
-			AppDelegate.orientationLock = .portrait // And making sure it stays that way
+			UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+			AppDelegate.orientationLock = .portrait
 
 		}.onDisappear {
-			AppDelegate.orientationLock = .all // Unlocking the rotation when leaving the view
+			UIDevice.current.setValue(UIDevice.current.orientation.rawValue, forKey: "orientation")
+
+			AppDelegate.orientationLock = UIInterfaceOrientationMask.all // Unlocking the rotation when leaving the view
 		}
 //		.background(PortraitOnlyViewModifier()) // Apply the orientation lock
 

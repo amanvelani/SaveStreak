@@ -28,7 +28,7 @@ class StreakViewModel: ObservableObject {
 		self.categories = ["Bank Fees","Cash Advance","Community","Food and Drink","Healthcare","Interest","Payment","Recreation","Service","Shops"]
 	}
 	
-	func fetchExistingExpense() {
+	func fetchExistingData() {
 			// Use POST method and include user ID in the request
 		guard let userID = Auth.auth().currentUser?.uid else {
 			print("No user is logged in.")
@@ -40,20 +40,36 @@ class StreakViewModel: ObservableObject {
 		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 		let requestBody = ["user_id": userID]
 		let encoder = JSONEncoder()
-		if let encoded = try? encoder.encode(requestBody) {
+		
+		do {
+			let encoded = try encoder.encode(requestBody)
 			request.httpBody = encoded
 			URLSession.shared.dataTask(with: request) { data, response, error in
-				if let data = data {
+				if let error = error {
+					print("Network request failed: \(error)")
+					return
+				}
+				
+				guard let data = data else {
+					print("No data received")
+					return
+				}
+				
+				do {
 					let decoder = JSONDecoder()
-					if let decodedExpense = try? decoder.decode(ExpenseEntry.self, from: data) {
-						DispatchQueue.main.async {
-							self.selectedCategory = decodedExpense.category
-							self.amount = String(decodedExpense.amount)
-						}
+					let decodedExpense = try decoder.decode(APIResponseStreak.self, from: data)
+					DispatchQueue.main.async {
+						self.selectedCategory = decodedExpense.streak_category
+						self.amount = String(decodedExpense.streak_target)
 					}
+				} catch {
+					print("Failed to decode expense: \(error)")
 				}
 			}.resume()
+		} catch {
+			print("Failed to encode request: \(error)")
 		}
+
 	}
 	func saveExpense() {
 		guard let userID = Auth.auth().currentUser?.uid else {
@@ -99,5 +115,16 @@ class StreakViewModel: ObservableObject {
 struct APIResponseStreak: Codable {
 	var streak_category: String
 		//	var top_categories: [CategorySpend]
-	var streak_target: Double
+	var streak_target: String
+}
+
+
+struct ApiResponseStatus: Codable {
+	var status: String
+	var error: String?
+	
+	enum CodingKeys: String, CodingKey {
+		case status = "status"
+		case error = "error"
+	}
 }

@@ -28,8 +28,10 @@ struct HomeView: View {
 //            .navigationBarTitle("Save Streak", displayMode: .inline)
             .onAppear {
                 viewModel.fetchTransactions()
+				viewModel.fetchStreakData()
                 Task {
                     await viewModel.fetchComparison()
+					
                 }
             }
         }
@@ -65,7 +67,7 @@ struct HomeView: View {
                 .imageScale(.large)
                 .foregroundColor(.green)
                 .frame(width: 50, height: 50)
-            Text("5")
+			Text("\(viewModel.streakValue)")
                 .font(.title)
                 .bold()
         }
@@ -100,7 +102,9 @@ struct HomeView: View {
             Spacer()
             NavigationLink(destination: AllTransactionsView(viewModel: viewModel) ) {
                 HStack {
+					
                     Spacer()
+					Text("See All Transactions")
                     Image(systemName: "chevron.right.circle")
                         .foregroundColor(.blue)
                 }
