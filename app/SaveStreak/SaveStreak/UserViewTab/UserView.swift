@@ -46,11 +46,11 @@ struct UserView: View {
 							Text("Streak Settings")
 						}
 					}
-					NavigationLink(destination: Text("Help Information")) {
+					NavigationLink(destination: AboutUsView()) {
 						HStack {
 							Image(systemName: "questionmark.circle")
 								.foregroundColor(.gray)
-							Text("Help")
+							Text("About Us")
 						}
 					}
 				}
@@ -64,37 +64,13 @@ struct UserView: View {
 					} label: {
 						Text("Logout")
 					}
-//					Button(action: {
-//						if let _ = linkToken {
-//							isPresentingLink = true
-//						} else {
-//							print("Link token is not yet available.")
-//						}					}, label:  {
-//							Text("Open Plaid Link")
-//						})
-//					.disabled(linkToken == nil)
 				}
 			}
 			.navigationTitle("Settings")
-//			.sheet(
-//				isPresented: $isPresentingLink,
-//				onDismiss: {
-//					isPresentingLink = false
-//				},
-//				content: {
-//					if let handler = createHandler() {
-//						LinkController(handler: handler)
-//					} else {
-//						Text("Unable to create Plaid Link handler.")
-//					}
-//				}
-//			)
+        }
+		.onAppear() {
+            OrientationManager.shared.updateOrientation(.all)
 		}
-//		.onAppear() {
-//			Task {
-//				await fetchLinkToken()
-//			}
-//		}
 		
 	}
 	

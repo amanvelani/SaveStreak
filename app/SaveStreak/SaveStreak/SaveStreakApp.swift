@@ -58,11 +58,34 @@ struct ApplicationSwitcher: View {
 }
 
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-	
-	static var orientationLock = UIInterfaceOrientationMask.all //By default you want all your views to rotate freely
-	
-	func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-		return AppDelegate.orientationLock
-	}
+class OrientationManager {
+    static var shared = OrientationManager()
+    private init() {}
+
+    var orientationLock: UIInterfaceOrientationMask = .all {
+        didSet {
+            // Notify AppDelegate to update orientation settings
+            if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                delegate.updateOrientation()
+            }
+        }
+    }
+
+    func updateOrientation(_ orientation: UIInterfaceOrientationMask) {
+        self.orientationLock = orientation
+    }
 }
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    var window: UIWindow?
+
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return OrientationManager.shared.orientationLock
+    }
+
+    func updateOrientation() {
+        // Trigger the application to check orientation restrictions
+        UIDevice.current.setValue(UIInterfaceOrientation.unknown.rawValue, forKey: "orientation")
+    }
+}
+
