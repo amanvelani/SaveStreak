@@ -2,92 +2,78 @@
 
 SaveStreak is a simple app that helps you keep track of your savings streaks. It's a great way to keep yourself motivated to save money.
 
+## Table of Contents
+- [Market Research](#market-research)
+- [Tech Stack](#tech-stack)
+- [How to run backend server](#how-to-run-backend-server)
+- [How to run the iOS app](#how-to-run-the-ios-app)
+- [Custom Data](#custom-data)
+- [Architecture](#architecture)
+- [Contributors](#contributors)
+
+
 ## Market Research
 
-I did some market research and found that there are a few apps that help you keep track of your savings, but none of them focus on keeping a streak going. I think this is a great way to keep people motivated to save money.
+We did some market research and found that there are a few apps that help you keep track of your savings, but none of them focus on keeping a streak going. I think this is a great way to keep people motivated to save money.
 Apps already in the market:
 - [Mint](https://mint.intuit.com/) (project discontinued)
 - [Quicken](https://www.quicken.com/)
 
-## Features To be Implemented
-- Track your daily habits and activities
-- Set up streaks for each habit
-- Receive reminders to complete your habits
-- View your progress and streak history
-- Customize your streaks with personalized goals and targets
-- Location-based average spend and savings data to compare your progress with others in your area.
-- Set savings goals and track your progress towards achieving them.
-- Keep track of your savings streaks and see how many consecutive days you've saved money.
-
 ## Tech Stack
 
 - Swift (iOS)
-- Go (Backend Server)
-- Database (to be decided)
+- Flask (Backend Server)
+- MongoDB (Database)
 - Plaid API sandbox environment (for linking bank accounts)
 
-## Basic Architecture
+## How to run backend server
+1. Clone the repository
+```bash
+git clone https://github.com/amanvelani/SaveStreak/tree/main
+```
+2. Change directory to the backend folder
+```bash
+cd SaveStreak/server
+```
+3. Install the required dependencies
+```bash
+pip3 install -r requirements.txt
+```
+4. Set the environment variables
+```bash
+cp .env.example .env
+```
+5. Run the server
+```bash
+python3 flask_app.py
+```
 
-The app will be built using Swift for iOS. The backend server will be built using Go. The app will communicate with the backend server to store and retrieve data. The backend server will also communicate with the Plaid API to link bank accounts and retrieve transaction data.
-![SaveStreak Architecture](./img/SaveStreak_arch.png)
+The server is also running on `https://save-streak.live`
 
-## User Flow
+## How to run the iOS app
+1. Import the project in Xcode from the `SaveStreak/app` folder
+2. Run the project in Xcode
+3. If you are running you own server change the [APIConfig.swift](./app/SaveStreak/SaveStreak/Models/APIConfig.swift) file to point to your server
 
-1. User signs up
-    - User enters email and password
-    - User enters state and zip code
-    - User enters occupation
 
-2. User logs in
-    - User enters email and password
+## Custom Data
+In this project we are using the Plaid API to get the transactions. We are using the sandbox environment of the Plaid API. The Plaid API has a few test accounts that we can use to get the transactions. The test accounts can be created using the following files:
 
-3. User links bank account
-    - Clicks on "Link Bank Account" button
-    - User selects bank from Plaid API list
-    - User enters bank account credentials
-    - User selects bank account to link
+1. [Random User Data](./data/random_user_data_generator.py) - This file is used to generate random user data. The file generates random user data and saves it in the `custom_user_data/` folder.
+2. [Custom Location Data](./data/random_location_data_generator.py) - This file is used to generate random location data. The file generates random location data and saves it in the database. We are using the location data to set the location of the transactions as the plaid sandbox environment does not provide the location of the transactions.
+3. [Category Data](./data/save_categories.py) - This file is used to generate category data. The file generates category data and saves it in the database. We are using the category data to set the category of the transactions as the plaid sandbox environment provides only 1-2 categories for the transactions. We are using the category data to set the category of the transactions.
 
-4. Dasboard view
-    - User sees current savings streak
-    - User sees current savings goal
-    - User sees average spend in area
-    - User sees average savings in area
-    - User sees progress towards savings goal
-    - User sees progress towards savings streak
-    - Streak is represented by something unique (e.g. a flame, a money bag, etc.)
+## Architecture
+1. User Flow Diagram
+![User Flow Diagram](./img/SaveStreak_UserFlow.png)
+2. Dashboard Flow Diagram
+![Dashboard Flow Diagram](./img/SaveStreak_DashBoardFlow.png)
+3. Add Account Flow Diagram
+![Add Account Flow Diagram](./img/SaveStreak_AddAccountFlow.jpg)
+
+
 
 ## Contributors
 
 - [Aman Velani](https://www.linkedin.com/in/amanvelani/)
 - [Chinmay Yadav](https://www.linkedin.com/in/chinmay-yadav-668587178/)
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-```
-## License
-
-The SaveStreak project is licensed under the MIT License.
-
-MIT License
------------
-
-[MIT License](https://choosealicense.com/licenses/mit/)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
