@@ -5,9 +5,10 @@ SaveStreak is a simple app that helps you keep track of your savings streaks. It
 ## Table of Contents
 - [Market Research](#market-research)
 - [Tech Stack](#tech-stack)
-- [How to run backend server](#how-to-run-backend-server)
-- [How to run the iOS app](#how-to-run-the-ios-app)
-- [Custom Data](#custom-data)
+- [Build the Project](#build-the-project)
+    - [How to run backend server](#how-to-run-backend-server)
+    - [How to run the iOS app](#how-to-run-the-ios-app)
+    - [Custom Data](#custom-data)
 - [Architecture](#architecture)
 - [Contributors](#contributors)
 
@@ -49,14 +50,15 @@ python3 flask_app.py
 ```
 
 The server is also running on `https://save-streak.live`
+## Build the Project
 
-## How to run the iOS app
+### How to run the iOS app
 1. Import the project in Xcode from the `SaveStreak/app` folder
 2. Run the project in Xcode
 3. If you are running you own server change the [APIConfig.swift](./app/SaveStreak/SaveStreak/Models/APIConfig.swift) file to point to your server
 
 
-## Custom Data
+### Custom Data
 In this project we are using the Plaid API to get the transactions. We are using the sandbox environment of the Plaid API. The Plaid API has a few test accounts that we can use to get the transactions. The test accounts can be created using the following files:
 
 1. [Random User Data](./data/random_user_data_generator.py) - This file is used to generate random user data. The file generates random user data and saves it in the `custom_user_data/` folder.
